@@ -8,7 +8,7 @@ En la tienda aparece todavía como «x39 Comunicaciones» y «x39»; el nombre X
 
 ## Ediciones publicadas
 
-Las dos se distribuyen desde el repositorio F-Droid propio `https://mining.x39matrix.org/app/fdroid/repo` (huella del índice y del certificado de firma, SHA-256: `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`, CN=x39matrix).
+Las dos se distribuyen desde el repositorio F-Droid propio `https://fdroid.x39matrix.org/app/fdroid/repo` (huella del índice y del certificado de firma, SHA-256: `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`, CN=x39matrix).
 
 | Paquete | Nombre en tienda | Versión | Qué incluye | SHA-256 del APK |
 |---|---|---|---|---|
@@ -18,8 +18,8 @@ Las dos se distribuyen desde el repositorio F-Droid propio `https://mining.x39ma
 Pruebas de existencia de cada APK, todas verificadas contra nuestro propio nodo Bitcoin Core:
 
 - 46: OpenTimestamps, primer bloque 975174 (09/11/2026), `.ots` junto al APK en el repositorio F-Droid. Sello de tiempo cualificado (RFC 3161, ANF AC Qualified TSA, servicio cualificado conforme al Reglamento eIDAS de la UE) emitido el 10/11/2026, serie `0xC04082135132D07DCC478923CCBEC7`.
-- 45: OpenTimestamps por dos vías: el hash figura en [`SHA256SUMS.txt`](https://mining.x39matrix.org/app/SHA256SUMS.txt) sellado el 07/11/2026 (primer bloque 974899) y prueba directa del APK sellada el 09/11/2026 (bloque 975211). Sello cualificado emitido el 10/11/2026, serie `0xC04082135132D07DCC478923CCBEC3`.
-- Los `.tsr`, la cadena de certificados y el acta de cada sello cualificado están en `https://mining.x39matrix.org/app/fdroid/sellos/`.
+- 45: OpenTimestamps por dos vías: el hash figura en [`SHA256SUMS.txt`](https://fdroid.x39matrix.org/app/SHA256SUMS.txt) sellado el 07/11/2026 (primer bloque 974899) y prueba directa del APK sellada el 09/11/2026 (bloque 975211). Sello cualificado emitido el 10/11/2026, serie `0xC04082135132D07DCC478923CCBEC3`.
+- Los `.tsr`, la cadena de certificados y el acta de cada sello cualificado están en `https://fdroid.x39matrix.org/app/fdroid/sellos/`.
 - Biblioteca nativa de la billetera en el APK 46 (`libx39wallet.so`, SHA-256): `244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43`.
 
 ## Verificar antes de instalar
@@ -84,7 +84,7 @@ In the store it still appears as "x39 Comunicaciones" and "x39"; the name X39 En
 
 ## Published editions
 
-Both are distributed from our own F-Droid repository `https://mining.x39matrix.org/app/fdroid/repo` (index and signing-certificate fingerprint, SHA-256: `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`, CN=x39matrix).
+Both are distributed from our own F-Droid repository `https://fdroid.x39matrix.org/app/fdroid/repo` (index and signing-certificate fingerprint, SHA-256: `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`, CN=x39matrix).
 
 | Package | Store name | Version | Contents | APK SHA-256 |
 |---|---|---|---|---|
@@ -94,8 +94,8 @@ Both are distributed from our own F-Droid repository `https://mining.x39matrix.o
 Proofs of existence for each APK, all verified against our own Bitcoin Core node:
 
 - 46: OpenTimestamps, first block 975174 (2026-11-09), `.ots` next to the APK in the F-Droid repository. Qualified time stamp (RFC 3161, ANF AC Qualified TSA, qualified service under the EU eIDAS Regulation) issued 2026-11-10, serial `0xC04082135132D07DCC478923CCBEC7`.
-- 45: OpenTimestamps in two ways: the hash is listed in [`SHA256SUMS.txt`](https://mining.x39matrix.org/app/SHA256SUMS.txt) stamped 2026-11-07 (first block 974899), and a direct proof of the APK stamped 2026-11-09 (block 975211). Qualified time stamp issued 2026-11-10, serial `0xC04082135132D07DCC478923CCBEC3`.
-- The `.tsr` files, certificate chains and records of the qualified stamps are at `https://mining.x39matrix.org/app/fdroid/sellos/`.
+- 45: OpenTimestamps in two ways: the hash is listed in [`SHA256SUMS.txt`](https://fdroid.x39matrix.org/app/SHA256SUMS.txt) stamped 2026-11-07 (first block 974899), and a direct proof of the APK stamped 2026-11-09 (block 975211). Qualified time stamp issued 2026-11-10, serial `0xC04082135132D07DCC478923CCBEC3`.
+- The `.tsr` files, certificate chains and records of the qualified stamps are at `https://fdroid.x39matrix.org/app/fdroid/sellos/`.
 - Native wallet library in APK 46 (`libx39wallet.so`, SHA-256): `244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43`.
 
 ## Verify before installing
