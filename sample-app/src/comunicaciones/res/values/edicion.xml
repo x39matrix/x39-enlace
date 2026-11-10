@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Edicion publica X39 Comunicaciones (sin billetera). Icono, cabecera, textos y acento: los de main. -->
+    <string name="x39_edicion_nombre" translatable="false">x39</string>
+</resources>

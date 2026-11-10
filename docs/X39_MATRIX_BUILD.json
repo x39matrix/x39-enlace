@@ -1,0 +1,50 @@
+{
+  "owner": "x39matrix",
+  "versionName": "1.0.8-x39",
+  "versionCode": 45,
+  "applicationId": "org.x39matrix.llamadas.escritorio",
+  "sha256": "25f3c6644aad44f1f809181388478ab7a00b5c16f7e90f205fece6d9e4ff4c10",
+  "file": "x39-app-release-unsigned.apk",
+  "status": "unsigned-zipaligned-ready-for-local-signing",
+  "official_logo_sha256": "14fe9a539345474233d6783b75e5dc232d5b104ed9fce997f2864c5aed32215f",
+  "launcher_icons_verified_in_apk": {
+    "mdpi": {
+      "size": 48,
+      "matches_in_apk": [
+        "res/9w.png",
+        "res/zR.png"
+      ]
+    },
+    "hdpi": {
+      "size": 72,
+      "matches_in_apk": [
+        "res/8c.png",
+        "res/yn.png"
+      ]
+    },
+    "xhdpi": {
+      "size": 96,
+      "matches_in_apk": [
+        "res/FS.png",
+        "res/wb.png"
+      ]
+    },
+    "xxhdpi": {
+      "size": 144,
+      "matches_in_apk": [
+        "res/RJ.png",
+        "res/fO.png"
+      ]
+    },
+    "xxxhdpi": {
+      "size": 192,
+      "matches_in_apk": [
+        "res/Gc.png",
+        "res/o-.png"
+      ]
+    }
+  },
+  "previous_signed_apk_sha256": "79799e3f2cb0fba71a320028da29ddc2862d0969270cc5f3eea26be64adbf85f",
+  "tests_passed": 81,
+  "functional_engines_changed": false
+}

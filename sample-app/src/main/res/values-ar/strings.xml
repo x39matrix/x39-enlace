@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Aplicación -->
+    <string name="x39_app_nombre">x39</string>
+    <string name="x39_contacto_por_defecto">جهة اتصال</string>
+
+    <!-- Textos comunes -->
+    <string name="x39_guardar">حفظ</string>
+    <string name="x39_cancelar">إلغاء</string>
+    <string name="x39_cerrar">إغلاق</string>
+    <string name="x39_copiar">نسخ</string>
+    <string name="x39_borrar">حذف</string>
+    <string name="x39_quitar">إزالة</string>
+    <string name="x39_enviar">إرسال</string>
+    <string name="x39_entendido">حسنًا</string>
+    <string name="x39_ahora_no">ليس الآن</string>
+    <string name="x39_volver">رجوع</string>
+    <string name="x39_llamar">اتصال</string>
+    <string name="x39_videollamada">مكالمة فيديو</string>
+    <string name="x39_colgar">إنهاء</string>
+    <string name="x39_rechazar">رفض</string>
+    <string name="x39_contestar">رد</string>
+    <string name="x39_conectando">جارٍ الاتصال…</string>
+    <string name="x39_llamada_finalizada">انتهت المكالمة</string>
+    <string name="x39_contacto_verificado">✓ موثّق</string>
+    <string name="x39_contacto_pendiente">بانتظار التحقق</string>
+    <string name="x39_cifrada_e2e">مشفّرة من طرف إلى طرف · X39-CALL-KEY</string>
+
+    <!-- Motivos de fallo que llegan del núcleo de llamadas -->
+    <string name="x39_fallo_no_en_agenda">جهة الاتصال هذه ليست في دفتر جهاتك</string>
+    <string name="x39_fallo_no_disponible">جهة الاتصال غير متاحة</string>
+    <string name="x39_fallo_error_servidor">خطأ في الخادم</string>
+
+    <!-- Pantalla principal: barra de arriba y barra de abajo -->
+    <string name="x39_tunel_activo_desc">x39tunel يعمل</string>
+    <string name="x39_candado_desc">ما الذي يشفّره x39</string>
+    <string name="x39_nav_contactos">جهات الاتصال</string>
+    <string name="x39_nav_mensajes">الرسائل</string>
+    <string name="x39_nav_ajustes">الإعدادات</string>
+    <string name="x39_estado_en_linea">"●  متصل"</string>
+    <string name="x39_estado_conectando">"○  جارٍ الاتصال…"</string>
+
+    <!-- Contactos -->
+    <string name="x39_contactos_titulo">جهات اتصالك</string>
+    <string name="x39_contactos_vacio">ليست لديك جهات اتصال بعد.\nشارك هويتك وأضف هوية الطرف الآخر.</string>
+    <string name="x39_contactos_mi_identidad">هويتي</string>
+    <string name="x39_contacto_huella">البصمة</string>
+    <string name="x39_identidad_comparte">شارك بصمتك</string>
+    <string name="x39_identidad_escanea">امسح الرمز أو الصق النص للاتصال</string>
+    <string name="x39_sin_micro_camara">لا يمكن الاتصال دون الميكروفون/الكاميرا</string>
+
+    <!-- Menú de un contacto -->
+    <string name="x39_menu_mensaje">رسالة</string>
+    <string name="x39_menu_cifrar">تشفير</string>
+    <string name="x39_menu_compartir_identidad">مشاركة الهوية</string>
+    <string name="x39_menu_borrar_contacto">حذف جهة الاتصال</string>
+    <string name="x39_borrar_contacto_titulo">حذف %1$s؟</string>
+    <string name="x39_borrar_contacto_texto">تُزال من دفتر جهاتك، على هذا الجهاز فقط. لتتصل بها مجددًا عليك حفظ هويتها مرة أخرى.</string>
+    <string name="x39_contacto_borrado">حُذفت جهة الاتصال</string>
+
+    <!-- Billetera -->
+
+    <!-- Pestaña Mensajes -->
+    <string name="x39_conversaciones_titulo">المحادثات</string>
+    <string name="x39_conversaciones_vacio_titulo">لا توجد محادثات بعد</string>
+    <string name="x39_conversaciones_vacio_texto">لبدء محادثة: اذهب إلى جهات الاتصال، واضغط على الشخص واختر «رسالة». إذا لم يكن لديك مفتاح التشفير الخاص به، تعرض لك القائمة «تشفير» للحصول عليه.</string>
+    <string name="x39_conversaciones_ir_contactos">الذهاب إلى جهات الاتصال</string>
+    <string name="x39_conversacion_ultimo_mio">أنت: %1$s</string>
+
+    <!-- Ajustes -->
+    <string name="x39_ajustes_identidad_red">الهوية والشبكة</string>
+    <string name="x39_ajustes_mi_identidad">هويتي</string>
+    <string name="x39_ajustes_mi_identidad_sub">البصمة · المفتاح</string>
+    <string name="x39_ajustes_tunel_sub_apagado">حماية المسار: WireGuard + مفتاح ما بعد الكم</string>
+    <string name="x39_ajustes_enrutar_todo">توجيه كل حركة البيانات</string>
+    <string name="x39_ajustes_enrutar_todo_si">كل الهاتف يمر عبر النفق</string>
+    <string name="x39_ajustes_enrutar_todo_no">شبكة النفق والإشارات فقط</string>
+    <string name="x39_ajustes_importar_conf">استيراد .conf</string>
+    <string name="x39_ajustes_importar_conf_sub">يقرأ ملف WireGuard بدل كتابة المفاتيح</string>
+    <string name="x39_ajustes_clave_tunel">مفتاح النفق لهذا الهاتف</string>
+    <string name="x39_ajustes_clave_tunel_sub">المفتاح العام، لتسجيله على الخادم</string>
+    <string name="x39_ajustes_servidor_senal">خادم الإشارات</string>
+    <string name="x39_ajustes_servidor_llamadas">خادم المكالمات</string>
+    <string name="x39_ajustes_recepcion">الاستقبال</string>
+    <string name="x39_ajustes_segundo_plano">الاستقبال في الخلفية</string>
+    <string name="x39_ajustes_segundo_plano_ok">جاهز: تصلك المكالمات والتطبيق مغلق</string>
+    <string name="x39_ajustes_segundo_plano_falta">أذونات ناقصة: قد لا يرن</string>
+    <string name="x39_ajustes_mensajes">الرسائل</string>
+    <string name="x39_ajustes_borrado_defecto">الحذف الافتراضي</string>
+    <string name="x39_ajustes_seguridad">الأمان</string>
+    <string name="x39_ajustes_anticaptura">منع لقطات الشاشة</string>
+    <string name="x39_ajustes_anticaptura_si">يمنع لقطات الشاشة وتسجيلها</string>
+    <string name="x39_ajustes_anticaptura_no">متوقف: يمكن التقاط الشاشة</string>
+    <string name="x39_ajustes_anticaptura_encendido">منع لقطات الشاشة مفعّل</string>
+    <string name="x39_ajustes_anticaptura_apagado">منع لقطات الشاشة متوقف</string>
+    <string name="x39_ajustes_acerca">حول x39</string>
+    <string name="x39_ajustes_acerca_sub">الإصدار · التوقيع · بصمة APK</string>
+    <string name="x39_editor_senal_hint">عنوان wss:// لخادم الإشارات</string>
+    <string name="x39_editor_pin_hint">تثبيت الشهادة (اختياري)</string>
+    <string name="x39_editor_livekit_hint">عنوان wss:// لخادم LiveKit</string>
+    <string name="x39_guardado_reinicia">تم الحفظ. أعد تشغيل التطبيق لإعادة الاتصال.</string>
+    <string name="x39_clave_tunel_texto">"%1$s\n\nهذا هو المفتاح العام. أعطه للخادم ليقبل هذا الهاتف:\n\n  wg set wg0 peer %1$s allowed-ips 10.39.0.2/32\n\nالمفتاح الخاص لا يغادر هذا الجهاز: إنه مختوم في مخزن المفاتيح على الجهاز.\n\nإذا كان لديك ملف .conf يعمل، فاستيراده أسرع: عندها يستخدم x39 المفتاح نفسه والخادم يعرفه مسبقًا."</string>
+    <string name="x39_clave_copiada">نُسخ المفتاح</string>
+    <string name="x39_conf_ilegible">تعذّرت قراءة هذا الملف</string>
+    <string name="x39_conf_no_vale">ملف .conf غير صالح: %1$s</string>
+    <string name="x39_conf_sin_peer">ملف .conf لا يحتوي على أي نظير (peer)</string>
+    <string name="x39_conf_sin_direccion">ملف .conf لا يحتوي على عنوان</string>
+    <string name="x39_conf_sin_endpoint">ملف .conf لا يحتوي على نقطة نهاية (endpoint)</string>
+    <string name="x39_conf_importada">تم استيراد الإعدادات</string>
+    <string name="x39_sin_permiso_vpn">لا نفق دون إذن VPN</string>
+
+    <!-- Borrado de mensajes (opciones y frases) -->
+    <string name="x39_borrado_opcion_min5">بعد 5 دقائق من قراءتها</string>
+    <string name="x39_borrado_opcion_h24">بعد 24 ساعة من قراءتها</string>
+    <string name="x39_borrado_opcion_d7">بعد 7 أيام من قراءتها</string>
+    <string name="x39_borrado_opcion_siempre">دائمًا (لا تُحذف)</string>
+    <string name="x39_borrado_frase_min5">تُحذف بعد 5 دقائق من قراءتها</string>
+    <string name="x39_borrado_frase_h24">تُحذف بعد 24 ساعة من قراءتها</string>
+    <string name="x39_borrado_frase_d7">تُحذف بعد 7 أيام من قراءتها</string>
+    <string name="x39_borrado_frase_siempre">لا تُحذف تلقائيًا</string>
+    <string name="x39_borrado_defecto_texto">يسري على المحادثات الجديدة؛ ويمكن تغيير كل محادثة على حدة من ترويستها. يبدأ العدّ عندما يقرأ الطرف الآخر الرسالة.\n\nيعتمد الحذف التلقائي على التزام تطبيق الطرف الآخر به. إنه يحمي من بقاء الرسالة منسية على هاتف؛ ولا يمنع أحدًا من تصويرها بكاميرا أخرى أو من استخدام نسخة معدّلة من التطبيق.</string>
+
+    <!-- Qué va cifrado (el candado) -->
+    <string name="x39_cifrado_titulo">ما الذي يُشفَّر</string>
+    <string name="x39_cifrado_ruta_tunel">· المسار يمر عبر x39tunel (WireGuard): %1$s.</string>
+    <string name="x39_cifrado_ruta_directa">· x39tunel متوقف: المسار مباشر والخادم يرى عنوان IP الخاص بك.</string>
+    <string name="x39_cifrado_texto">"المكالمات ومكالمات الفيديو\n· يتفق الهاتفان على المفتاح فيما بينهما بطريقة ما بعد الكم\n  (ML-KEM-1024)، وكل عرض موقَّع (ML-DSA-87) كي لا يستطيع أحد\n  أن يتدخل في المنتصف.\n· من هذا المفتاح تُستخرج الـ 32 بايت التي تشفّر الصوت والفيديو،\n  والكلمات الست التي تتحقق منها بصوت عالٍ.\n· الخادم يوزّع الحزم ولا يستطيع فك تشفيرها: المفتاح لا يمر\n  عبره في أي لحظة.\n\nهويتك\n· هي مفتاح ML-DSA-87. الجزء السري يُنشأ على هذا الهاتف ويبقى فيه،\n  مختومًا بواسطة Keystore. بصمتك مشتقة منه.\n\nالرسائل والملفات\n· كل رسالة أو ملاحظة صوتية أو جزء من ملف يُختم بتغليف ما بعد الكم المستقل\n  (ML-KEM-1024) ويُوقَّع بمفتاحك (ML-DSA-87)، وتُزال البيانات الوصفية من الصور\n  والفيديو قبل ختمها وتُحفظ مشفّرة عبر Keystore.\n\nالمسار\n%1$s\n\nما لا يخفيه التشفير\n· الخادم يعرف من يتحدث مع من، وفي أي ساعة، وكم من الوقت. هذه\n  بيانات وصفية للشبكة ولا يخفيها أي مفتاح. ولا يخفيها النفق\n  أيضًا: هو يغيّر فقط الطريق الذي تمر منه."</string>
+    <string name="x39_ver_mi_identidad">عرض هويتي</string>
+
+    <!-- Recepción en segundo plano -->
+    <string name="x39_fondo_intro">لا يستخدم x39 خدمات Google: يصل التنبيه عبر اتصاله الخاص، وتبقيه خدمةٌ مفتوحًا. نظام MIUI يغلق هذا الاتصال إن لم تمنحه الإذن. راجع هذه البنود.</string>
+    <string name="x39_fondo_comprobable">ما يستطيع التطبيق التحقق منه</string>
+    <string name="x39_fondo_avisos">إشعارات x39</string>
+    <string name="x39_fondo_avisos_sub">دون هذا لن ترى المكالمة الواردة</string>
+    <string name="x39_fondo_bateria">بطارية دون قيود</string>
+    <string name="x39_fondo_bateria_sub">إذا كانت مقيّدة، يقطع النظام الاتصال</string>
+    <string name="x39_fondo_pantalla_completa">مكالمة بملء الشاشة</string>
+    <string name="x39_fondo_pantalla_completa_sub">دون هذا تصل المكالمة كإشعار عادي، لا بملء الشاشة</string>
+    <string name="x39_fondo_no_hace_falta">في هذا الإصدار من Android لا حاجة لطلبه</string>
+    <string name="x39_fondo_alarma">منبّه دقيق</string>
+    <string name="x39_fondo_alarma_sub">المراقب الذي يفحص الاتصال كل 10 دقائق</string>
+    <string name="x39_fondo_manual">ما عليك التحقق منه بنفسك (MIUI لا يسمح بقراءته)</string>
+    <string name="x39_fondo_autoinicio">التشغيل التلقائي مفعّل</string>
+    <string name="x39_fondo_autoinicio_sub">الأمان › الأذونات › التشغيل التلقائي › x39. دون هذا لا يبدأ عند تشغيل الهاتف.</string>
+    <string name="x39_fondo_recientes">قفل x39 في التطبيقات الأخيرة</string>
+    <string name="x39_fondo_recientes_sub">افتح التطبيقات الأخيرة، واسحب x39 إلى الأسفل واضغط على القفل.</string>
+    <string name="x39_fondo_recientes_aviso">يتم ذلك من شاشة التطبيقات الأخيرة، لا من الإعدادات</string>
+    <string name="x39_fondo_pie">حتى لو ضُبط كل شيء، يظل الخادم يرى من يتحدث مع من، ومتى، وكم من الوقت: لا يخفي ذلك أي تشفير. ما لا يستطيع رؤيته هو ما يُقال.</string>
+    <string name="x39_fondo_concedido">ممنوح</string>
+    <string name="x39_fondo_sin_pantalla_ajustes">هاتفك لا يحتوي على شاشة الإعدادات هذه؛ ابحث عنها يدويًا</string>
+
+    <!-- Identidad: compartir y añadir -->
+    <string name="x39_identidad_qr_desc">رمز QR بهويتك</string>
+    <string name="x39_identidad_qr_firma_desc">رمز QR لمفتاح التوقيع الخاص بك</string>
+    <string name="x39_identidad_qr_firma_pie">1 من 2 · للاتصال بك\nهذا هو الرمز الذي يضيفك إلى دفتر جهاته.</string>
+    <string name="x39_identidad_qr_cifrar_desc">رمز QR لمفتاح التشفير الخاص بك</string>
+    <string name="x39_identidad_qr_cifrar_pie">2 من 2 · للكتابة إليك\nيقرؤه من «تشفير» بعد أن يكون قد حفظك.</string>
+    <string name="x39_identidad_ver_otro">عرض الرمز الآخر</string>
+    <string name="x39_identidad_tu_foto">صورتك</string>
+    <string name="x39_identidad_tu_huella">بصمتك (رقمك)</string>
+    <string name="x39_identidad_copiar">نسخ هويتي كاملة</string>
+    <string name="x39_identidad_copiada">نُسخت الهوية (X39ID1)</string>
+    <string name="x39_identidad_escanear">مسح رمز QR لشخص آخر</string>
+    <string name="x39_identidad_o_pega">أو الصق هويته</string>
+    <string name="x39_identidad_nombre_hint">الاسم</string>
+    <string name="x39_identidad_pega_hint">الصق هنا هوية الطرف الآخر</string>
+    <string name="x39_guardar_contacto">حفظ جهة الاتصال</string>
+    <string name="x39_nombre_e_identidad">الاسم والهوية، كلاهما</string>
+    <string name="x39_contacto_guardado">حُفظت جهة الاتصال</string>
+    <string name="x39_identidad_no_valida">هذه الهوية غير صالحة</string>
+    <string name="x39_nombre_persona_hint">اسم الشخص</string>
+    <string name="x39_identidad_leida">قُرئت الهوية · البصمة %1$s</string>
+    <string name="x39_ponle_nombre">أعطه اسمًا</string>
+    <string name="x39_qr_solo_cifrar">رمز QR هذا مجرد مفتاح تشفير. استخدم «تشفير» من جهة الاتصال.</string>
+    <string name="x39_identidad_no_coincide">هذه الهوية ليست هوية %1$s: مفتاح التوقيع لا يتطابق</string>
+    <string name="x39_no_es_identidad">هذه ليست هوية x39</string>
+
+    <!-- Cifrar con un contacto y comprobar huellas -->
+    <string name="x39_cifrar_titulo">التشفير مع %1$s</string>
+    <string name="x39_cifrar_texto">لديك مفتاح التوقيع الخاص بـ %1$s: وبه يمكنك الاتصال به. لتكتب إليه تحتاج أيضًا إلى مفتاح التشفير الخاص به.\n\nاطلب منه أن يعرض لك رمز QR الخاص به من «مشاركة الهوية»، أو أن يلصق لك هويته بالطريقة التي يفضّلها.</string>
+    <string name="x39_cifrar_escanear">مسح رمز QR الخاص به</string>
+    <string name="x39_cifrar_hint">X39ID1:… أو X39PK1:…</string>
+    <string name="x39_cifrar_guardar">حفظ مفتاح التشفير الخاص به</string>
+    <string name="x39_cifrar_pega">الصق هويته</string>
+    <string name="x39_huellas_sin_clave">لا تملك مفتاح التشفير الخاص به بعد</string>
+    <string name="x39_huellas_titulo">تحقّقا من البصمات معًا</string>
+    <string name="x39_huellas_texto">اقرآها بصوت عالٍ، عبر الهاتف أو وجهًا لوجه. يجب أن تظهر متطابقة على الجهازين. إن لم تتطابق، فهناك من يتدخل في المنتصف: لا تحدّدها كموثّقة.</string>
+    <string name="x39_huellas_la_tuya">بصمتك</string>
+    <string name="x39_huellas_la_de">بصمة %1$s</string>
+    <string name="x39_huellas_coinciden">متطابقتان: تحديد كموثّق</string>
+    <string name="x39_huellas_verificado">أصبح %1$s موثّقًا</string>
+    <string name="x39_huellas_pie">يمكنك الكتابة إليه الآن حتى لو لم تحدّده: التحديد يسجّل فقط أنك تحققت ممن تتحدث معه.</string>
+
+    <!-- Foto de perfil -->
+    <string name="x39_foto_tienes">لديك صورة</string>
+    <string name="x39_foto_sin">بلا صورة</string>
+    <plurals name="x39_foto_la_ven">
+        <item quantity="zero">تراها %1$d جهة اتصال موثّقة</item>
+        <item quantity="one">تراها %1$d جهة اتصال موثّقة</item>
+        <item quantity="two">تراها %1$d جهتا اتصال موثّقتان</item>
+        <item quantity="few">تراها %1$d جهات اتصال موثّقة</item>
+        <item quantity="many">تراها %1$d جهة اتصال موثّقة</item>
+        <item quantity="other">تراها %1$d جهة اتصال موثّقة</item>
+    </plurals>
+    <string name="x39_foto_iniciales">تظهر الأحرف الأولى من اسمك. وضع صورة أمر يعود إليك.</string>
+    <string name="x39_foto_cambiar">تغيير الصورة</string>
+    <string name="x39_foto_poner">وضع صورة</string>
+    <string name="x39_foto_quitar">إزالة الصورة</string>
+    <string name="x39_foto_aviso">تُرسل صورتك مشفّرة إلى جهات اتصالك الموثّقة فقط. بمجرد وصولها إلى هواتفهم، لم تعد تتحكم بها.</string>
+    <string name="x39_foto_sin_datos">تُزال منها بيانات الموقع والكاميرا قبل إرسالها.</string>
+    <string name="x39_foto_no_usable">تعذّر استخدام هذه الصورة: %1$s</string>
+    <string name="x39_foto_guardada">حُفظت الصورة</string>
+    <string name="x39_foto_reparto_nadie">أُزيلت بيانات الموقع والكاميرا.\n\nلا يمكن إرسالها إلى أحد بعد: ليست لديك جهات اتصال موثّقة. ستُرسل عندما توثّق إحداها.</string>
+    <plurals name="x39_foto_reparto">
+        <item quantity="zero">أُزيلت بيانات الموقع والكاميرا.\n\nستُرسل مشفّرة إلى %1$d جهة اتصال موثّقة لديك. بمجرد وصولها إلى هواتفهم، لم تعد تتحكم بها.</item>
+        <item quantity="one">أُزيلت بيانات الموقع والكاميرا.\n\nستُرسل مشفّرة إلى %1$d جهة اتصال موثّقة لديك. بمجرد وصولها إلى هاتفها، لم تعد تتحكم بها.</item>
+        <item quantity="two">أُزيلت بيانات الموقع والكاميرا.\n\nستُرسل مشفّرة إلى %1$d جهتَي اتصال موثّقتين لديك. بمجرد وصولها إلى هاتفيهما، لم تعد تتحكم بها.</item>
+        <item quantity="few">أُزيلت بيانات الموقع والكاميرا.\n\nستُرسل مشفّرة إلى %1$d جهات اتصال موثّقة لديك. بمجرد وصولها إلى هواتفهم، لم تعد تتحكم بها.</item>
+        <item quantity="many">أُزيلت بيانات الموقع والكاميرا.\n\nستُرسل مشفّرة إلى %1$d جهة اتصال موثّقة لديك. بمجرد وصولها إلى هواتفهم، لم تعد تتحكم بها.</item>
+        <item quantity="other">أُزيلت بيانات الموقع والكاميرا.\n\nستُرسل مشفّرة إلى %1$d جهة اتصال موثّقة لديك. بمجرد وصولها إلى هواتفهم، لم تعد تتحكم بها.</item>
+    </plurals>
+    <plurals name="x39_foto_enviada">
+        <item quantity="zero">أُرسلت الصورة إلى %1$d جهة اتصال</item>
+        <item quantity="one">أُرسلت الصورة إلى %1$d جهة اتصال</item>
+        <item quantity="two">أُرسلت الصورة إلى %1$d جهتَي اتصال</item>
+        <item quantity="few">أُرسلت الصورة إلى %1$d جهات اتصال</item>
+        <item quantity="many">أُرسلت الصورة إلى %1$d جهة اتصال</item>
+        <item quantity="other">أُرسلت الصورة إلى %1$d جهة اتصال</item>
+    </plurals>
+    <string name="x39_quitar_foto_titulo">إزالة صورتك؟</string>
+    <string name="x39_quitar_foto_texto">تُحذف من هذا الهاتف ويُطلب من جهات اتصالك الموثّقة حذف نسختهم.\n\nحذفها فعلًا يعتمد على التزام تطبيقهم بذلك: إذا صوّرها أحد بكاميرا أخرى، فلا يمكن التراجع عن ذلك.</string>
+    <string name="x39_foto_quitada">أُزيلت الصورة</string>
+    <string name="x39_fotos_no_leer">تعذّرت قراءة هذه الصورة</string>
+    <string name="x39_fotos_grande">الصورة كبيرة جدًا</string>
+
+    <!-- Llamada saliente -->
+    <string name="x39_llamando_a">جارٍ الاتصال بـ</string>
+    <string name="x39_llamada_cifrada_e2e">مكالمة مشفّرة من طرف إلى طرف</string>
+    <string name="x39_videollamada_cifrada_e2e">مكالمة فيديو مشفّرة من طرف إلى طرف</string>
+    <string name="x39_estableciendo_clave">جارٍ إنشاء مفتاح ما بعد الكم…</string>
+
+    <!-- Acerca de x39 -->
+    <string name="x39_acerca_midiendo">جارٍ قياس ملف APK المثبّت…</string>
+    <string name="x39_acerca_version">الإصدار %1$s (الرمز %2$d)\nالحزمة %3$s</string>
+    <string name="x39_acerca_certificado">شهادة التوقيع (SHA-256)\n%1$s</string>
+    <string name="x39_acerca_apk">ملف APK المثبّت (SHA-256، %1$d بايت)\n%2$s</string>
+    <string name="x39_acerca_motor">المحرّك: ML-DSA-87 · ML-KEM-1024 · X39-CALL-KEY-v1 · x39tunel v2 (WireGuard + مفتاح PSK ما بعد الكم)</string>
+    <string name="x39_acerca_error">تعذّر القياس: %1$s</string>
+
+    <!-- Conversación (chat) -->
+    <string name="x39_chat_contacto_no_esta">جهة الاتصال هذه لم تعد في دفتر جهاتك</string>
+    <string name="x39_chat_llamar_a">الاتصال بـ %1$s</string>
+    <string name="x39_chat_estado_sin_clave">معلّق · دون مفتاح التشفير الخاص به</string>
+    <string name="x39_chat_escribe">اكتب رسالة</string>
+    <string name="x39_chat_adjuntar">إرفاق</string>
+    <string name="x39_chat_grabar_nota">تسجيل رسالة صوتية</string>
+    <string name="x39_chat_descartar_nota">تجاهل الرسالة الصوتية</string>
+    <string name="x39_chat_grabando">"●  جارٍ التسجيل  %1$d:%2$02d"</string>
+    <string name="x39_chat_enviar_nota">إرسال الرسالة الصوتية</string>
+    <string name="x39_chat_no_puedes_titulo">لا يمكنك الكتابة إليه بعد</string>
+    <string name="x39_chat_no_puedes_texto">لديك من %1$s مفتاح التوقيع فقط، وهو يكفي للاتصال به. لختم رسالة له تحتاج أيضًا إلى مفتاح التشفير الخاص به.\n\nاستخدم «تشفير» في قائمة جهة الاتصال للحصول عليه.</string>
+    <string name="x39_chat_sin_micro">لا يمكن تسجيل رسالة صوتية دون الميكروفون</string>
+    <string name="x39_chat_no_grabar">تعذّر بدء التسجيل: %1$s</string>
+    <string name="x39_chat_error">خطأ</string>
+    <string name="x39_chat_no_grabo">لم يُسجَّل شيء</string>
+    <string name="x39_chat_corta">قصيرة جدًا</string>
+    <string name="x39_chat_no_leer_grabacion">تعذّرت قراءة التسجيل</string>
+    <string name="x39_chat_no_enviar">تعذّر الإرسال: %1$s</string>
+    <string name="x39_chat_nota_descartada">تم تجاهل الرسالة الصوتية</string>
+    <string name="x39_chat_adj_foto">صورة</string>
+    <string name="x39_chat_adj_video">فيديو</string>
+    <string name="x39_chat_adj_documento">مستند</string>
+    <string name="x39_chat_demasiado_grande">كبير جدًا</string>
+    <string name="x39_chat_demasiado_grande_texto">حجم «%1$s» هو %2$s والحد الأقصى 25 MB.</string>
+    <string name="x39_chat_enviar_metadatos">إرسال بيانات الموقع والكاميرا</string>
+    <string name="x39_chat_aviso_video">تنبيه: إزالة بيانات الفيديو (الموقع، التاريخ، الهاتف) ما زالت قيد التحقق. إلى أن تتأكد، افترض أنه قد يحملها.</string>
+    <string name="x39_chat_limpio">أُزيلت بيانات الموقع والكاميرا.</string>
+    <string name="x39_chat_documento_metadatos">قد يحمل المستند بيانات وصفية خاصة به (المؤلف، البرنامج) لا يمسّها x39.</string>
+    <plurals name="x39_chat_trafico">
+        <item quantity="zero">%1$s · %2$d قطعة مختومة كلٌّ على حدة.\nسيمر عبر الخادم نحو %3$s، وتكلفة هذه البيانات يدفعها من يدفع تكلفة الخادم.</item>
+        <item quantity="one">%1$s · %2$d قطعة مختومة على حدة.\nسيمر عبر الخادم نحو %3$s، وتكلفة هذه البيانات يدفعها من يدفع تكلفة الخادم.</item>
+        <item quantity="two">%1$s · %2$d قطعتان مختومتان كلٌّ على حدة.\nسيمر عبر الخادم نحو %3$s، وتكلفة هذه البيانات يدفعها من يدفع تكلفة الخادم.</item>
+        <item quantity="few">%1$s · %2$d قطع مختومة كلٌّ على حدة.\nسيمر عبر الخادم نحو %3$s، وتكلفة هذه البيانات يدفعها من يدفع تكلفة الخادم.</item>
+        <item quantity="many">%1$s · %2$d قطعة مختومة كلٌّ على حدة.\nسيمر عبر الخادم نحو %3$s، وتكلفة هذه البيانات يدفعها من يدفع تكلفة الخادم.</item>
+        <item quantity="other">%1$s · %2$d قطعة مختومة كلٌّ على حدة.\nسيمر عبر الخادم نحو %3$s، وتكلفة هذه البيانات يدفعها من يدفع تكلفة الخادم.</item>
+    </plurals>
+    <string name="x39_chat_limpiando_video">جارٍ تنظيف الفيديو…</string>
+    <string name="x39_chat_no_se_puede_enviar">لا يمكن الإرسال: %1$s</string>
+    <string name="x39_chat_enviando_limpio">جارٍ الإرسال دون بيانات الموقع أو الكاميرا</string>
+    <string name="x39_chat_tamano_desconocido">حجم غير معروف</string>
+    <string name="x39_chat_vacio_sin_clave">لا يمكنك الكتابة إلى %1$s بعد: ينقصك مفتاح التشفير الخاص به. استخدم «تشفير» في قائمة جهة الاتصال.</string>
+    <string name="x39_chat_vacio">لا يوجد شيء هنا بعد. ما تكتبه يُختم بمفتاح %1$s.</string>
+    <string name="x39_chat_ver_foto">عرض الصورة</string>
+    <plurals name="x39_chat_trozos">
+        <item quantity="zero">%1$d/%2$d قطعة</item>
+        <item quantity="one">%1$d/%2$d قطعة</item>
+        <item quantity="two">%1$d/%2$d قطعة</item>
+        <item quantity="few">%1$d/%2$d قطع</item>
+        <item quantity="many">%1$d/%2$d قطعة</item>
+        <item quantity="other">%1$d/%2$d قطعة</item>
+    </plurals>
+    <string name="x39_chat_reenviar">إعادة الإرسال</string>
+    <string name="x39_chat_no_reenviar">تعذّرت إعادة الإرسال: %1$s</string>
+    <string name="x39_chat_parar">"■  إيقاف"</string>
+    <string name="x39_chat_escuchar">"▶  استماع"</string>
+    <string name="x39_chat_no_abrir_grabacion">تعذّر فتح التسجيل</string>
+    <string name="x39_chat_no_reproducir_sin_disco">هذا الإصدار من Android لا يستطيع تشغيله دون تركه غير مشفّر على القرص</string>
+    <string name="x39_chat_no_reproducir">تعذّر التشغيل</string>
+    <string name="x39_chat_estado_pendiente">⏳ معلّقة · ستُرسل عند الاتصال بالشبكة</string>
+    <string name="x39_chat_estado_enviado">✓ أُرسلت · بانتظار تأكيد هاتفه</string>
+    <string name="x39_chat_estado_entregado">✓✓ سُلّمت</string>
+    <string name="x39_chat_estado_caducado">⚠ انتهت صلاحيتها، لم تُسلَّم</string>
+    <plurals name="x39_chat_caduca_dias">
+        <item quantity="zero">تنتهي صلاحيتها بعد %1$d يوم</item>
+        <item quantity="one">تنتهي صلاحيتها بعد %1$d يوم</item>
+        <item quantity="two">تنتهي صلاحيتها بعد %1$d يومين</item>
+        <item quantity="few">تنتهي صلاحيتها بعد %1$d أيام</item>
+        <item quantity="many">تنتهي صلاحيتها بعد %1$d يومًا</item>
+        <item quantity="other">تنتهي صلاحيتها بعد %1$d يوم</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_horas">
+        <item quantity="zero">تنتهي صلاحيتها بعد %1$d ساعة</item>
+        <item quantity="one">تنتهي صلاحيتها بعد %1$d ساعة</item>
+        <item quantity="two">تنتهي صلاحيتها بعد %1$d ساعتين</item>
+        <item quantity="few">تنتهي صلاحيتها بعد %1$d ساعات</item>
+        <item quantity="many">تنتهي صلاحيتها بعد %1$d ساعة</item>
+        <item quantity="other">تنتهي صلاحيتها بعد %1$d ساعة</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_minutos">
+        <item quantity="zero">تنتهي صلاحيتها بعد %1$d دقيقة</item>
+        <item quantity="one">تنتهي صلاحيتها بعد %1$d دقيقة</item>
+        <item quantity="two">تنتهي صلاحيتها بعد %1$d دقيقتين</item>
+        <item quantity="few">تنتهي صلاحيتها بعد %1$d دقائق</item>
+        <item quantity="many">تنتهي صلاحيتها بعد %1$d دقيقة</item>
+        <item quantity="other">تنتهي صلاحيتها بعد %1$d دقيقة</item>
+    </plurals>
+    <string name="x39_chat_caduca_menos_minuto">تنتهي صلاحيتها بعد أقل من دقيقة</string>
+    <string name="x39_chat_borrar_aparato">حذف من هذا الجهاز</string>
+    <string name="x39_chat_copiado">تم النسخ</string>
+    <string name="x39_chat_aviso_borrado">يعتمد الحذف التلقائي على التزام تطبيق الطرف الآخر به. إنه يحمي من بقاء الرسالة منسية على هاتف؛ ولا يمنع أحدًا من تصويرها بكاميرا أخرى أو من استخدام نسخة معدّلة من التطبيق.</string>
+    <string name="x39_chat_borrar_mensajes">حذف الرسائل…</string>
+    <string name="x39_chat_borrado_texto">يبدأ العدّ عندما يفتح الطرف الآخر المحادثة، لا عندما ترسل. هذا الخيار ينتقل داخل الظرف المختوم: الخادم لا يراه ولا يستطيع تغييره.</string>
+
+    <!-- Adjuntos: motivos de fallo -->
+    <string name="x39_adj_video_no_limpio">تعذّر تنظيف الفيديو، لذا لن يُرسل (%1$s)</string>
+    <string name="x39_adj_no_leer">تعذّرت قراءة الملف</string>
+    <string name="x39_adj_pasa_25">الملف يتجاوز 25 MB</string>
+    <string name="x39_adj_falta_clave">ينقصك مفتاح التشفير الخاص به</string>
+    <string name="x39_adj_ya_no_esta_movil">الملف لم يعد موجودًا على هذا الهاتف</string>
+    <string name="x39_adj_ya_enviando">يجري إرساله بالفعل</string>
+    <string name="x39_adj_ya_no_esta">الملف لم يعد موجودًا</string>
+    <string name="x39_adj_galeria_permisos">هذا الإصدار من Android لا يسمح بالحفظ في المعرض دون أذونات إضافية</string>
+    <string name="x39_adj_galeria_no_acepto">المعرض لم يقبل الملف</string>
+    <string name="x39_adj_no_escribir">تعذّرت الكتابة</string>
+    <string name="x39_video_sin_pista">لا يحتوي على مسار فيديو</string>
+    <string name="x39_video_sin_muestras">الفيديو لا يحتوي على عيّنات</string>
+    <string name="x39_video_pasa_25">بعد التنظيف يتجاوز 25 MB</string>
+
+    <!-- En llamada -->
+    <string name="x39_llamada_sin_camara_voz">لا إذن للكاميرا: تستمر المكالمة بالصوت فقط</string>
+    <string name="x39_llamada_sin_micro">لا إذن للميكروفون</string>
+    <string name="x39_llamada_sin_micro_texto">يحتاج x39 إلى الميكروفون للتحدث. امنحه الإذن من إعدادات الهاتف واتصل مجددًا.</string>
+    <string name="x39_llamada_faltan_datos">بيانات المكالمة ناقصة</string>
+    <string name="x39_llamada_no_conectar">تعذّر إجراء المكالمة</string>
+    <string name="x39_llamada_ha_colgado">أنهى %1$s المكالمة</string>
+    <string name="x39_llamada_sin_camara">لا إذن للكاميرا. امنحه من إعدادات الهاتف.</string>
+    <string name="x39_llamada_silenciar_mic">كتم الميكروفون</string>
+    <string name="x39_llamada_encender_mic">تشغيل الميكروفون</string>
+    <string name="x39_llamada_apagar_camara">إيقاف الكاميرا</string>
+    <string name="x39_llamada_encender_camara">تشغيل الكاميرا</string>
+    <string name="x39_llamada_pie_tunel">المسار محمي بواسطة x39tunel. الخادم يوزّع الحزم لكنه لا يستطيع فك تشفيرها.</string>
+    <string name="x39_llamada_pie_sin_tunel">الخادم يوزّع الحزم لكنه لا يستطيع فك تشفيرها. x39tunel متوقف: الخادم يرى عنوان IP الخاص بك والوقت.</string>
+    <string name="x39_llamada_comprueba_palabras">تحقّق من هذه الكلمات الست مع الطرف الآخر</string>
+    <string name="x39_llamada_acordando">جارٍ الاتفاق على المفتاح…</string>
+    <string name="x39_llamada_tu_camara_desc">كاميرتك. اضغط عليها لتبديل الكاميرا؛ واسحبها إلى زاوية أخرى.</string>
+    <string name="x39_llamada_altavoz_desc">مكبّر الصوت ومخرج الصوت</string>
+
+    <!-- Llamada entrante -->
+    <string name="x39_entrante_video_de">مكالمة فيديو واردة من</string>
+    <string name="x39_entrante_de">مكالمة واردة من</string>
+    <string name="x39_entrante_conectando_camara">جارٍ الاتصال مع الكاميرا…</string>
+
+    <!-- Visor de fotos -->
+    <string name="x39_visor_ya_no_esta">هذه الصورة لم تعد موجودة</string>
+    <string name="x39_visor_mas_opciones">المزيد من الخيارات</string>
+    <string name="x39_visor_guardar_galeria">حفظ في المعرض</string>
+    <string name="x39_visor_guardar_titulo">حفظ في المعرض؟</string>
+    <string name="x39_visor_guardar_texto">النسخة خالية من بيانات الموقع والكاميرا.\n\nلكن المعرض في كثير من الهواتف يتزامن مع السحابة: ومن تلك اللحظة لم تعد الصورة محمية بواسطة x39.</string>
+    <string name="x39_visor_no_guardar">تعذّر الحفظ: %1$s</string>
+    <string name="x39_visor_guardada">حُفظت في المعرض، في مجلد x39</string>
+
+    <!-- Lector de QR -->
+    <string name="x39_escaner_apunta">وجّه الكاميرا إلى رمز QR لهوية الطرف الآخر</string>
+
+    <!-- Servicio y notificaciones -->
+    <string name="x39_notif_mensaje_nuevo">رسالة جديدة من %1$s</string>
+    <string name="x39_notif_en_linea">x39 · متصل</string>
+    <string name="x39_notif_reconectando">x39 · جارٍ إعادة الاتصال…</string>
+    <string name="x39_notif_linea_tunel">الخط مفتوح · x39tunel يعمل</string>
+    <string name="x39_notif_linea_abierta">يبقى الخط مفتوحًا لاستقبال المكالمات.</string>
+    <string name="x39_notif_en_llamada">في مكالمة</string>
+    <string name="x39_notif_videollamada_entrante">مكالمة فيديو واردة</string>
+    <string name="x39_notif_llamada_entrante">مكالمة واردة</string>
+    <string name="x39_canal_linea">الخط المفتوح</string>
+    <string name="x39_canal_linea_desc">الإشعار الدائم بأن x39 ما زال متصلًا. دون صوت.</string>
+    <string name="x39_canal_entrantes">المكالمات الواردة</string>
+    <string name="x39_canal_entrantes_desc">المكالمات ومكالمات الفيديو الواردة.</string>
+    <string name="x39_canal_mensajes">الرسائل</string>
+    <string name="x39_canal_mensajes_desc">ينبّهك بمن يكتب إليك. لا يظهر النص على شاشة القفل.</string>
+
+    <!-- x39tunel: estado que se ve en Ajustes -->
+    <string name="x39_tunel_estado_apagado">متوقف</string>
+    <string name="x39_tunel_estado_sin_permiso">إذن VPN ناقص</string>
+    <string name="x39_tunel_estado_alta">جارٍ تسجيل النظير على الخادم…</string>
+    <string name="x39_tunel_estado_psk">جارٍ الاتفاق على مفتاح ما بعد الكم…</string>
+    <string name="x39_tunel_estado_levantando">جارٍ تشغيل النفق…</string>
+    <string name="x39_tunel_estado_protegido">المسار محمي · %1$s · مفتاح PQ حتى %2$s</string>
+    <string name="x39_tunel_estado_protegido_sin_psk">المسار محمي · %1$s · دون مفتاح ما بعد الكم: هذا الخادم لا يوزّعه بعد</string>
+    <string name="x39_tunel_fallo_cayo">لا نفق: انقطع النفق</string>
+    <string name="x39_tunel_fallo_alta">لا نفق: تسجيل النظير: %1$s</string>
+    <string name="x39_tunel_fallo_psk">لا نفق: مفتاح النفق: %1$s</string>
+    <string name="x39_tunel_fallo_sin_respuesta_alta">لا نفق: الخادم لم يردّ على تسجيل النظير (wg_alta)</string>
+    <string name="x39_tunel_fallo_sin_respuesta_psk">لا نفق: الخادم لم يردّ على طلب المفتاح (psk)</string>
+    <string name="x39_tunel_fallo_otro">لا نفق: %1$s</string>
+    <string name="x39_idioma">اللغة</string>
+    <string name="x39_idioma_sistema">النظام</string>
+    <string name="x39_qr_propio">رمز QR هذا هو هويتك أنت. لم يُحفظ أي شيء.</string>
+    <string name="x39_identidad_propia">هذه الهوية هي هويتك أنت. لم يُحفظ أي شيء.</string>
+    <string name="x39_qr_pantalla_completa">عرض رمز QR بملء الشاشة</string>
+    <string name="x39_qr_por_partes">رمز QR على أجزاء (أسهل في المسح)</string>
+    <string name="x39_qr_parte_de">الجزء %1$d من %2$d · المس للإغلاق</string>
+    <string name="x39_escaner_partes">الأجزاء المقروءة: %1$d من %2$d. واصل التوجيه.</string>
+    <string name="x39_qr_mezcla_titulo">توقّف المسح</string>
+    <string name="x39_qr_mezcla_texto">قُرئت رموز QR من هويتين مختلفتين، أو أن الأجزاء لا تكوّن هوية كاملة. قد تكون هناك شاشة أخرى أمام الكاميرا، أو أن أحدًا يحاول تمرير هوية أخرى إليك. لم يُحفظ أي شيء. ابدأ من جديد مع شاشة واحدة فقط أمام الكاميرا.</string>
+    <string name="x39_contacto_guardado_sin_verificar">حُفظت جهة الاتصال على أنها غير موثّقة. قارنا البصمات لتوثيقها.</string>
+    <string name="x39_contacto_sin_verificar">⚠ غير موثّق</string>
+    <string name="x39_chat_aviso_sin_verificar">لم تتحقق بعد من بصمة هذا الشخص</string>
+    <string name="x39_chat_aviso_comparar">مقارنة</string>
+    <string name="x39_huellas_no_coinciden">غير متطابقتين</string>
+    <string name="x39_huellas_no_coinciden_titulo">البصمتان غير متطابقتين</string>
+    <string name="x39_huellas_no_coinciden_texto">ربما قرأت هوية شخص آخر، أو أن أحدًا في المنتصف يحاول انتحال شخصية %1$s. حفاظًا على الأمان، ستُحذف جهة الاتصال هذه. ابدأ من جديد، ويُفضّل أن يكون ذلك وجهًا لوجه.</string>
+    <string name="x39_escaner_alejate">ابتعد قليلًا: هذه الكاميرا لا تستطيع التركيز على مسافة أقل من %1$d سم.</string>
+    <string name="x39_escaner_mas_luz">تحتاج إلى إضاءة أكثر: ارفع سطوع الشاشة الأخرى أو ابحث عن مكان أكثر إضاءة.</string>
+    <string name="x39_escaner_sin_camara">لا يمكن استخدام الكاميرا. امنح الإذن من إعدادات الهاتف ثم حاول مرة أخرى.</string>
+</resources>

@@ -1,0 +1,10 @@
+<!-- Velo de la pantalla en llamada con vídeo: negro arriba y abajo, limpio en el centro,
+     para que nombre, palabras y botones se lean encima de una cara clara. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+  <gradient
+      android:type="linear"
+      android:angle="270"
+      android:startColor="#BF000000"
+      android:centerColor="#00000000"
+      android:endColor="#BF000000"/>
+</shape>

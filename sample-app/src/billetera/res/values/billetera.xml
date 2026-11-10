@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_nav_billetera">Billetera</string>
+    <string name="x39_billetera_titulo">BILLETERA BITCOIN</string>
+    <string name="x39_billetera_ruta">▲ por París · por tu nodo</string>
+    <string name="x39_billetera_recibir">Recibir</string>
+    <string name="x39_billetera_autocustodia">Autocustodia: la semilla vive solo en tu aparato. El envío lo confirmas tú.</string>
+    <string name="x39_ajustes_nodo_bitcoin">Nodo Bitcoin</string>
+    <string name="x39_ajustes_nodo_bitcoin_sub">nodo X-39 por túnel, o el tuyo (para la billetera)</string>
+    <string name="x39_billetera_abrir">Abrir billetera</string>
+    <string name="x39_billetera_android6">La billetera exige Android 6 o superior</string>
+    <string name="x39_seguridad_nodo_x39">Nodo: X-39 por túnel</string>
+    <string name="x39_seguridad_nodo_propio">Nodo: el tuyo (%1$s)</string>
+    <string name="x39_seguridad_nodo_ninguno">Nodo: sin configurar</string>
+    <string name="x39_seguridad_nodo_frase">El servidor Electrum que uses ve las direcciones de tu billetera. Con tu propio nodo no las ve nadie más.</string>
+</resources>

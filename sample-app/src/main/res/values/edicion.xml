@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Alias: la edición general conserva los textos y traducciones existentes. -->
+    <string name="x39_edicion_nombre">x39</string>
+    <string name="x39_edicion_cabecera" translatable="false">"  x39"</string>
+    <string name="x39_edicion_cifrado_texto">@string/x39_cifrado_texto</string>
+    <color name="x39_edicion_acento">#FF1E1E</color>
+</resources>

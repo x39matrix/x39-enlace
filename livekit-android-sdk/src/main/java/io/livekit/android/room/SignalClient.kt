@@ -1,0 +1,1245 @@
+/*
+ * Copyright 2023-2026 LiveKit, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package io.livekit.android.room
+
+import androidx.annotation.VisibleForTesting
+import com.google.protobuf.InvalidProtocolBufferException
+import com.vdurmont.semver4j.Semver
+import io.livekit.android.ConnectOptions
+import io.livekit.android.RoomOptions
+import io.livekit.android.dagger.InjectionNames
+import io.livekit.android.room.datatrack.DataTrackSchemaException
+import io.livekit.android.room.participant.ParticipantTrackPermission
+import io.livekit.android.room.track.Track
+import io.livekit.android.stats.NetworkInfo
+import io.livekit.android.stats.getClientInfo
+import io.livekit.android.util.CloseableCoroutineScope
+import io.livekit.android.util.Either
+import io.livekit.android.util.LKLog
+import io.livekit.android.util.TimeoutException
+import io.livekit.android.util.rethrowIfCancellationSignal
+import io.livekit.android.util.toHttpUrl
+import io.livekit.android.util.toWebsocketUrl
+import io.livekit.android.util.withDeadline
+import io.livekit.android.webrtc.toProtoSessionDescription
+import kotlinx.coroutines.CancellableContinuation
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import livekit.LivekitModels
+import livekit.LivekitModels.AudioTrackFeature
+import livekit.LivekitRtc
+import livekit.LivekitRtc.JoinResponse
+import livekit.LivekitRtc.ReconnectResponse
+import livekit.org.webrtc.IceCandidate
+import livekit.org.webrtc.PeerConnection
+import livekit.org.webrtc.SessionDescription
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.WebSocket
+import okhttp3.WebSocketListener
+import okio.ByteString
+import okio.ByteString.Companion.toByteString
+import java.util.Date
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicInteger
+import javax.inject.Inject
+import javax.inject.Named
+import javax.inject.Singleton
+import kotlin.coroutines.resumeWithException
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
+
+/**
+ * SignalClient to LiveKit WS servers
+ * @suppress
+ */
+@OptIn(ExperimentalCoroutinesApi::class)
+@Singleton
+class SignalClient
+@Inject
+constructor(
+    private val websocketFactory: WebSocket.Factory,
+    private val json: Json,
+    private val okHttpClient: OkHttpClient,
+    @Named(InjectionNames.DISPATCHER_IO)
+    private val ioDispatcher: CoroutineDispatcher,
+    private val networkInfo: NetworkInfo,
+) : WebSocketListener() {
+    @Volatile
+    var isConnected = false
+        private set
+
+    @Volatile
+    private var currentWs: WebSocket? = null
+
+    @Volatile
+    private var isReconnecting: Boolean = false
+    internal var listener: Listener? = null
+    internal var serverVersion: Semver? = null
+    internal var serverInfo: ServerInfo? = null
+    private var lastUrl: String? = null
+    internal var lastOptions: ConnectOptions? = null
+    private var lastRoomOptions: RoomOptions? = null
+
+    @Volatile
+    private var joinContinuation: CancellableContinuation<ConnectResult>? = null
+    private lateinit var coroutineScope: CloseableCoroutineScope
+
+    /**
+     * @see [startRequestQueue]
+     */
+    private val requestFlow = MutableSharedFlow<LivekitRtc.SignalRequest>(Int.MAX_VALUE)
+    private val requestFlowJobLock = Object()
+    private var requestFlowJob: Job? = null
+
+    /**
+     * @see [onReadyForResponses]
+     */
+    private val responseFlow = MutableSharedFlow<IncomingSignal>(Int.MAX_VALUE)
+
+    /**
+     * Wire bytes of the Join [LivekitRtc.SignalResponse] from the last successful [join].
+     * UniFFI parses these itself so re-encoding the decoded join cannot drop newer fields.
+     */
+    @Volatile
+    internal var lastJoinEncoded: ByteArray? = null
+        private set
+    private val responseFlowJobLock = Object()
+    private var responseFlowJob: Job? = null
+
+    private var pingJob: Job? = null
+    private var pongJob: Job? = null
+    private var pingTimeoutDurationMillis: Long = 0
+    private var pingIntervalDurationMillis: Long = 0
+    private var rtt: Long = 0
+
+    private val nextDataBlobRequestId = AtomicInteger(0)
+    private val dataBlobCompleters = ConcurrentHashMap<Int, CompletableDeferred<ByteArray>>()
+
+    var connectionState: ConnectionState = ConnectionState.DISCONNECTED
+
+    /**
+     * @throws Exception if fails to connect.
+     */
+    @Throws(Exception::class)
+    suspend fun join(
+        url: String,
+        token: String,
+        options: ConnectOptions = ConnectOptions(),
+        roomOptions: RoomOptions = RoomOptions(),
+    ): JoinResponse {
+        return when (val result = connect(url, token, options, roomOptions)) {
+            is ConnectResult.Join -> result.response
+            else -> throw IllegalStateException("Unexpected response during join: $result")
+        }
+    }
+
+    /**
+     * @throws Exception if fails to connect.
+     */
+    @Throws(Exception::class)
+    @VisibleForTesting
+    suspend fun reconnect(url: String, token: String, participantSid: String?): Either<ReconnectResponse, Unit> {
+        return when (
+            val result = connect(
+                url,
+                token,
+                (lastOptions ?: ConnectOptions()).copy()
+                    .apply {
+                        reconnect = true
+                        this.participantSid = participantSid
+                    },
+                lastRoomOptions ?: RoomOptions(),
+            )
+        ) {
+            is ConnectResult.Reconnect -> Either.Left(result.response)
+            is ConnectResult.OtherResponse -> Either.Right(Unit)
+            is ConnectResult.Join -> throw IllegalStateException("Unexpected join response during reconnect")
+        }
+    }
+
+    private suspend fun connect(
+        url: String,
+        token: String,
+        options: ConnectOptions,
+        roomOptions: RoomOptions,
+    ): ConnectResult {
+        // Clean up any pre-existing connection.
+        close(reason = "Starting new connection", shouldClearQueuedRequests = false)
+
+        val wsUrlString = "${url.toWebsocketUrl()}/rtc${createConnectionParams(getClientInfo(options.clientProtocol), options, roomOptions)}"
+        isReconnecting = options.reconnect
+
+        LKLog.i { "connecting to $wsUrlString" }
+
+        coroutineScope = CloseableCoroutineScope(SupervisorJob() + ioDispatcher)
+        lastUrl = wsUrlString
+        lastOptions = options
+        lastRoomOptions = roomOptions
+
+        val request = Request.Builder()
+            .url(wsUrlString)
+            .addHeader("Authorization", "Bearer $token")
+            .build()
+
+        return withDeadline(SIGNAL_CONNECT_TIMEOUT.milliseconds) {
+            suspendCancellableCoroutine { cont ->
+                // Wait for join response through WebSocketListener
+                joinContinuation = cont
+                cont.invokeOnCancellation {
+                    // If the coroutine is cancelled, websocket needs to be cancelled.
+                    // onFailure will handle cleanup.
+                    LKLog.v { "connect cancelled, abort websocket" }
+                    joinContinuation = null
+                    currentWs?.cancel()
+                }
+                currentWs = websocketFactory.newWebSocket(request, this@SignalClient)
+            }
+        }
+    }
+
+    private fun createConnectionParams(
+        clientInfo: LivekitModels.ClientInfo,
+        options: ConnectOptions,
+        roomOptions: RoomOptions,
+    ): String {
+        val queryBuilder = StringBuilder()
+        var first = true
+
+        fun addParam(key: String, value: String) {
+            queryBuilder.append(if (first) "?" else "&")
+                .append(key).append("=").append(value)
+            first = false
+        }
+
+        addParam(CONNECT_QUERY_PROTOCOL, options.protocolVersion.value.toString())
+
+        if (options.reconnect) {
+            addParam(CONNECT_QUERY_RECONNECT, "1")
+            options.participantSid?.let { sid ->
+                addParam(CONNECT_QUERY_PARTICIPANT_SID, sid)
+            }
+        }
+
+        val autoSubscribe = if (options.autoSubscribe) 1 else 0
+        addParam(CONNECT_QUERY_AUTOSUBSCRIBE, autoSubscribe.toString())
+
+        val adaptiveStream = if (roomOptions.adaptiveStream) 1 else 0
+        addParam(CONNECT_QUERY_ADAPTIVE_STREAM, adaptiveStream.toString())
+
+        // Client info
+        addParam(CONNECT_QUERY_SDK, "android")
+        addParam(CONNECT_QUERY_VERSION, clientInfo.version)
+        addParam(CONNECT_QUERY_DEVICE_MODEL, clientInfo.deviceModel)
+        addParam(CONNECT_QUERY_OS, clientInfo.os)
+        addParam(CONNECT_QUERY_OS_VERSION, clientInfo.osVersion)
+        addParam(CONNECT_QUERY_NETWORK_TYPE, networkInfo.getNetworkType().protoName)
+        addParam(CONNECT_QUERY_CLIENT_PROTOCOL, options.clientProtocol.value.toString())
+
+        return queryBuilder.toString()
+    }
+
+    /**
+     * Notifies that the downstream consumers of SignalClient are ready to consume messages.
+     * Until this method is called, any messages received through the websocket are buffered.
+     *
+     * Should be called after resolving the join message.
+     */
+    fun onReadyForResponses() {
+        if (responseFlowJob != null) {
+            return
+        }
+        synchronized(responseFlowJobLock) {
+            if (responseFlowJob == null) {
+                responseFlowJob = coroutineScope.launch {
+                    responseFlow.collect { incoming ->
+                        responseFlow.resetReplayCache()
+                        handleSignalResponseImpl(incoming.ws, incoming.response, incoming.encoded)
+                    }
+                }
+            }
+        }
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun startRequestQueue() {
+        if (requestFlowJob != null) {
+            return
+        }
+        synchronized(requestFlowJobLock) {
+            if (requestFlowJob == null) {
+                requestFlowJob = coroutineScope.launch {
+                    requestFlow.collect {
+                        requestFlow.resetReplayCache()
+                        sendRequestImpl(it)
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * On reconnection, SignalClient waits until the peer connection is established to send messages.
+     * Call this method when it is connected.
+     */
+    fun onPCConnected() {
+        startRequestQueue()
+    }
+
+    // --------------------------------- WebSocket Listener --------------------------------------//
+    override fun onMessage(webSocket: WebSocket, text: String) {
+        if (webSocket != currentWs) {
+            // Possibly message from old websocket, discard.
+            return
+        }
+
+        LKLog.w { "received JSON message, unsupported in this version." }
+    }
+
+    override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
+        if (webSocket != currentWs) {
+            // Possibly message from old websocket, discard.
+            return
+        }
+        val byteArray = bytes.toByteArray()
+        val signalResponseBuilder = LivekitRtc.SignalResponse.newBuilder()
+            .mergeFrom(byteArray)
+        val response = signalResponseBuilder.build()
+
+        handleSignalResponse(webSocket, response, byteArray)
+    }
+
+    override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+        if (webSocket != currentWs) {
+            return
+        }
+        handleWebSocketClose(reason, code)
+    }
+
+    override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
+        LKLog.v { "websocket closing" }
+    }
+
+    override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+        if (webSocket != currentWs) {
+            return
+        }
+        var reason: String? = null
+        try {
+            val lastToken = webSocket.request().header("Authorization")
+            lastUrl?.let {
+                val validationUrl = it.toHttpUrl().replaceFirst("/rtc?", "/rtc/validate?")
+                val request = Request.Builder()
+                    .url(validationUrl)
+                    .apply {
+                        if (lastToken != null) {
+                            addHeader("Authorization", lastToken)
+                        }
+                    }
+                    .build()
+
+                val resp = okHttpClient.newCall(request).execute()
+                val body = resp.body
+                if (!resp.isSuccessful) {
+                    reason = body?.string()
+                }
+                body?.close()
+            }
+        } catch (e: Throwable) {
+            LKLog.e(e) { "failed to validate connection" }
+        }
+
+        val wasConnected = isConnected
+        val wasReconnectHandshake = joinContinuation != null && isReconnecting
+
+        // Clear joinContinuation before cont.cancel() so a synchronous nested onFailure (e.g. from
+        // WebSocket.cancel) does not treat this as an in-flight join/reconnect handshake.
+        val joinCont = joinContinuation
+        joinContinuation = null
+
+        if (reason != null) {
+            LKLog.e(t) { "websocket failure: $reason" }
+            val error = if (joinCont != null) {
+                RoomException.ConnectException(reason, t)
+            } else {
+                Exception(reason)
+            }
+            listener?.onError(error)
+            joinCont?.resumeWithException(error)
+        } else {
+            LKLog.e(t) { "websocket failure: $response" }
+            val error = if (joinCont != null) {
+                RoomException.ConnectException(t.localizedMessage, t)
+            } else {
+                t
+            }
+            listener?.onError(error)
+            joinCont?.resumeWithException(error)
+        }
+
+        if (wasConnected || wasReconnectHandshake) {
+            // onClosing/onClosed will not be called after onFailure.
+            // Handle websocket closure here.
+            // Also handle failure during a soft reconnect handshake (reconnect query): isConnected is
+            // still false but the upper layer should be notified like a close. Initial join handshake
+            // failures do not call onClose so RTCEngine can surface them via onError / onFailToConnect.
+            handleWebSocketClose(
+                reason = reason ?: response?.toString() ?: t.localizedMessage ?: "websocket failure",
+                code = response?.code ?: CLOSE_REASON_WEBSOCKET_FAILURE,
+            )
+        }
+    }
+
+    private fun handleWebSocketClose(reason: String, code: Int) {
+        LKLog.v { "websocket closed" }
+        isConnected = false
+        listener?.onClose(reason, code)
+        requestFlow.resetReplayCache()
+        responseFlow.resetReplayCache()
+        pingJob?.cancel()
+        pongJob?.cancel()
+    }
+
+    // ------------------------------- End WebSocket Listener ------------------------------------//
+
+    private fun fromProtoSessionDescription(sd: LivekitRtc.SessionDescription): SessionDescription {
+        val rtcSdpType = when (sd.type) {
+            SD_TYPE_ANSWER -> SessionDescription.Type.ANSWER
+            SD_TYPE_OFFER -> SessionDescription.Type.OFFER
+            SD_TYPE_PRANSWER -> SessionDescription.Type.PRANSWER
+            SD_TYPE_ROLLBACK -> SessionDescription.Type.ROLLBACK
+            else -> throw IllegalArgumentException("invalid RTC SdpType: ${sd.type}")
+        }
+        return SessionDescription(rtcSdpType, sd.sdp)
+    }
+
+    fun sendOffer(offer: SessionDescription, offerId: Int) {
+        val sd = offer.toProtoSessionDescription(offerId)
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setOffer(sd)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendAnswer(answer: SessionDescription, offerId: Int) {
+        val sd = answer.toProtoSessionDescription(offerId)
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setAnswer(sd)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendCandidate(candidate: IceCandidate, target: LivekitRtc.SignalTarget) {
+        val iceCandidateJSON = IceCandidateJSON(
+            candidate = candidate.sdp,
+            sdpMid = candidate.sdpMid,
+            sdpMLineIndex = candidate.sdpMLineIndex,
+        )
+
+        val trickleRequest = LivekitRtc.TrickleRequest.newBuilder()
+            .setCandidateInit(json.encodeToString(iceCandidateJSON))
+            .setTarget(target)
+            .build()
+
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setTrickle(trickleRequest)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendMuteTrack(trackSid: String, muted: Boolean) {
+        val muteRequest = LivekitRtc.MuteTrackRequest.newBuilder()
+            .setSid(trackSid)
+            .setMuted(muted)
+            .build()
+
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setMute(muteRequest)
+            .build()
+
+        sendRequest(request)
+    }
+
+    /**
+     * @param builder an optional builder to include other parameters related to the track
+     */
+    fun sendAddTrack(
+        cid: String,
+        name: String,
+        type: LivekitModels.TrackType,
+        stream: String?,
+        builder: LivekitRtc.AddTrackRequest.Builder = LivekitRtc.AddTrackRequest.newBuilder(),
+    ) {
+        val encryptionType = lastRoomOptions?.e2eeOptions?.encryptionType ?: LivekitModels.Encryption.Type.NONE
+        val addTrackRequest = builder.apply {
+            setCid(cid)
+            setName(name)
+            setType(type)
+            if (stream != null) {
+                setStream(stream)
+            } else {
+                clearStream()
+            }
+            encryption = encryptionType
+        }
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setAddTrack(addTrackRequest)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendUpdateTrackSettings(
+        sid: String,
+        disabled: Boolean,
+        videoDimensions: Track.Dimensions?,
+        videoQuality: LivekitModels.VideoQuality?,
+        fps: Int?,
+    ) {
+        val trackSettings = LivekitRtc.UpdateTrackSettings.newBuilder()
+            .addTrackSids(sid)
+            .setDisabled(disabled)
+            .apply {
+                if (videoDimensions != null) {
+                    width = videoDimensions.width
+                    height = videoDimensions.height
+                } else if (videoQuality != null) {
+                    quality = videoQuality
+                } else {
+                    // default to HIGH
+                    quality = LivekitModels.VideoQuality.HIGH
+                }
+
+                if (fps != null) {
+                    setFps(fps)
+                }
+            }
+
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setTrackSetting(trackSettings)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendUpdateSubscription(subscribe: Boolean, vararg participantTracks: LivekitModels.ParticipantTracks) {
+        val participantTracksList = participantTracks.toList()
+
+        // backwards compatibility for protocol version < 6
+        val trackSids = participantTracksList.map { it.trackSidsList }.flatten()
+        val subscription = LivekitRtc.UpdateSubscription.newBuilder()
+            .addAllParticipantTracks(participantTracks.toList())
+            .addAllTrackSids(trackSids)
+            .setSubscribe(subscribe)
+
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setSubscription(subscription)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendUpdateSubscriptionPermissions(
+        allParticipants: Boolean,
+        participantTrackPermissions: List<ParticipantTrackPermission>,
+    ) {
+        val update = LivekitRtc.SubscriptionPermission.newBuilder()
+            .setAllParticipants(allParticipants)
+            .addAllTrackPermissions(participantTrackPermissions.map { it.toProto() })
+
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setSubscriptionPermission(update)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendUpdateLocalMetadata(metadata: String?, name: String?, attributes: Map<String, String>? = emptyMap()) {
+        val update = LivekitRtc.UpdateParticipantMetadata.newBuilder()
+            .setMetadata(metadata ?: "")
+            .setName(name ?: "")
+            .putAllAttributes(attributes)
+
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setUpdateMetadata(update)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendSyncState(syncState: LivekitRtc.SyncState) {
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setSyncState(syncState)
+            .build()
+
+        sendRequest(request)
+    }
+
+    internal fun sendSimulateScenario(scenario: LivekitRtc.SimulateScenario) {
+        val request = LivekitRtc.SignalRequest.newBuilder()
+            .setSimulate(scenario)
+            .build()
+
+        sendRequest(request)
+    }
+
+    fun sendLeave() {
+        val request = with(LivekitRtc.SignalRequest.newBuilder()) {
+            leave = with(LivekitRtc.LeaveRequest.newBuilder()) {
+                reason = LivekitModels.DisconnectReason.CLIENT_INITIATED
+                // server doesn't process this field, keeping it here to indicate the intent of a full disconnect
+                action = LivekitRtc.LeaveRequest.Action.DISCONNECT
+                build()
+            }
+            build()
+        }
+
+        sendRequest(request)
+    }
+
+    fun sendPing(): Long {
+        val time = Date().time
+        sendRequest(
+            with(LivekitRtc.SignalRequest.newBuilder()) {
+                ping = time
+                build()
+            },
+        )
+        sendRequest(
+            with(LivekitRtc.SignalRequest.newBuilder()) {
+                pingReq = with(LivekitRtc.Ping.newBuilder()) {
+                    rtt = this@SignalClient.rtt
+                    timestamp = time
+                    build()
+                }
+                build()
+            },
+        )
+
+        return time
+    }
+
+    fun sendUpdateLocalAudioTrack(trackSid: String, features: Collection<AudioTrackFeature>) {
+        val request = with(LivekitRtc.SignalRequest.newBuilder()) {
+            updateAudioTrack = with(LivekitRtc.UpdateLocalAudioTrack.newBuilder()) {
+                setTrackSid(trackSid)
+                addAllFeatures(features)
+                build()
+            }
+            build()
+        }
+
+        sendRequest(request)
+    }
+
+    /**
+     * Stores a blob on the server under [key], replacing nothing — a key can only be written once.
+     */
+    internal suspend fun sendStoreDataBlob(key: LivekitModels.DataBlobKey, contents: ByteArray): Result<Unit> {
+        return sendIdCorrelatedRequest { requestId ->
+            LivekitRtc.SignalRequest.newBuilder()
+                .setStoreDataBlobRequest(
+                    LivekitRtc.StoreDataBlobRequest.newBuilder()
+                        .setRequestId(requestId)
+                        .setBlob(
+                            LivekitModels.DataBlob.newBuilder()
+                                .setKey(key)
+                                .setContents(com.google.protobuf.ByteString.copyFrom(contents)),
+                        ),
+                )
+                .build()
+        }.map { }
+    }
+
+    /**
+     * Reads back a blob [participantIdentity] stored under [key].
+     */
+    internal suspend fun sendGetDataBlob(
+        key: LivekitModels.DataBlobKey,
+        participantIdentity: String,
+    ): Result<ByteArray> {
+        return sendIdCorrelatedRequest { requestId ->
+            LivekitRtc.SignalRequest.newBuilder()
+                .setGetDataBlobRequest(
+                    LivekitRtc.GetDataBlobRequest.newBuilder()
+                        .setRequestId(requestId)
+                        .setParticipantIdentity(participantIdentity)
+                        .setKey(key),
+                )
+                .build()
+        }
+    }
+
+    /**
+     * Sends a request the SFU answers by echoing its id, and waits for that answer.
+     */
+    private suspend fun sendIdCorrelatedRequest(
+        build: (Int) -> LivekitRtc.SignalRequest,
+    ): Result<ByteArray> {
+        if (!isConnected) {
+            return Result.failure(DataTrackSchemaException.Disconnected("Not connected to a room"))
+        }
+        val requestId = nextDataBlobRequestId.incrementAndGet()
+        val deferred = CompletableDeferred<ByteArray>()
+        dataBlobCompleters[requestId] = deferred
+        try {
+            sendRequest(build(requestId))
+            return withDeadline(DATA_BLOB_REQUEST_TIMEOUT) {
+                Result.success(deferred.await())
+            }
+        } catch (e: TimeoutException) {
+            return Result.failure(
+                DataTrackSchemaException.Timeout("Timed out waiting for data blob response", e),
+            )
+        } catch (e: Exception) {
+            e.rethrowIfCancellationSignal()
+            return Result.failure(
+                e as? DataTrackSchemaException
+                    ?: DataTrackSchemaException.Internal(e.message ?: "", e),
+            )
+        } finally {
+            dataBlobCompleters.remove(requestId)
+        }
+    }
+
+    private fun sendRequest(request: LivekitRtc.SignalRequest) {
+        val skipQueue = skipQueueTypes.contains(request.messageCase)
+
+        if (skipQueue) {
+            sendRequestImpl(request)
+        } else {
+            requestFlow.tryEmit(request)
+        }
+    }
+
+    /**
+     * Sends a previously encoded [LivekitRtc.SignalRequest] (e.g. from UniFFI data track manager).
+     *
+     * Undecodable bytes are dropped rather than thrown: this runs on a callback from the native
+     * data track managers, so an exception here would unwind through the FFI boundary.
+     */
+    internal fun sendEncodedRequest(requestBytes: ByteArray) {
+        val request = try {
+            LivekitRtc.SignalRequest.parseFrom(requestBytes)
+        } catch (e: InvalidProtocolBufferException) {
+            LKLog.e(e) { "Discarding an encoded signal request that could not be parsed." }
+            return
+        }
+        sendRequest(request)
+    }
+
+    private fun sendRequestImpl(request: LivekitRtc.SignalRequest) {
+        LKLog.v { "sending request: $request" }
+        if (!isConnected || currentWs == null) {
+            LKLog.w { "not connected, could not send request $request" }
+            return
+        }
+        val message = request.toByteArray().toByteString()
+        val sent = currentWs?.send(message) ?: false
+
+        if (!sent) {
+            LKLog.e { "error sending request: $request" }
+        }
+    }
+
+    private fun handleSignalResponse(ws: WebSocket, response: LivekitRtc.SignalResponse, encoded: ByteArray) {
+        if (ws != currentWs) {
+            return
+        }
+
+        LKLog.v { "response: $response" }
+
+        if (!isConnected) {
+            var shouldProcessMessage = false
+
+            // Only handle certain messages if not connected.
+            if (response.hasJoin()) {
+                isConnected = true
+                startRequestQueue()
+                pingTimeoutDurationMillis = response.join.pingTimeout.toLong() * 1000
+                pingIntervalDurationMillis = response.join.pingInterval.toLong() * 1000
+                startPingJob()
+                try {
+                    serverVersion = Semver(response.join.serverVersion)
+                } catch (t: Throwable) {
+                    LKLog.w(t) { "Thrown while trying to parse server version." }
+                }
+                serverInfo = ServerInfo(
+                    edition = ServerInfo.Edition.fromProto(response.join.serverInfo.edition),
+                    version = serverVersion
+                )
+                lastJoinEncoded = encoded
+                joinContinuation?.resumeWith(Result.success(ConnectResult.Join(response.join)))
+                joinContinuation = null
+            } else if (response.hasLeave()) {
+                // Some reconnects may immediately send leave back without a join response first.
+                handleSignalResponseImpl(ws, response, encoded)
+                val cont = joinContinuation
+                joinContinuation = null
+                cont?.resumeWithException(
+                    RoomException.ConnectException("Received leave during reconnect: ${response.leave.reason}"),
+                )
+            } else if (isReconnecting) {
+                // When reconnecting, any message received means signal reconnected.
+                // Newer servers will send a reconnect response first
+                isReconnecting = false
+                isConnected = true
+
+                // Restart ping job with old settings.
+                startPingJob()
+
+                if (response.hasReconnect()) {
+                    if (response.reconnect.hasServerInfo()) {
+                        try {
+                            serverVersion = Semver(response.reconnect.serverInfo.version)
+                        } catch (t: Throwable) {
+                            LKLog.w(t) { "Thrown while trying to parse server version from reconnect." }
+                        }
+                        serverInfo = ServerInfo(
+                            edition = ServerInfo.Edition.fromProto(response.reconnect.serverInfo.edition),
+                            version = serverVersion,
+                        )
+                    }
+                    joinContinuation?.resumeWith(Result.success(ConnectResult.Reconnect(response.reconnect)))
+                    joinContinuation = null
+                } else {
+                    joinContinuation?.resumeWith(Result.success(ConnectResult.OtherResponse))
+                    joinContinuation = null
+                    // Non-reconnect response, handle normally
+                    shouldProcessMessage = true
+                }
+            } else {
+                LKLog.e { "Received response while not connected. $response" }
+            }
+            if (!shouldProcessMessage) {
+                return
+            }
+        }
+        responseFlow.tryEmit(IncomingSignal(ws, response, encoded))
+    }
+
+    private fun handleSignalResponseImpl(ws: WebSocket, response: LivekitRtc.SignalResponse, encoded: ByteArray) {
+        if (ws != currentWs) {
+            LKLog.v { "received message from old websocket, discarding." }
+            return
+        }
+
+        when (response.messageCase) {
+            LivekitRtc.SignalResponse.MessageCase.ANSWER -> {
+                val sd = fromProtoSessionDescription(response.answer)
+                val offerId = response.answer.id
+                listener?.onServerAnswer(sd, offerId)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.OFFER -> {
+                val sd = fromProtoSessionDescription(response.offer)
+                val offerId = response.offer.id
+                listener?.onServerOffer(sd, offerId)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.TRICKLE -> {
+                val iceCandidateJson =
+                    json.decodeFromString<IceCandidateJSON>(response.trickle.candidateInit)
+                val iceCandidate = IceCandidate(
+                    iceCandidateJson.sdpMid,
+                    iceCandidateJson.sdpMLineIndex,
+                    iceCandidateJson.candidate,
+                )
+                listener?.onTrickle(iceCandidate, response.trickle.target)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.UPDATE -> {
+                listener?.onParticipantUpdate(response.update.participantsList, encoded)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.TRACK_SUBSCRIBED -> {
+                listener?.onLocalTrackSubscribed(response.trackSubscribed)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.TRACK_PUBLISHED -> {
+                listener?.onLocalTrackPublished(response.trackPublished)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.SPEAKERS_CHANGED -> {
+                listener?.onSpeakersChanged(response.speakersChanged.speakersList)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.JOIN -> {
+                LKLog.d { "received unexpected extra join message?" }
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.LEAVE -> {
+                listener?.onLeave(response.leave)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.MUTE -> {
+                listener?.onRemoteMuteChanged(response.mute.sid, response.mute.muted)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.ROOM_UPDATE -> {
+                listener?.onRoomUpdate(response.roomUpdate.room)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.CONNECTION_QUALITY -> {
+                listener?.onConnectionQuality(response.connectionQuality.updatesList)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.STREAM_STATE_UPDATE -> {
+                listener?.onStreamStateUpdate(response.streamStateUpdate.streamStatesList)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.SUBSCRIBED_QUALITY_UPDATE -> {
+                val versionToIgnoreUpTo = Semver("0.15.1")
+                if ((serverVersion?.compareTo(versionToIgnoreUpTo) ?: 1) <= 0) {
+                    return
+                }
+                listener?.onSubscribedQualityUpdate(response.subscribedQualityUpdate)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.SUBSCRIPTION_PERMISSION_UPDATE -> {
+                listener?.onSubscriptionPermissionUpdate(response.subscriptionPermissionUpdate)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.REFRESH_TOKEN -> {
+                listener?.onRefreshToken(response.refreshToken)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.TRACK_UNPUBLISHED -> {
+                listener?.onLocalTrackUnpublished(response.trackUnpublished)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.PONG -> {
+                resetPingTimeout()
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.PONG_RESP -> {
+                rtt = Date().time - response.pongResp.lastPingTimestamp
+                resetPingTimeout()
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.RECONNECT -> {
+                // Handshake-only message; handled in handleSignalResponse() before connection.
+                LKLog.d { "ignoring reconnect response received after connected" }
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.SUBSCRIPTION_RESPONSE -> {
+                listener?.onSubscriptionError(response.subscriptionResponse)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.REQUEST_RESPONSE -> {
+                val requestResponse = response.requestResponse
+                val reason = requestResponse.reason
+                val isFailure = reason != LivekitRtc.RequestResponse.Reason.OK &&
+                    reason != LivekitRtc.RequestResponse.Reason.QUEUED
+                if (isFailure) {
+                    val completer = dataBlobCompleters.remove(requestResponse.requestId)
+                    if (completer != null) {
+                        val message = requestResponse.message.ifEmpty {
+                            "Request rejected (reason ${reason.number})"
+                        }
+                        completer.completeExceptionally(DataTrackSchemaException.Rejected(message))
+                    }
+                }
+                // Pass the full SignalResponse — UniFFI deserializes and filters data-track related ones.
+                listener?.onRequestResponse(encoded)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.ROOM_MOVED -> {
+                // TODO
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.MEDIA_SECTIONS_REQUIREMENT -> {
+                // TODO
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.SUBSCRIBED_AUDIO_CODEC_UPDATE -> {
+                // TODO
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.PUBLISH_DATA_TRACK_RESPONSE -> {
+                listener?.onPublishDataTrackResponse(encoded)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.UNPUBLISH_DATA_TRACK_RESPONSE -> {
+                listener?.onUnpublishDataTrackResponse(encoded)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.DATA_TRACK_SUBSCRIBER_HANDLES -> {
+                listener?.onDataTrackSubscriberHandles(encoded)
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.STORE_DATA_BLOB_RESPONSE -> {
+                dataBlobCompleters.remove(response.storeDataBlobResponse.requestId)
+                    ?.complete(ByteArray(0))
+            }
+
+            LivekitRtc.SignalResponse.MessageCase.GET_DATA_BLOB_RESPONSE -> {
+                dataBlobCompleters.remove(response.getDataBlobResponse.requestId)
+                    ?.complete(response.getDataBlobResponse.blob.contents.toByteArray())
+            }
+            LivekitRtc.SignalResponse.MessageCase.MESSAGE_NOT_SET,
+            null,
+            -> {
+                LKLog.v { "empty messageCase!" }
+            }
+        }
+    }
+
+    private fun startPingJob() {
+        if (pingJob == null && pingIntervalDurationMillis != 0L) {
+            pingJob = coroutineScope.launch {
+                while (true) {
+                    delay(pingIntervalDurationMillis)
+                    val pingTimestamp = sendPing()
+                    startPingTimeout(pingTimestamp)
+                }
+            }
+        }
+    }
+
+    private fun startPingTimeout(timestamp: Long) {
+        if (pongJob != null) {
+            return
+        }
+        pongJob = coroutineScope.launch {
+            delay(pingTimeoutDurationMillis)
+            LKLog.d { "Ping timeout reached for ping sent at $timestamp." }
+            currentWs?.close(CLOSE_REASON_PING_TIMEOUT, "Ping timeout")
+        }
+    }
+
+    private fun resetPingTimeout() {
+        pongJob?.cancel()
+        pongJob = null
+    }
+
+    private fun failPendingDataBlobRequests() {
+        val pending = dataBlobCompleters.values.toList()
+        dataBlobCompleters.clear()
+        pending.forEach { completer ->
+            completer.completeExceptionally(
+                DataTrackSchemaException.Disconnected("Not connected to a room"),
+            )
+        }
+    }
+
+    /**
+     * Closes out any existing websocket connection, and cleans up used resources.
+     *
+     * Can be reused afterwards.
+     */
+    fun close(code: Int = CLOSE_REASON_NORMAL_CLOSURE, reason: String = "Normal Closure", shouldClearQueuedRequests: Boolean = true) {
+        @Suppress("ThrowingExceptionsWithoutMessageOrCause")
+        LKLog.v(Exception()) { "Closing SignalClient: code = $code, reason = $reason" }
+        isConnected = false
+        isReconnecting = false
+        failPendingDataBlobRequests()
+        if (::coroutineScope.isInitialized) {
+            coroutineScope.close()
+        }
+        requestFlowJob?.cancel()
+        requestFlowJob = null
+        responseFlowJob?.cancel()
+        responseFlowJob = null
+        pingJob?.cancel()
+        pingJob = null
+        pongJob?.cancel()
+        pongJob = null
+        currentWs?.close(code, reason)
+        currentWs = null
+        // Same ordering as [onFailure]: clear the field before cancel() for synchronous listener callbacks.
+        val joinCont = joinContinuation
+        joinContinuation = null
+        joinCont?.cancel()
+        if (shouldClearQueuedRequests) {
+            requestFlow.resetReplayCache()
+        }
+        responseFlow.resetReplayCache()
+        lastUrl = null
+        lastOptions = null
+        lastRoomOptions = null
+        serverVersion = null
+        serverInfo = null
+    }
+
+    internal interface Listener {
+        fun onServerAnswer(sessionDescription: SessionDescription, offerId: Int)
+        fun onServerOffer(sessionDescription: SessionDescription, offerId: Int)
+        fun onTrickle(candidate: IceCandidate, target: LivekitRtc.SignalTarget)
+        fun onLocalTrackPublished(response: LivekitRtc.TrackPublishedResponse)
+        fun onParticipantUpdate(updates: List<LivekitModels.ParticipantInfo>, encoded: ByteArray)
+        fun onSpeakersChanged(speakers: List<LivekitModels.SpeakerInfo>)
+        fun onClose(reason: String, code: Int)
+        fun onRemoteMuteChanged(trackSid: String, muted: Boolean)
+        fun onRoomUpdate(update: LivekitModels.Room)
+        fun onConnectionQuality(updates: List<LivekitRtc.ConnectionQualityInfo>)
+        fun onLeave(leave: LivekitRtc.LeaveRequest)
+        fun onError(error: Throwable)
+        fun onStreamStateUpdate(streamStates: List<LivekitRtc.StreamStateInfo>)
+        fun onSubscribedQualityUpdate(subscribedQualityUpdate: LivekitRtc.SubscribedQualityUpdate)
+        fun onSubscriptionPermissionUpdate(subscriptionPermissionUpdate: LivekitRtc.SubscriptionPermissionUpdate)
+        fun onSubscriptionError(subscriptionResponse: LivekitRtc.SubscriptionResponse)
+        fun onRefreshToken(token: String)
+        fun onLocalTrackUnpublished(trackUnpublished: LivekitRtc.TrackUnpublishedResponse)
+        fun onLocalTrackSubscribed(trackSubscribed: LivekitRtc.TrackSubscribed)
+        fun onPublishDataTrackResponse(encoded: ByteArray) {}
+        fun onUnpublishDataTrackResponse(encoded: ByteArray) {}
+        fun onRequestResponse(encoded: ByteArray) {}
+        fun onDataTrackSubscriberHandles(encoded: ByteArray) {}
+    }
+
+    /**
+     * A signal message together with the websocket bytes it arrived as.
+     * Data-track managers parse the encoded form themselves.
+     */
+    private class IncomingSignal(
+        val ws: WebSocket,
+        val response: LivekitRtc.SignalResponse,
+        val encoded: ByteArray,
+    )
+
+    /**
+     * Result of waiting for the initial signal response after opening the WebSocket.
+     * Join always yields [Join]; reconnect yields [Reconnect] or [OtherResponse].
+     */
+    private sealed class ConnectResult {
+        data class Join(val response: JoinResponse) : ConnectResult()
+        data class Reconnect(val response: ReconnectResponse) : ConnectResult()
+        data object OtherResponse : ConnectResult()
+    }
+
+    companion object {
+        const val CONNECT_QUERY_TOKEN = "access_token"
+        const val CONNECT_QUERY_RECONNECT = "reconnect"
+        const val CONNECT_QUERY_AUTOSUBSCRIBE = "auto_subscribe"
+        const val CONNECT_QUERY_ADAPTIVE_STREAM = "adaptive_stream"
+        const val CONNECT_QUERY_SDK = "sdk"
+        const val CONNECT_QUERY_VERSION = "version"
+        const val CONNECT_QUERY_PROTOCOL = "protocol"
+        const val CONNECT_QUERY_DEVICE_MODEL = "device_model"
+        const val CONNECT_QUERY_OS = "os"
+        const val CONNECT_QUERY_OS_VERSION = "os_version"
+        const val CONNECT_QUERY_NETWORK_TYPE = "network"
+        const val CONNECT_QUERY_PARTICIPANT_SID = "sid"
+        const val CONNECT_QUERY_CLIENT_PROTOCOL = "client_protocol"
+
+        const val SD_TYPE_ANSWER = "answer"
+        const val SD_TYPE_OFFER = "offer"
+        const val SD_TYPE_PRANSWER = "pranswer"
+        const val SD_TYPE_ROLLBACK = "rollback"
+        const val SDK_TYPE = "android"
+
+        private val skipQueueTypes = listOf(
+            LivekitRtc.SignalRequest.MessageCase.SYNC_STATE,
+            LivekitRtc.SignalRequest.MessageCase.TRICKLE,
+            LivekitRtc.SignalRequest.MessageCase.OFFER,
+            LivekitRtc.SignalRequest.MessageCase.ANSWER,
+            LivekitRtc.SignalRequest.MessageCase.SIMULATE,
+            LivekitRtc.SignalRequest.MessageCase.LEAVE,
+        )
+
+        private fun iceServer(url: String) =
+            PeerConnection.IceServer.builder(url).createIceServer()
+
+        // x39: SIN servidores por defecto. El SDK original ponía aquí los STUN de Google
+        // (stun.l.google.com y stun1.l.google.com) cuando el servidor no mandaba ninguno, y eso
+        // habría enseñado la IP del móvil a Google sin que el usuario lo supiera. En x39 solo se usan
+        // los que manda el servidor propio; si no manda ninguno, la llamada no se hace (ver RTCEngine).
+        val DEFAULT_ICE_SERVERS = emptyList<PeerConnection.IceServer>()
+        private const val SIGNAL_CONNECT_TIMEOUT = 10000
+        private val DATA_BLOB_REQUEST_TIMEOUT = 5.seconds
+        const val CLOSE_REASON_NORMAL_CLOSURE = 1000
+        const val CLOSE_REASON_PING_TIMEOUT = 3000
+        const val CLOSE_REASON_WEBSOCKET_FAILURE = 3500
+    }
+}
+
+@Suppress("EnumEntryName", "unused")
+enum class ProtocolVersion(val value: Int) {
+    v1(1),
+    v2(2),
+    v3(3),
+    v4(4),
+    v5(5),
+    v6(6),
+    v7(7),
+    v8(8),
+    v9(9),
+    v10(10),
+    v11(11),
+    v12(12),
+
+    // new leave request handling
+    v13(13),
+}
+
+/**
+ * The protocol version this SDK advertises to **peers** (other participants) for
+ * client-to-client feature negotiation (RPC v2, etc.). Distinct from [ProtocolVersion],
+ * which tracks the signaling protocol between client and server.
+ *
+ * Sent to the server during the join handshake via the `client_protocol` connection
+ * query parameter and `ClientInfo.client_protocol`; the server then populates
+ * `ParticipantInfo.client_protocol` for other peers in the room to read.
+ */
+@Suppress("unused")
+enum class ClientProtocolVersion(val value: Int) {
+    /** Initial client protocol. RPC v1 only (15 KB packet payload limit). */
+    DEFAULT(0),
+
+    /**
+     * RPC v2: request and success-response payloads are carried over text data streams
+     * instead of inline packets, lifting the 15 KB payload limit.
+     */
+    DATA_STREAM_RPC(1),
+}
+
+class ServerInfo(
+    val edition: Edition,
+    val version: Semver?,
+) {
+    enum class Edition {
+        STANDARD,
+        CLOUD,
+        UNKNOWN
+        ;
+
+        companion object {
+            fun fromProto(proto: LivekitModels.ServerInfo.Edition): Edition {
+                return when (proto) {
+                    LivekitModels.ServerInfo.Edition.Standard -> STANDARD
+                    LivekitModels.ServerInfo.Edition.Cloud -> CLOUD
+                    LivekitModels.ServerInfo.Edition.UNRECOGNIZED -> UNKNOWN
+                }
+            }
+        }
+    }
+}

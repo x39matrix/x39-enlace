@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_nav_billetera">Wallet</string>
+    <string name="x39_billetera_titulo">BITCOIN WALLET</string>
+    <string name="x39_billetera_ruta">▲ via París · via your node</string>
+    <string name="x39_billetera_recibir">Receive</string>
+    <string name="x39_billetera_autocustodia">Self-custody: the seed lives only on your device. You confirm every payment.</string>
+    <string name="x39_ajustes_nodo_bitcoin">Bitcoin node</string>
+    <string name="x39_ajustes_nodo_bitcoin_sub">X-39 node via tunnel, or your own (for the wallet)</string>
+    <string name="x39_billetera_abrir">Open wallet</string>
+    <string name="x39_billetera_android6">The wallet requires Android 6 or newer</string>
+    <string name="x39_seguridad_nodo_x39">Node: X-39 via tunnel</string>
+    <string name="x39_seguridad_nodo_propio">Node: your own (%1$s)</string>
+    <string name="x39_seguridad_nodo_ninguno">Node: not set</string>
+    <string name="x39_seguridad_nodo_frase">The Electrum server you use sees your wallet\'s addresses. With your own node, nobody else sees them.</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_billetera_panel_pi5">Pi 5 ダッシュボードを開く（ウェブ）</string>
+    <string name="x39_billetera_panel_pi5_sin_navegador">ダッシュボードを開くブラウザがありません</string>
+</resources>

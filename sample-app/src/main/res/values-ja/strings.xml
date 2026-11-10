@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- アプリ -->
+    <string name="x39_app_nombre">x39</string>
+    <string name="x39_contacto_por_defecto">連絡先</string>
+
+    <!-- 共通テキスト -->
+    <string name="x39_guardar">保存</string>
+    <string name="x39_cancelar">キャンセル</string>
+    <string name="x39_cerrar">閉じる</string>
+    <string name="x39_copiar">コピー</string>
+    <string name="x39_borrar">削除</string>
+    <string name="x39_quitar">外す</string>
+    <string name="x39_enviar">送信</string>
+    <string name="x39_entendido">了解</string>
+    <string name="x39_ahora_no">後で</string>
+    <string name="x39_volver">戻る</string>
+    <string name="x39_llamar">通話</string>
+    <string name="x39_videollamada">ビデオ通話</string>
+    <string name="x39_colgar">終了</string>
+    <string name="x39_rechazar">拒否</string>
+    <string name="x39_contestar">応答</string>
+    <string name="x39_conectando">接続中…</string>
+    <string name="x39_llamada_finalizada">通話終了</string>
+    <string name="x39_contacto_verificado">✓ 確認済み</string>
+    <string name="x39_contacto_pendiente">未確認</string>
+    <string name="x39_cifrada_e2e">エンドツーエンド暗号化 · X39-CALL-KEY</string>
+
+    <!-- 通話コアから届くエラー理由 -->
+    <string name="x39_fallo_no_en_agenda">その連絡先は登録されていません</string>
+    <string name="x39_fallo_no_disponible">相手は現在利用できません</string>
+    <string name="x39_fallo_error_servidor">サーバーエラー</string>
+
+    <!-- メイン画面：上部バーと下部バー -->
+    <string name="x39_tunel_activo_desc">x39tunel オン</string>
+    <string name="x39_candado_desc">x39で暗号化されるもの</string>
+    <string name="x39_nav_contactos">連絡先</string>
+    <string name="x39_nav_mensajes">メッセージ</string>
+    <string name="x39_nav_ajustes">設定</string>
+    <string name="x39_estado_en_linea">"●  オンライン"</string>
+    <string name="x39_estado_conectando">"○  接続中…"</string>
+
+    <!-- 連絡先 -->
+    <string name="x39_contactos_titulo">連絡先</string>
+    <string name="x39_contactos_vacio">まだ連絡先がありません。\n自分のIDを共有し、相手のIDを追加してください。</string>
+    <string name="x39_contactos_mi_identidad">自分のID</string>
+    <string name="x39_contacto_huella">フィンガープリント</string>
+    <string name="x39_identidad_comparte">フィンガープリントを共有</string>
+    <string name="x39_identidad_escanea">スキャンまたは貼り付けでつながる</string>
+    <string name="x39_sin_micro_camara">マイクとカメラがないと通話できません</string>
+
+    <!-- 連絡先メニュー -->
+    <string name="x39_menu_mensaje">メッセージ</string>
+    <string name="x39_menu_cifrar">暗号化</string>
+    <string name="x39_menu_compartir_identidad">IDを共有</string>
+    <string name="x39_menu_borrar_contacto">連絡先を削除</string>
+    <string name="x39_borrar_contacto_titulo">%1$sを削除しますか？</string>
+    <string name="x39_borrar_contacto_texto">この端末の連絡先からのみ削除されます。もう一度通話するには、相手のIDを再度保存する必要があります。</string>
+    <string name="x39_contacto_borrado">連絡先を削除しました</string>
+
+    <!-- ウォレット -->
+
+    <!-- メッセージタブ -->
+    <string name="x39_conversaciones_titulo">会話</string>
+    <string name="x39_conversaciones_vacio_titulo">まだ会話はありません</string>
+    <string name="x39_conversaciones_vacio_texto">会話を始めるには、連絡先で相手をタップし「メッセージ」を選んでください。相手の暗号化鍵がない場合は、メニューの「暗号化」から取得できます。</string>
+    <string name="x39_conversaciones_ir_contactos">連絡先へ</string>
+    <string name="x39_conversacion_ultimo_mio">自分：%1$s</string>
+
+    <!-- 設定 -->
+    <string name="x39_ajustes_identidad_red">IDとネットワーク</string>
+    <string name="x39_ajustes_mi_identidad">自分のID</string>
+    <string name="x39_ajustes_mi_identidad_sub">フィンガープリント · 鍵</string>
+    <string name="x39_ajustes_tunel_sub_apagado">経路を保護：WireGuard＋耐量子鍵</string>
+    <string name="x39_ajustes_enrutar_todo">すべての通信をトンネル経由にする</string>
+    <string name="x39_ajustes_enrutar_todo_si">端末のすべての通信がトンネルを通ります</string>
+    <string name="x39_ajustes_enrutar_todo_no">トンネル内ネットワークとシグナリングのみ</string>
+    <string name="x39_ajustes_importar_conf">.confをインポート</string>
+    <string name="x39_ajustes_importar_conf_sub">鍵を入力する代わりにWireGuardのファイルを読み込みます</string>
+    <string name="x39_ajustes_clave_tunel">この端末のトンネル鍵</string>
+    <string name="x39_ajustes_clave_tunel_sub">サーバーに登録するための公開鍵</string>
+    <string name="x39_ajustes_servidor_senal">シグナリングサーバー</string>
+    <string name="x39_ajustes_servidor_llamadas">通話サーバー</string>
+    <string name="x39_ajustes_recepcion">着信</string>
+    <string name="x39_ajustes_segundo_plano">バックグラウンドでの着信</string>
+    <string name="x39_ajustes_segundo_plano_ok">準備完了：アプリを閉じていても着信します</string>
+    <string name="x39_ajustes_segundo_plano_falta">権限が不足：着信音が鳴らない場合があります</string>
+    <string name="x39_ajustes_mensajes">メッセージ</string>
+    <string name="x39_ajustes_borrado_defecto">既定の削除タイミング</string>
+    <string name="x39_ajustes_seguridad">セキュリティ</string>
+    <string name="x39_ajustes_anticaptura">スクリーンショット防止</string>
+    <string name="x39_ajustes_anticaptura_si">スクリーンショットと画面録画をブロックします</string>
+    <string name="x39_ajustes_anticaptura_no">オフ：画面をキャプチャできます</string>
+    <string name="x39_ajustes_anticaptura_encendido">スクリーンショット防止：オン</string>
+    <string name="x39_ajustes_anticaptura_apagado">スクリーンショット防止：オフ</string>
+    <string name="x39_ajustes_acerca">x39について</string>
+    <string name="x39_ajustes_acerca_sub">バージョン · 署名 · APKのフィンガープリント</string>
+    <string name="x39_editor_senal_hint">シグナリングサーバーのwss://</string>
+    <string name="x39_editor_pin_hint">証明書のピン（任意）</string>
+    <string name="x39_editor_livekit_hint">LiveKitのwss://</string>
+    <string name="x39_guardado_reinicia">保存しました。再接続するにはアプリを再起動してください。</string>
+    <string name="x39_clave_tunel_texto">"%1$s\n\nこれは公開鍵です。この端末を受け入れてもらうため、サーバーに登録してください：\n\n  wg set wg0 peer %1$s allowed-ips 10.39.0.2/32\n\n秘密鍵はこの端末から出ません。端末のキーストアに保管されています。\n\nすでに動作する.confファイルがある場合は、インポートするほうが早いです。その場合、x39は同じ鍵を使い、サーバーもその鍵をすでに知っています。"</string>
+    <string name="x39_clave_copiada">鍵をコピーしました</string>
+    <string name="x39_conf_ilegible">そのファイルを読み込めませんでした</string>
+    <string name="x39_conf_no_vale">.confが無効です：%1$s</string>
+    <string name="x39_conf_sin_peer">.confにpeerがありません</string>
+    <string name="x39_conf_sin_direccion">.confにアドレスがありません</string>
+    <string name="x39_conf_sin_endpoint">.confにendpointがありません</string>
+    <string name="x39_conf_importada">設定をインポートしました</string>
+    <string name="x39_sin_permiso_vpn">VPNの権限がないとトンネルを使えません</string>
+
+    <!-- メッセージの削除（選択肢と説明） -->
+    <string name="x39_borrado_opcion_min5">既読の5分後</string>
+    <string name="x39_borrado_opcion_h24">既読の24時間後</string>
+    <string name="x39_borrado_opcion_d7">既読の7日後</string>
+    <string name="x39_borrado_opcion_siempre">削除しない</string>
+    <string name="x39_borrado_frase_min5">既読の5分後に削除されます</string>
+    <string name="x39_borrado_frase_h24">既読の24時間後に削除されます</string>
+    <string name="x39_borrado_frase_d7">既読の7日後に削除されます</string>
+    <string name="x39_borrado_frase_siempre">自動では削除されません</string>
+    <string name="x39_borrado_defecto_texto">新しい会話に適用されます。各会話のヘッダーから個別に変更できます。カウントダウンは相手がメッセージを読んだ時点で始まります。\n\n自動削除は、相手のアプリがそれに従うことが前提です。メッセージが端末に置き忘れられるのを防ぐものであり、別のカメラで撮影されることや、改変されたアプリを使われることは防げません。</string>
+
+    <!-- 暗号化されるもの（鍵アイコン） -->
+    <string name="x39_cifrado_titulo">暗号化されるもの</string>
+    <string name="x39_cifrado_ruta_tunel">· 経路はx39tunel（WireGuard）を通ります：%1$s。</string>
+    <string name="x39_cifrado_ruta_directa">· x39tunelはオフです。経路は直接で、サーバーからあなたのIPが見えます。</string>
+    <string name="x39_cifrado_texto">"通話とビデオ通話\n· 2台の端末が耐量子方式（ML-KEM-1024）で鍵を直接取り決めます。\n  各オファーには署名（ML-DSA-87）が付くため、間に入り込むことはできません。\n· その鍵から、音声と映像を暗号化する32バイトと、\n  声に出して確認する6つの単語が作られます。\n· サーバーはパケットを中継しますが、復号はできません。\n  鍵がサーバーを通ることは一度もありません。\n\nあなたのID\n· ML-DSA-87の鍵です。秘密の部分はこの端末で作られ、\n  Keystoreに保管されたまま端末から出ません。フィンガープリントはここから導き出されます。\n\nメッセージとファイル\n· 各メッセージ、ボイスメモ、ファイルの断片は個別に耐量子カプセル化\n  （ML-KEM-1024）と署名（ML-DSA-87）で封印されます。写真や動画は送信前に\n  メタデータが除去され、端末内でもKeystoreで暗号化保管されます。\n\n経路\n%1$s\n\n暗号化で隠せないもの\n· サーバーには、誰が誰と、何時に、どれくらい話したかがわかります。\n  これはネットワークのメタデータで、どんな鍵でも隠せません。\n  トンネルでも隠せません。通り道が変わるだけです。"</string>
+    <string name="x39_ver_mi_identidad">自分のIDを見る</string>
+
+    <!-- バックグラウンドでの着信 -->
+    <string name="x39_fondo_intro">x39はGoogleを使いません。通知は、サービスが開いたままにしている独自の接続で届きます。許可しないと、MIUIはこの接続を切断します。以下の項目を確認してください。</string>
+    <string name="x39_fondo_comprobable">アプリで確認できる項目</string>
+    <string name="x39_fondo_avisos">x39の通知</string>
+    <string name="x39_fondo_avisos_sub">これがないと着信が表示されません</string>
+    <string name="x39_fondo_bateria">バッテリー制限なし</string>
+    <string name="x39_fondo_bateria_sub">制限されていると、システムが接続を切断します</string>
+    <string name="x39_fondo_pantalla_completa">全画面での着信</string>
+    <string name="x39_fondo_pantalla_completa_sub">これがないと、着信は全画面ではなく通常の通知として届きます</string>
+    <string name="x39_fondo_no_hace_falta">このバージョンのAndroidでは許可は不要です</string>
+    <string name="x39_fondo_alarma">正確なアラーム</string>
+    <string name="x39_fondo_alarma_sub">10分ごとに接続を確認する見張り役です</string>
+    <string name="x39_fondo_manual">自分で確認が必要な項目（MIUIでは読み取れません）</string>
+    <string name="x39_fondo_autoinicio">自動起動：オン</string>
+    <string name="x39_fondo_autoinicio_sub">セキュリティ › 権限 › 自動起動 › x39。これがないと、端末の電源を入れたときに起動しません。</string>
+    <string name="x39_fondo_recientes">x39を履歴でロック</string>
+    <string name="x39_fondo_recientes_sub">最近使ったアプリを開き、x39を下にスワイプして鍵アイコンをタップしてください。</string>
+    <string name="x39_fondo_recientes_aviso">設定ではなく、最近使ったアプリの画面で行います</string>
+    <string name="x39_fondo_pie">すべて設定しても、サーバーには誰が誰と、いつ、どれくらい話したかがわかります。これはどんな暗号化でも隠せません。サーバーにわからないのは、話の内容です。</string>
+    <string name="x39_fondo_concedido">許可済み</string>
+    <string name="x39_fondo_sin_pantalla_ajustes">この端末にはその設定画面がありません。手動で探してください</string>
+
+    <!-- ID：共有と追加 -->
+    <string name="x39_identidad_qr_desc">あなたのIDのQRコード</string>
+    <string name="x39_identidad_qr_firma_desc">あなたの署名鍵のQRコード</string>
+    <string name="x39_identidad_qr_firma_pie">1/2 · 通話用\n相手の連絡先にあなたを登録するためのコードです。</string>
+    <string name="x39_identidad_qr_cifrar_desc">あなたの暗号化鍵のQRコード</string>
+    <string name="x39_identidad_qr_cifrar_pie">2/2 · メッセージ用\nあなたを保存したあとで、相手が「暗号化」から読み取るコードです。</string>
+    <string name="x39_identidad_ver_otro">もう一方のコードを表示</string>
+    <string name="x39_identidad_tu_foto">あなたの写真</string>
+    <string name="x39_identidad_tu_huella">あなたのフィンガープリント（あなたの番号）</string>
+    <string name="x39_identidad_copiar">自分のIDをすべてコピー</string>
+    <string name="x39_identidad_copiada">IDをコピーしました（X39ID1）</string>
+    <string name="x39_identidad_escanear">相手のQRをスキャン</string>
+    <string name="x39_identidad_o_pega">または相手のIDを貼り付け</string>
+    <string name="x39_identidad_nombre_hint">名前</string>
+    <string name="x39_identidad_pega_hint">相手のIDをここに貼り付け</string>
+    <string name="x39_guardar_contacto">連絡先を保存</string>
+    <string name="x39_nombre_e_identidad">名前とIDの両方を入力してください</string>
+    <string name="x39_contacto_guardado">連絡先を保存しました</string>
+    <string name="x39_identidad_no_valida">そのIDは無効です</string>
+    <string name="x39_nombre_persona_hint">相手の名前</string>
+    <string name="x39_identidad_leida">IDを読み取りました · フィンガープリント %1$s</string>
+    <string name="x39_ponle_nombre">名前を付けてください</string>
+    <string name="x39_qr_solo_cifrar">そのQRは暗号化鍵だけです。連絡先の「暗号化」から使ってください。</string>
+    <string name="x39_identidad_no_coincide">そのIDは%1$sのものではありません。署名鍵が一致しません</string>
+    <string name="x39_no_es_identidad">x39のIDではありません</string>
+
+    <!-- 連絡先との暗号化とフィンガープリントの照合 -->
+    <string name="x39_cifrar_titulo">%1$sと暗号化</string>
+    <string name="x39_cifrar_texto">%1$sの署名鍵はあるので、通話はできます。メッセージを送るには、さらに相手の暗号化鍵が必要です。\n\n相手に「IDを共有」からQRを見せてもらうか、好きな方法でIDを送ってもらってください。</string>
+    <string name="x39_cifrar_escanear">相手のQRをスキャン</string>
+    <string name="x39_cifrar_hint">X39ID1:… または X39PK1:…</string>
+    <string name="x39_cifrar_guardar">相手の暗号化鍵を保存</string>
+    <string name="x39_cifrar_pega">相手のIDを貼り付け</string>
+    <string name="x39_huellas_sin_clave">まだ相手の暗号化鍵がありません</string>
+    <string name="x39_huellas_titulo">フィンガープリントを照合</string>
+    <string name="x39_huellas_texto">電話か対面で、声に出して読み合ってください。両方の端末で同じでなければなりません。一致しない場合は誰かが間に入っています。確認済みにしないでください。</string>
+    <string name="x39_huellas_la_tuya">あなたのフィンガープリント</string>
+    <string name="x39_huellas_la_de">%1$sのフィンガープリント</string>
+    <string name="x39_huellas_coinciden">一致しました：確認済みにする</string>
+    <string name="x39_huellas_verificado">%1$sを確認済みにしました</string>
+    <string name="x39_huellas_pie">確認済みにしなくてもメッセージは送れます。確認済みにするのは、話し相手を照合したという記録を残すためだけです。</string>
+
+    <!-- プロフィール写真 -->
+    <string name="x39_foto_tienes">写真あり</string>
+    <string name="x39_foto_sin">写真なし</string>
+    <plurals name="x39_foto_la_ven">
+        <item quantity="other">確認済みの連絡先%1$d件に表示されます</item>
+    </plurals>
+    <string name="x39_foto_iniciales">イニシャルが表示されます。写真を設定するかはあなた次第です。</string>
+    <string name="x39_foto_cambiar">写真を変更</string>
+    <string name="x39_foto_poner">写真を設定</string>
+    <string name="x39_foto_quitar">写真を外す</string>
+    <string name="x39_foto_aviso">写真は暗号化され、確認済みの連絡先にだけ送られます。相手の端末に届いたあとは、あなたには管理できません。</string>
+    <string name="x39_foto_sin_datos">送信前に位置情報とカメラ情報が削除されます。</string>
+    <string name="x39_foto_no_usable">その画像は使用できません：%1$s</string>
+    <string name="x39_foto_guardada">写真を保存しました</string>
+    <string name="x39_foto_reparto_nadie">位置情報とカメラ情報を削除しました。\n\n確認済みの連絡先がないため、まだ誰にも送れません。連絡先を確認済みにすると送信されます。</string>
+    <plurals name="x39_foto_reparto">
+        <item quantity="other">位置情報とカメラ情報を削除しました。\n\n確認済みの連絡先%1$d件に暗号化して送信します。相手の端末に届いたあとは、あなたには管理できません。</item>
+    </plurals>
+    <plurals name="x39_foto_enviada">
+        <item quantity="other">写真を%1$d件の連絡先に送信しました</item>
+    </plurals>
+    <string name="x39_quitar_foto_titulo">写真を外しますか？</string>
+    <string name="x39_quitar_foto_texto">この端末から削除され、確認済みの連絡先にもコピーを削除するよう通知されます。\n\n実際に削除されるかは相手のアプリが従うかどうかによります。別のカメラで撮影されていた場合、それは取り消せません。</string>
+    <string name="x39_foto_quitada">写真を外しました</string>
+    <string name="x39_fotos_no_leer">その画像を読み込めませんでした</string>
+    <string name="x39_fotos_grande">画像が大きすぎます</string>
+
+    <!-- 発信 -->
+    <string name="x39_llamando_a">発信中</string>
+    <string name="x39_llamada_cifrada_e2e">エンドツーエンド暗号化された通話</string>
+    <string name="x39_videollamada_cifrada_e2e">エンドツーエンド暗号化されたビデオ通話</string>
+    <string name="x39_estableciendo_clave">耐量子鍵を確立中…</string>
+
+    <!-- x39について -->
+    <string name="x39_acerca_midiendo">インストール済みのAPKを計測中…</string>
+    <string name="x39_acerca_version">バージョン %1$s（コード %2$d）\nパッケージ %3$s</string>
+    <string name="x39_acerca_certificado">署名証明書（SHA-256）\n%1$s</string>
+    <string name="x39_acerca_apk">インストール済みのAPK（SHA-256、%1$dバイト）\n%2$s</string>
+    <string name="x39_acerca_motor">エンジン：ML-DSA-87 · ML-KEM-1024 · X39-CALL-KEY-v1 · x39tunel v2（WireGuard＋耐量子PSK）</string>
+    <string name="x39_acerca_error">計測できませんでした：%1$s</string>
+
+    <!-- 会話（チャット） -->
+    <string name="x39_chat_contacto_no_esta">その連絡先はもう登録されていません</string>
+    <string name="x39_chat_llamar_a">%1$sに発信</string>
+    <string name="x39_chat_estado_sin_clave">保留中 · 暗号化鍵なし</string>
+    <string name="x39_chat_escribe">メッセージを入力</string>
+    <string name="x39_chat_adjuntar">添付</string>
+    <string name="x39_chat_grabar_nota">ボイスメモを録音</string>
+    <string name="x39_chat_descartar_nota">ボイスメモを破棄</string>
+    <string name="x39_chat_grabando">"●  録音中  %1$d:%2$02d"</string>
+    <string name="x39_chat_enviar_nota">ボイスメモを送信</string>
+    <string name="x39_chat_no_puedes_titulo">まだメッセージを送れません</string>
+    <string name="x39_chat_no_puedes_texto">%1$sについては、通話用の署名鍵しかありません。メッセージを封印して送るには、相手の暗号化鍵も必要です。\n\n連絡先メニューの「暗号化」から取得してください。</string>
+    <string name="x39_chat_sin_micro">マイクがないとボイスメモを録音できません</string>
+    <string name="x39_chat_no_grabar">録音を開始できませんでした：%1$s</string>
+    <string name="x39_chat_error">エラー</string>
+    <string name="x39_chat_no_grabo">何も録音されませんでした</string>
+    <string name="x39_chat_corta">短すぎます</string>
+    <string name="x39_chat_no_leer_grabacion">録音を読み込めませんでした</string>
+    <string name="x39_chat_no_enviar">送信できませんでした：%1$s</string>
+    <string name="x39_chat_nota_descartada">ボイスメモを破棄しました</string>
+    <string name="x39_chat_adj_foto">写真</string>
+    <string name="x39_chat_adj_video">動画</string>
+    <string name="x39_chat_adj_documento">ドキュメント</string>
+    <string name="x39_chat_demasiado_grande">サイズが大きすぎます</string>
+    <string name="x39_chat_demasiado_grande_texto">「%1$s」は%2$sあります。上限は25 MBです。</string>
+    <string name="x39_chat_enviar_metadatos">位置情報とカメラ情報も送信する</string>
+    <string name="x39_chat_aviso_video">注意：動画の情報（位置、日時、端末）の削除は検証中です。確認されるまでは、それらが含まれている可能性があるものと考えてください。</string>
+    <string name="x39_chat_limpio">位置情報とカメラ情報を削除しました。</string>
+    <string name="x39_chat_documento_metadatos">ドキュメントには独自のメタデータ（作成者、ソフト名）が含まれることがあり、x39はそれを変更しません。</string>
+    <plurals name="x39_chat_trafico">
+        <item quantity="other">%1$s · %2$d個の断片に分けて個別に封印します。\nサーバーを通るデータ量は約%3$sで、その通信費はサーバーの費用を払う人が負担します。</item>
+    </plurals>
+    <string name="x39_chat_limpiando_video">動画の情報を削除中…</string>
+    <string name="x39_chat_no_se_puede_enviar">送信できません：%1$s</string>
+    <string name="x39_chat_enviando_limpio">位置情報とカメラ情報を除いて送信中</string>
+    <string name="x39_chat_tamano_desconocido">サイズ不明</string>
+    <string name="x39_chat_vacio_sin_clave">%1$sの暗号化鍵がないため、まだメッセージを送れません。連絡先メニューの「暗号化」を使ってください。</string>
+    <string name="x39_chat_vacio">まだ何もありません。入力した内容は%1$sの鍵で封印されます。</string>
+    <string name="x39_chat_ver_foto">写真を見る</string>
+    <plurals name="x39_chat_trozos">
+        <item quantity="other">断片 %1$d/%2$d</item>
+    </plurals>
+    <string name="x39_chat_reenviar">再送信</string>
+    <string name="x39_chat_no_reenviar">再送信できませんでした：%1$s</string>
+    <string name="x39_chat_parar">"■  停止"</string>
+    <string name="x39_chat_escuchar">"▶  再生"</string>
+    <string name="x39_chat_no_abrir_grabacion">録音を開けませんでした</string>
+    <string name="x39_chat_no_reproducir_sin_disco">このAndroidでは、暗号化されていない状態でディスクに置かないと再生できません</string>
+    <string name="x39_chat_no_reproducir">再生できませんでした</string>
+    <string name="x39_chat_estado_pendiente">⏳ 保留中 · オンラインになると送信されます</string>
+    <string name="x39_chat_estado_enviado">✓ 送信済み · 相手の端末の確認待ち</string>
+    <string name="x39_chat_estado_entregado">✓✓ 配信済み</string>
+    <string name="x39_chat_estado_caducado">⚠ 期限切れ、配信されませんでした</string>
+    <plurals name="x39_chat_caduca_dias">
+        <item quantity="other">あと%1$d日で期限切れ</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_horas">
+        <item quantity="other">あと%1$d時間で期限切れ</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_minutos">
+        <item quantity="other">あと%1$d分で期限切れ</item>
+    </plurals>
+    <string name="x39_chat_caduca_menos_minuto">あと1分以内に期限切れ</string>
+    <string name="x39_chat_borrar_aparato">この端末から削除</string>
+    <string name="x39_chat_copiado">コピーしました</string>
+    <string name="x39_chat_aviso_borrado">自動削除は、相手のアプリがそれに従うことが前提です。メッセージが端末に置き忘れられるのを防ぐものであり、別のカメラで撮影されることや、改変されたアプリを使われることは防げません。</string>
+    <string name="x39_chat_borrar_mensajes">メッセージの削除…</string>
+    <string name="x39_chat_borrado_texto">カウントダウンは、送信した時点ではなく、相手が会話を開いた時点で始まります。この設定は封印された封筒の中で送られるため、サーバーには見えず、変更もできません。</string>
+
+    <!-- 添付：エラー理由 -->
+    <string name="x39_adj_video_no_limpio">動画の情報を削除できなかったため、送信しません（%1$s）</string>
+    <string name="x39_adj_no_leer">ファイルを読み込めませんでした</string>
+    <string name="x39_adj_pasa_25">ファイルが25 MBを超えています</string>
+    <string name="x39_adj_falta_clave">相手の暗号化鍵がありません</string>
+    <string name="x39_adj_ya_no_esta_movil">ファイルはもうこの端末にありません</string>
+    <string name="x39_adj_ya_enviando">すでに送信中です</string>
+    <string name="x39_adj_ya_no_esta">ファイルはもうありません</string>
+    <string name="x39_adj_galeria_permisos">このAndroidでは、追加の権限なしにギャラリーへ保存できません</string>
+    <string name="x39_adj_galeria_no_acepto">ギャラリーがファイルを受け付けませんでした</string>
+    <string name="x39_adj_no_escribir">書き込めませんでした</string>
+    <string name="x39_video_sin_pista">映像トラックがありません</string>
+    <string name="x39_video_sin_muestras">動画にサンプルがありません</string>
+    <string name="x39_video_pasa_25">情報削除後のサイズが25 MBを超えています</string>
+
+    <!-- 通話中 -->
+    <string name="x39_llamada_sin_camara_voz">カメラの権限がないため、音声のみで通話を続けます</string>
+    <string name="x39_llamada_sin_micro">マイクの権限がありません</string>
+    <string name="x39_llamada_sin_micro_texto">x39で話すにはマイクが必要です。端末の設定で許可してから、もう一度発信してください。</string>
+    <string name="x39_llamada_faltan_datos">通話のデータがありません</string>
+    <string name="x39_llamada_no_conectar">通話を接続できませんでした</string>
+    <string name="x39_llamada_ha_colgado">%1$sが通話を終了しました</string>
+    <string name="x39_llamada_sin_camara">カメラの権限がありません。端末の設定で許可してください。</string>
+    <string name="x39_llamada_silenciar_mic">マイクをミュート</string>
+    <string name="x39_llamada_encender_mic">マイクをオン</string>
+    <string name="x39_llamada_apagar_camara">カメラをオフ</string>
+    <string name="x39_llamada_encender_camara">カメラをオン</string>
+    <string name="x39_llamada_pie_tunel">経路はx39tunelで保護されています。サーバーはパケットを中継しますが、復号はできません。</string>
+    <string name="x39_llamada_pie_sin_tunel">サーバーはパケットを中継しますが、復号はできません。x39tunelはオフのため、サーバーからあなたのIPと時刻が見えます。</string>
+    <string name="x39_llamada_comprueba_palabras">この6つの単語を相手と確認してください</string>
+    <string name="x39_llamada_acordando">鍵を取り決め中…</string>
+    <string name="x39_llamada_tu_camara_desc">自分のカメラ映像。タップでカメラを切り替え、ドラッグで別の隅へ移動できます。</string>
+    <string name="x39_llamada_altavoz_desc">スピーカーと音声出力</string>
+
+    <!-- 着信 -->
+    <string name="x39_entrante_video_de">ビデオ通話の着信</string>
+    <string name="x39_entrante_de">着信</string>
+    <string name="x39_entrante_conectando_camara">カメラ付きで接続中…</string>
+
+    <!-- 写真ビューア -->
+    <string name="x39_visor_ya_no_esta">その写真はもうありません</string>
+    <string name="x39_visor_mas_opciones">その他のオプション</string>
+    <string name="x39_visor_guardar_galeria">ギャラリーに保存</string>
+    <string name="x39_visor_guardar_titulo">ギャラリーに保存しますか？</string>
+    <string name="x39_visor_guardar_texto">コピーには位置情報とカメラ情報は含まれません。\n\nただし多くの端末では、ギャラリーはクラウドと同期されます。保存した時点から、写真はx39による保護の対象外になります。</string>
+    <string name="x39_visor_no_guardar">保存できませんでした：%1$s</string>
+    <string name="x39_visor_guardada">ギャラリーのx39フォルダに保存しました</string>
+
+    <!-- QRリーダー -->
+    <string name="x39_escaner_apunta">相手のIDのQRにカメラを向けてください</string>
+
+    <!-- サービスと通知 -->
+    <string name="x39_notif_mensaje_nuevo">%1$sから新しいメッセージ</string>
+    <string name="x39_notif_en_linea">x39 · オンライン</string>
+    <string name="x39_notif_reconectando">x39 · 再接続中…</string>
+    <string name="x39_notif_linea_tunel">回線接続中 · x39tunel オン</string>
+    <string name="x39_notif_linea_abierta">着信を受けられるよう回線を開いています。</string>
+    <string name="x39_notif_en_llamada">通話中</string>
+    <string name="x39_notif_videollamada_entrante">ビデオ通話の着信</string>
+    <string name="x39_notif_llamada_entrante">着信</string>
+    <string name="x39_canal_linea">回線接続</string>
+    <string name="x39_canal_linea_desc">x39がオンラインであることを示す常時通知です。音は鳴りません。</string>
+    <string name="x39_canal_entrantes">着信</string>
+    <string name="x39_canal_entrantes_desc">通話とビデオ通話の着信です。</string>
+    <string name="x39_canal_mensajes">メッセージ</string>
+    <string name="x39_canal_mensajes_desc">誰からメッセージが届いたかを通知します。本文はロック画面に表示されません。</string>
+
+    <!-- x39tunel：設定に表示される状態 -->
+    <string name="x39_tunel_estado_apagado">オフ</string>
+    <string name="x39_tunel_estado_sin_permiso">VPNの権限がありません</string>
+    <string name="x39_tunel_estado_alta">サーバーにピアを登録中…</string>
+    <string name="x39_tunel_estado_psk">耐量子鍵を取り決め中…</string>
+    <string name="x39_tunel_estado_levantando">トンネルを起動中…</string>
+    <string name="x39_tunel_estado_protegido">経路保護中 · %1$s · PQ鍵の有効期限 %2$s</string>
+    <string name="x39_tunel_estado_protegido_sin_psk">経路保護中 · %1$s · 耐量子鍵なし：このサーバーはまだ配布していません</string>
+    <string name="x39_tunel_fallo_cayo">トンネルなし：トンネルが切断されました</string>
+    <string name="x39_tunel_fallo_alta">トンネルなし：ピア登録：%1$s</string>
+    <string name="x39_tunel_fallo_psk">トンネルなし：トンネル鍵：%1$s</string>
+    <string name="x39_tunel_fallo_sin_respuesta_alta">トンネルなし：サーバーがピア登録（wg_alta）に応答しませんでした</string>
+    <string name="x39_tunel_fallo_sin_respuesta_psk">トンネルなし：サーバーが鍵の要求（psk）に応答しませんでした</string>
+    <string name="x39_tunel_fallo_otro">トンネルなし：%1$s</string>
+    <string name="x39_idioma">言語</string>
+    <string name="x39_idioma_sistema">システム</string>
+    <string name="x39_qr_propio">このQRはあなた自身のIDです。何も保存していません。</string>
+    <string name="x39_identidad_propia">このIDはあなた自身のものです。何も保存していません。</string>
+    <string name="x39_qr_pantalla_completa">QRを全画面で表示</string>
+    <string name="x39_qr_por_partes">分割QR（読み取りやすい）</string>
+    <string name="x39_qr_parte_de">%2$d 枚中 %1$d 枚目・タップで閉じる</string>
+    <string name="x39_escaner_partes">読み取り済み：%2$d 枚中 %1$d 枚。そのまま向けてください。</string>
+    <string name="x39_qr_mezcla_titulo">スキャンを停止しました</string>
+    <string name="x39_qr_mezcla_texto">2つの異なるIDのQRを読み取ったか、分割されたQRが1つの完全なIDになりません。別の画面が映っているか、誰かが別のIDを紛れ込ませようとしている可能性があります。何も保存していません。カメラの前に画面を1つだけ置いて、やり直してください。</string>
+    <string name="x39_contacto_guardado_sin_verificar">未確認の連絡先として保存しました。フィンガープリントを照合して確認してください。</string>
+    <string name="x39_contacto_sin_verificar">⚠ 未確認</string>
+    <string name="x39_chat_aviso_sin_verificar">この人のフィンガープリントをまだ確認していません</string>
+    <string name="x39_chat_aviso_comparar">照合する</string>
+    <string name="x39_huellas_no_coinciden">一致しない</string>
+    <string name="x39_huellas_no_coinciden_titulo">フィンガープリントが一致しません</string>
+    <string name="x39_huellas_no_coinciden_texto">別の人のIDを読み取ったか、誰かが間に入って %1$s になりすまそうとしている可能性があります。安全のため、この連絡先を削除します。できれば対面で、やり直してください。</string>
+    <string name="x39_escaner_alejate">少し離してください：このカメラは %1$d cm より近いとピントが合いません。</string>
+    <string name="x39_escaner_mas_luz">もっと明るさが必要です：相手の画面の明るさを上げるか、明るい場所に移動してください。</string>
+    <string name="x39_escaner_sin_camara">カメラを使用できません。端末の設定で権限を許可してから、もう一度お試しください。</string>
+</resources>

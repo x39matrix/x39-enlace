@@ -1,0 +1,49 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+/livekit-lint/bin
+
+### Changesets
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# x39: copias de seguridad de los asistentes y claves locales
+*.bak-*
+*.key
+
+# X39: secretos locales y artefactos de publicación
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+.env
+.env.*
+!*.env.example
+**/local.properties
+**/build/
+dist_web/*.apk
+dist_web/*.idsig
+dist_web/SHA256SUMS.txt*
+dist_web/ESTADO_FIRMA.txt
+dist_web/FIRMA_APK.txt
+dist_web/SHA256SUMS-UNSIGNED.txt
+dist_web/.x39-firma.*/
+
+# X39: entorno y estado local de índices F-Droid
+.fdroid-venv/
+fdroid/work/
+fdroid/publicacion/
+
+# Fuente entregada por el propietario; copia definitiva en drawable-nodpi
+/logo-x39.png
+dist_web/versiones/
+fdroid/

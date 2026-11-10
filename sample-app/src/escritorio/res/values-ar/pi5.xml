@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_billetera_panel_pi5">فتح لوحة Pi 5 (ويب)</string>
+    <string name="x39_billetera_panel_pi5_sin_navegador">لا يوجد متصفح لفتح اللوحة</string>
+</resources>

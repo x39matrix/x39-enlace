@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_nav_billetera">ウォレット</string>
+    <string name="x39_billetera_titulo">Bitcoinウォレット</string>
+    <string name="x39_billetera_ruta">▲ París経由 · 自分のノード経由</string>
+    <string name="x39_billetera_recibir">受け取る</string>
+    <string name="x39_billetera_autocustodia">セルフカストディ：シードはこの端末にだけ保存されます。送金はあなた自身が確定します。</string>
+    <string name="x39_ajustes_nodo_bitcoin">Bitcoinノード</string>
+    <string name="x39_ajustes_nodo_bitcoin_sub">トンネル経由の X-39 ノード、または自分のノード（ウォレット用）</string>
+    <string name="x39_billetera_abrir">ウォレットを開く</string>
+    <string name="x39_billetera_android6">ウォレットには Android 6 以降が必要です</string>
+    <string name="x39_seguridad_nodo_x39">ノード：トンネル経由の X-39</string>
+    <string name="x39_seguridad_nodo_propio">ノード：自分のノード（%1$s）</string>
+    <string name="x39_seguridad_nodo_ninguno">ノード：未設定</string>
+    <string name="x39_seguridad_nodo_frase">使用する Electrum サーバーにはウォレットのアドレスが見えます。自分のノードなら、他の誰にも見えません。</string>
+</resources>

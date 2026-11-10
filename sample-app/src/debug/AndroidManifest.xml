@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solo en compilaciones depurables. Se funde con src/main; en release no existe. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+          Solo para VERIFICAR la limpieza de vídeos con exiftool desde el ordenador.
+          DUMP: lo puede disparar adb, ninguna app. La clase vive en src/debug/java.
+        -->
+        <receiver
+            android:name=".VolcadoVerificacion"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="io.livekit.android.X39_VOLCAR_VIDEO" />
+                <action android:name="io.livekit.android.X39_BORRAR_VOLCADO" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

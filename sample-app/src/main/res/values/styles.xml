@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/x39_red</item>
+        <item name="colorControlActivated">@color/x39_red</item>
+        <item name="colorButtonNormal">@color/x39_red</item>
+        <item name="android:statusBarColor">@color/x39_background</item>
+        <item name="android:navigationBarColor">@color/x39_background</item>
+        <item name="android:windowBackground">@color/x39_background</item>
+    </style>
+
+    <!-- Hoja inferior nativa (sin depender de com.google.android.material) -->
+    <style name="X39HojaInferior" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+</resources>

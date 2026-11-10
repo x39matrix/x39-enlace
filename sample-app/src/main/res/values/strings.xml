@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+
+    <!-- Aplicación -->
+    <string name="x39_app_nombre">x39</string>
+    <string name="x39_contacto_por_defecto">Contacto</string>
+
+    <!-- Textos comunes -->
+    <string name="x39_guardar">Guardar</string>
+    <string name="x39_cancelar">Cancelar</string>
+    <string name="x39_cerrar">Cerrar</string>
+    <string name="x39_copiar">Copiar</string>
+    <string name="x39_borrar">Borrar</string>
+    <string name="x39_quitar">Quitar</string>
+    <string name="x39_enviar">Enviar</string>
+    <string name="x39_entendido">Entendido</string>
+    <string name="x39_ahora_no">Ahora no</string>
+    <string name="x39_volver">Volver</string>
+    <string name="x39_llamar">Llamar</string>
+    <string name="x39_videollamada">Videollamada</string>
+    <string name="x39_colgar">Colgar</string>
+    <string name="x39_rechazar">Rechazar</string>
+    <string name="x39_contestar">Contestar</string>
+    <string name="x39_conectando">Conectando…</string>
+    <string name="x39_llamada_finalizada">Llamada finalizada</string>
+    <string name="x39_contacto_verificado">✓ verificado</string>
+    <string name="x39_contacto_pendiente">pendiente de verificar</string>
+    <string name="x39_cifrada_e2e">Cifrada de extremo a extremo · X39-CALL-KEY</string>
+
+    <!-- Motivos de fallo que llegan del núcleo de llamadas -->
+    <string name="x39_fallo_no_en_agenda">ese contacto no está en tu agenda</string>
+    <string name="x39_fallo_no_disponible">el contacto no está disponible</string>
+    <string name="x39_fallo_error_servidor">error del servidor</string>
+
+    <!-- Pantalla principal: barra de arriba y barra de abajo -->
+    <string name="x39_tunel_activo_desc">x39tunel activo</string>
+    <string name="x39_candado_desc">Qué va cifrado en x39</string>
+    <string name="x39_nav_contactos">Contactos</string>
+    <string name="x39_nav_mensajes">Mensajes</string>
+    <string name="x39_nav_ajustes">Ajustes</string>
+    <string name="x39_estado_en_linea">"●  En línea"</string>
+    <string name="x39_estado_conectando">"○  Conectando…"</string>
+
+    <!-- Contactos -->
+    <string name="x39_contactos_titulo">TUS CONTACTOS</string>
+    <string name="x39_contactos_vacio">Aún no tienes contactos.\nComparte tu identidad y añade la del otro.</string>
+    <string name="x39_contactos_mi_identidad">MI IDENTIDAD</string>
+    <string name="x39_contacto_huella">huella</string>
+    <string name="x39_identidad_comparte">Comparte tu huella</string>
+    <string name="x39_identidad_escanea">Escanea o pega para conectar</string>
+    <string name="x39_sin_micro_camara">Sin micrófono/cámara no se puede llamar</string>
+
+    <!-- Menú de un contacto -->
+    <string name="x39_menu_mensaje">Mensaje</string>
+    <string name="x39_menu_cifrar">Cifrar</string>
+    <string name="x39_menu_compartir_identidad">Compartir identidad</string>
+    <string name="x39_menu_borrar_contacto">Borrar contacto</string>
+    <string name="x39_borrar_contacto_titulo">¿Borrar a %1$s?</string>
+    <string name="x39_borrar_contacto_texto">Se quita de tu agenda, solo de este aparato. Para volver a llamarle tendrás que guardar otra vez su identidad.</string>
+    <string name="x39_contacto_borrado">Contacto borrado</string>
+
+    <!-- Billetera -->
+
+    <!-- Pestaña Mensajes -->
+    <string name="x39_conversaciones_titulo">CONVERSACIONES</string>
+    <string name="x39_conversaciones_vacio_titulo">Todavía no hay conversaciones</string>
+    <string name="x39_conversaciones_vacio_texto">Para empezar una: ve a Contactos, pulsa la persona y elige «Mensaje». Si te falta su clave de cifrar, el menú te ofrece «Cifrar» para conseguirla.</string>
+    <string name="x39_conversaciones_ir_contactos">Ir a Contactos</string>
+    <string name="x39_conversacion_ultimo_mio">Tú: %1$s</string>
+
+    <!-- Ajustes -->
+    <string name="x39_ajustes_identidad_red">IDENTIDAD Y RED</string>
+    <string name="x39_ajustes_mi_identidad">Mi identidad</string>
+    <string name="x39_ajustes_mi_identidad_sub">huella · clave</string>
+    <string name="x39_ajustes_tunel_sub_apagado">proteger la ruta: WireGuard + clave post-cuántica</string>
+    <string name="x39_ajustes_enrutar_todo">Enrutar todo el tráfico</string>
+    <string name="x39_ajustes_enrutar_todo_si">todo el móvil sale por el túnel</string>
+    <string name="x39_ajustes_enrutar_todo_no">solo la red del túnel y la señalización</string>
+    <string name="x39_ajustes_importar_conf">Importar .conf</string>
+    <string name="x39_ajustes_importar_conf_sub">lee un fichero de WireGuard en vez de teclear claves</string>
+    <string name="x39_ajustes_clave_tunel">Clave del túnel de este móvil</string>
+    <string name="x39_ajustes_clave_tunel_sub">la pública, para darla de alta en el servidor</string>
+    <string name="x39_ajustes_servidor_senal">Servidor de señalización</string>
+    <string name="x39_ajustes_servidor_llamadas">Servidor de llamadas</string>
+    <string name="x39_ajustes_recepcion">RECEPCIÓN</string>
+    <string name="x39_ajustes_segundo_plano">Recepción en segundo plano</string>
+    <string name="x39_ajustes_segundo_plano_ok">listo: llega con la app cerrada</string>
+    <string name="x39_ajustes_segundo_plano_falta">faltan permisos: puede no sonar</string>
+    <string name="x39_ajustes_mensajes">MENSAJES</string>
+    <string name="x39_ajustes_borrado_defecto">Borrado por defecto</string>
+    <string name="x39_ajustes_seguridad">SEGURIDAD</string>
+    <string name="x39_ajustes_anticaptura">Anti-captura de pantalla</string>
+    <string name="x39_ajustes_anticaptura_si">bloquea capturas y grabación</string>
+    <string name="x39_ajustes_anticaptura_no">apagado: se puede capturar la pantalla</string>
+    <string name="x39_ajustes_anticaptura_encendido">Anti-captura encendido</string>
+    <string name="x39_ajustes_anticaptura_apagado">Anti-captura apagado</string>
+    <string name="x39_ajustes_acerca">Acerca de x39</string>
+    <string name="x39_ajustes_acerca_sub">versión · firma · huella del APK</string>
+    <string name="x39_editor_senal_hint">wss:// de tu señalización</string>
+    <string name="x39_editor_pin_hint">pin del certificado (opcional)</string>
+    <string name="x39_editor_livekit_hint">wss:// de LiveKit</string>
+    <string name="x39_guardado_reinicia">Guardado. Reinicia la app para reconectar.</string>
+    <string name="x39_clave_tunel_texto">"%1$s\n\nEsta es la PÚBLICA. Dásela al servidor para que acepte a este móvil:\n\n  wg set wg0 peer %1$s allowed-ips 10.39.0.2/32\n\nLa privada no sale de aquí: está sellada en el almacén de claves del aparato.\n\nSi ya tienes un fichero .conf que funciona, es más rápido importarlo: entonces x39 usa esa misma clave y el servidor ya la conoce."</string>
+    <string name="x39_clave_copiada">Clave copiada</string>
+    <string name="x39_conf_ilegible">No se pudo leer ese fichero</string>
+    <string name="x39_conf_no_vale">El .conf no vale: %1$s</string>
+    <string name="x39_conf_sin_peer">el .conf no trae ningún peer</string>
+    <string name="x39_conf_sin_direccion">el .conf no trae dirección</string>
+    <string name="x39_conf_sin_endpoint">el .conf no trae endpoint</string>
+    <string name="x39_conf_importada">Configuración importada</string>
+    <string name="x39_sin_permiso_vpn">Sin permiso de VPN no hay túnel</string>
+
+    <!-- Borrado de mensajes (opciones y frases) -->
+    <string name="x39_borrado_opcion_min5">5 minutos después de leerlos</string>
+    <string name="x39_borrado_opcion_h24">24 horas después de leerlos</string>
+    <string name="x39_borrado_opcion_d7">7 días después de leerlos</string>
+    <string name="x39_borrado_opcion_siempre">Siempre (no se borran)</string>
+    <string name="x39_borrado_frase_min5">Se borra 5 minutos después de leerlo</string>
+    <string name="x39_borrado_frase_h24">Se borra 24 horas después de leerlo</string>
+    <string name="x39_borrado_frase_d7">Se borra 7 días después de leerlo</string>
+    <string name="x39_borrado_frase_siempre">No se borra solo</string>
+    <string name="x39_borrado_defecto_texto">Vale para las conversaciones nuevas; cada una se puede cambiar por separado desde su cabecera. El contador arranca cuando la otra persona lee el mensaje.\n\nEl borrado automático se apoya en que la app del otro lo cumpla. Protege contra que el mensaje quede olvidado en un teléfono; no impide que alguien le haga una foto con otra cámara ni que use una versión modificada de la app.</string>
+
+    <!-- Qué va cifrado (el candado) -->
+    <string name="x39_cifrado_titulo">Qué va cifrado</string>
+    <string name="x39_cifrado_ruta_tunel">· La ruta va por el x39tunel (WireGuard): %1$s.</string>
+    <string name="x39_cifrado_ruta_directa">· El x39tunel está apagado: la ruta va directa y el servidor ve tu IP.</string>
+    <string name="x39_cifrado_texto">"LAS LLAMADAS Y LAS VIDEOLLAMADAS\n· Los dos móviles acuerdan la clave entre ellos, de forma post-cuántica\n  (ML-KEM-1024), y cada oferta va firmada (ML-DSA-87) para que nadie se\n  pueda meter en medio.\n· De esa clave salen los 32 bytes que cifran el audio y el vídeo, y las\n  seis palabras que compruebas en voz alta.\n· El servidor reparte los paquetes y no puede descifrarlos: la clave no\n  pasa por él en ningún momento.\n\nTU IDENTIDAD\n· Es una clave ML-DSA-87. La parte secreta nace y se queda en este móvil,\n  sellada por el Keystore. Tu huella se deriva de ella.\n\nLOS MENSAJES Y ARCHIVOS\n· Cada mensaje, nota de voz o trozo de fichero lleva su propio encapsulado\n  post-cuántico (ML-KEM-1024) y tu firma (ML-DSA-87). Fotos y vídeos se\n  limpian de metadatos antes de sellarse, y todo se guarda cifrado en el Keystore.\n\nLA RUTA\n%1$s\n\nLO QUE EL CIFRADO NO TAPA\n· El servidor sabe quién habla con quién, a qué hora y cuánto rato. Eso es\n  metadato de red y no lo esconde ninguna clave. Tampoco lo esconde el\n  túnel: solo cambia por dónde pasa."</string>
+    <string name="x39_ver_mi_identidad">Ver mi identidad</string>
+
+    <!-- Recepción en segundo plano -->
+    <string name="x39_fondo_intro">x39 no usa Google: el aviso llega por su propia conexión, que mantiene abierta un servicio. MIUI cierra esa conexión si no le das permiso. Repasa estas líneas.</string>
+    <string name="x39_fondo_comprobable">LO QUE LA APP PUEDE COMPROBAR</string>
+    <string name="x39_fondo_avisos">Avisos de x39</string>
+    <string name="x39_fondo_avisos_sub">sin esto no verás la llamada entrante</string>
+    <string name="x39_fondo_bateria">Batería sin restricciones</string>
+    <string name="x39_fondo_bateria_sub">si está restringida, el sistema corta la conexión</string>
+    <string name="x39_fondo_pantalla_completa">Llamada a pantalla completa</string>
+    <string name="x39_fondo_pantalla_completa_sub">sin esto la llamada entra como un aviso normal, no a pantalla completa</string>
+    <string name="x39_fondo_no_hace_falta">En esta versión de Android no hace falta pedirlo</string>
+    <string name="x39_fondo_alarma">Alarma exacta</string>
+    <string name="x39_fondo_alarma_sub">el vigilante que revisa la conexión cada 10 minutos</string>
+    <string name="x39_fondo_manual">LO QUE TIENES QUE MIRAR TÚ (MIUI NO LO DEJA LEER)</string>
+    <string name="x39_fondo_autoinicio">Autoinicio activado</string>
+    <string name="x39_fondo_autoinicio_sub">Seguridad › Permisos › Autoinicio › x39. Sin esto no arranca al encender el móvil.</string>
+    <string name="x39_fondo_recientes">Bloquear x39 en recientes</string>
+    <string name="x39_fondo_recientes_sub">Abre las aplicaciones recientes, desliza x39 hacia abajo y toca el candado.</string>
+    <string name="x39_fondo_recientes_aviso">Se hace en la pantalla de recientes, no en Ajustes</string>
+    <string name="x39_fondo_pie">Aunque todo esté puesto, el servidor sigue viendo quién habla con quién, cuándo y cuánto: eso no lo tapa ningún cifrado. Lo que no puede ver es qué se dice.</string>
+    <string name="x39_fondo_concedido">concedido</string>
+    <string name="x39_fondo_sin_pantalla_ajustes">Tu móvil no tiene esa pantalla de ajustes; búscala a mano</string>
+
+    <!-- Identidad: compartir y añadir -->
+    <string name="x39_identidad_qr_desc">Código QR con tu identidad</string>
+    <string name="x39_identidad_qr_firma_desc">Código QR de tu clave de firmar</string>
+    <string name="x39_identidad_qr_firma_pie">1 de 2 · PARA LLAMARTE\nEste es el que te da de alta en su agenda.</string>
+    <string name="x39_identidad_qr_cifrar_desc">Código QR de tu clave de cifrar</string>
+    <string name="x39_identidad_qr_cifrar_pie">2 de 2 · PARA ESCRIBIRTE\nEste lo lee desde «Cifrar», cuando ya te tenga guardado.</string>
+    <string name="x39_identidad_ver_otro">Ver el otro código</string>
+    <string name="x39_identidad_tu_foto">TU FOTO</string>
+    <string name="x39_identidad_tu_huella">TU HUELLA (TU NÚMERO)</string>
+    <string name="x39_identidad_copiar">Copiar mi identidad completa</string>
+    <string name="x39_identidad_copiada">Identidad copiada (X39ID1)</string>
+    <string name="x39_identidad_escanear">Escanear el QR de otra persona</string>
+    <string name="x39_identidad_o_pega">O PEGA SU IDENTIDAD</string>
+    <string name="x39_identidad_nombre_hint">Nombre</string>
+    <string name="x39_identidad_pega_hint">Pega aquí la identidad del otro</string>
+    <string name="x39_guardar_contacto">Guardar contacto</string>
+    <string name="x39_nombre_e_identidad">Nombre e identidad, los dos</string>
+    <string name="x39_contacto_guardado">Contacto guardado</string>
+    <string name="x39_identidad_no_valida">Esa identidad no es válida</string>
+    <string name="x39_nombre_persona_hint">Nombre de la persona</string>
+    <string name="x39_identidad_leida">Identidad leída · huella %1$s</string>
+    <string name="x39_ponle_nombre">Ponle un nombre</string>
+    <string name="x39_qr_solo_cifrar">Ese QR es solo una clave de cifrar. Usa «Cifrar» desde el contacto.</string>
+    <string name="x39_identidad_no_coincide">Esa identidad NO es la de %1$s: la clave de firmar no coincide</string>
+    <string name="x39_no_es_identidad">Eso no es una identidad de x39</string>
+
+    <!-- Cifrar con un contacto y comprobar huellas -->
+    <string name="x39_cifrar_titulo">Cifrar con %1$s</string>
+    <string name="x39_cifrar_texto">De %1$s tienes su clave de firmar: con eso puedes llamarle. Para escribirle hace falta además su clave de cifrar.\n\nQue te enseñe su QR desde «Compartir identidad», o que te pegue su identidad por donde prefiera.</string>
+    <string name="x39_cifrar_escanear">Escanear su QR</string>
+    <string name="x39_cifrar_hint">X39ID1:… o X39PK1:…</string>
+    <string name="x39_cifrar_guardar">Guardar su clave de cifrar</string>
+    <string name="x39_cifrar_pega">Pega su identidad</string>
+    <string name="x39_huellas_sin_clave">Todavía no tienes su clave de cifrar</string>
+    <string name="x39_huellas_titulo">Comprobad las huellas</string>
+    <string name="x39_huellas_texto">Leedlas en voz alta, por teléfono o en persona. Tienen que salir IGUALES en los dos aparatos. Si no coinciden, alguien está en medio: no lo marques.</string>
+    <string name="x39_huellas_la_tuya">LA TUYA</string>
+    <string name="x39_huellas_la_de">LA DE %1$s</string>
+    <string name="x39_huellas_coinciden">Coinciden: marcar como verificado</string>
+    <string name="x39_huellas_verificado">%1$s queda verificado</string>
+    <string name="x39_huellas_pie">Ya puedes escribirle aunque no lo marques: marcarlo solo deja constancia de que has comprobado con quién hablas.</string>
+
+    <!-- Foto de perfil -->
+    <string name="x39_foto_tienes">Tienes foto</string>
+    <string name="x39_foto_sin">Sin foto</string>
+    <plurals name="x39_foto_la_ven">
+        <item quantity="one">La ven %1$d contactos verificados</item>
+        <item quantity="many">La ven %1$d contactos verificados</item>
+        <item quantity="other">La ven %1$d contactos verificados</item>
+    </plurals>
+    <string name="x39_foto_iniciales">Se ven tus iniciales. Poner foto es cosa tuya.</string>
+    <string name="x39_foto_cambiar">Cambiar la foto</string>
+    <string name="x39_foto_poner">Poner una foto</string>
+    <string name="x39_foto_quitar">Quitar la foto</string>
+    <string name="x39_foto_aviso">Tu foto se envía cifrada solo a tus contactos verificados. Una vez en su móvil, ya no la controlas.</string>
+    <string name="x39_foto_sin_datos">Se le quitan los datos de ubicación y de cámara antes de enviarla.</string>
+    <string name="x39_foto_no_usable">No se pudo usar esa imagen: %1$s</string>
+    <string name="x39_foto_guardada">Foto guardada</string>
+    <string name="x39_foto_reparto_nadie">Se han quitado los datos de ubicación y de cámara.\n\nTodavía no se la puede mandar a nadie: no tienes contactos verificados. Se enviará cuando verifiques alguno.</string>
+    <plurals name="x39_foto_reparto">
+        <item quantity="one">Se han quitado los datos de ubicación y de cámara.\n\nSe enviará cifrada a tus %1$d contactos verificados. Una vez en su móvil, ya no la controlas.</item>
+        <item quantity="many">Se han quitado los datos de ubicación y de cámara.\n\nSe enviará cifrada a tus %1$d contactos verificados. Una vez en su móvil, ya no la controlas.</item>
+        <item quantity="other">Se han quitado los datos de ubicación y de cámara.\n\nSe enviará cifrada a tus %1$d contactos verificados. Una vez en su móvil, ya no la controlas.</item>
+    </plurals>
+    <plurals name="x39_foto_enviada">
+        <item quantity="one">Foto enviada a %1$d contactos</item>
+        <item quantity="many">Foto enviada a %1$d contactos</item>
+        <item quantity="other">Foto enviada a %1$d contactos</item>
+    </plurals>
+    <string name="x39_quitar_foto_titulo">¿Quitar tu foto?</string>
+    <string name="x39_quitar_foto_texto">Se borra de este móvil y se avisa a tus contactos verificados para que borren su copia.\n\nQue la borren de verdad depende de que su app lo cumpla: si alguien le hizo una foto con otra cámara, eso no se puede deshacer.</string>
+    <string name="x39_foto_quitada">Foto quitada</string>
+    <string name="x39_fotos_no_leer">no se pudo leer esa imagen</string>
+    <string name="x39_fotos_grande">la imagen es demasiado grande</string>
+
+    <!-- Llamada saliente -->
+    <string name="x39_llamando_a">Llamando a</string>
+    <string name="x39_llamada_cifrada_e2e">Llamada cifrada de extremo a extremo</string>
+    <string name="x39_videollamada_cifrada_e2e">Videollamada cifrada de extremo a extremo</string>
+    <string name="x39_estableciendo_clave">Estableciendo clave post-cuántica…</string>
+
+    <!-- Acerca de x39 -->
+    <string name="x39_acerca_midiendo">Midiendo el APK instalado…</string>
+    <string name="x39_acerca_version">Versión %1$s (código %2$d)\nPaquete %3$s</string>
+    <string name="x39_acerca_certificado">Certificado de firma (SHA-256)\n%1$s</string>
+    <string name="x39_acerca_apk">APK instalado (SHA-256, %1$d bytes)\n%2$s</string>
+    <string name="x39_acerca_motor">Motor: ML-DSA-87 · ML-KEM-1024 · X39-CALL-KEY-v1 · x39tunel v2 (WireGuard + PSK post-cuántica)</string>
+    <string name="x39_acerca_error">No se pudo medir: %1$s</string>
+
+    <!-- Conversación (chat) -->
+    <string name="x39_chat_contacto_no_esta">Ese contacto ya no está en tu agenda</string>
+    <string name="x39_chat_llamar_a">Llamar a %1$s</string>
+    <string name="x39_chat_estado_sin_clave">pendiente · sin su clave de cifrar</string>
+    <string name="x39_chat_escribe">Escribe un mensaje</string>
+    <string name="x39_chat_adjuntar">Adjuntar</string>
+    <string name="x39_chat_grabar_nota">Grabar una nota de voz</string>
+    <string name="x39_chat_descartar_nota">Descartar la nota de voz</string>
+    <string name="x39_chat_grabando">"●  Grabando  %1$d:%2$02d"</string>
+    <string name="x39_chat_enviar_nota">Enviar la nota de voz</string>
+    <string name="x39_chat_no_puedes_titulo">Todavía no puedes escribirle</string>
+    <string name="x39_chat_no_puedes_texto">De %1$s solo tienes la clave de firmar, que sirve para llamarle. Para cerrarle un mensaje hace falta también su clave de cifrar.\n\nUsa «Cifrar» en su menú de contacto para conseguirla.</string>
+    <string name="x39_chat_sin_micro">Sin micrófono no se puede grabar una nota de voz</string>
+    <string name="x39_chat_no_grabar">No se pudo empezar a grabar: %1$s</string>
+    <string name="x39_chat_error">error</string>
+    <string name="x39_chat_no_grabo">No se grabó nada</string>
+    <string name="x39_chat_corta">Demasiado corta</string>
+    <string name="x39_chat_no_leer_grabacion">No se pudo leer la grabación</string>
+    <string name="x39_chat_no_enviar">No se pudo enviar: %1$s</string>
+    <string name="x39_chat_nota_descartada">Nota de voz descartada</string>
+    <string name="x39_chat_adj_foto">Foto</string>
+    <string name="x39_chat_adj_video">Vídeo</string>
+    <string name="x39_chat_adj_documento">Documento</string>
+    <string name="x39_chat_demasiado_grande">Demasiado grande</string>
+    <string name="x39_chat_demasiado_grande_texto">«%1$s» ocupa %2$s y el tope son 25 MB.</string>
+    <string name="x39_chat_enviar_metadatos">Enviar los datos de ubicación y de cámara</string>
+    <string name="x39_chat_aviso_video">AVISO: la limpieza de los datos del vídeo (ubicación, fecha, móvil) está en verificación. Hasta confirmarla, cuenta con que podría llevarlos.</string>
+    <string name="x39_chat_limpio">Se han quitado los datos de ubicación y de cámara.</string>
+    <string name="x39_chat_documento_metadatos">Un documento puede llevar metadatos propios (autor, programa) que x39 no toca.</string>
+    <plurals name="x39_chat_trafico">
+        <item quantity="one">%1$s · %2$d trozos sellados por separado.\nPor el servidor pasarán unos %3$s, y ese tráfico lo paga quien paga el servidor.</item>
+        <item quantity="many">%1$s · %2$d trozos sellados por separado.\nPor el servidor pasarán unos %3$s, y ese tráfico lo paga quien paga el servidor.</item>
+        <item quantity="other">%1$s · %2$d trozos sellados por separado.\nPor el servidor pasarán unos %3$s, y ese tráfico lo paga quien paga el servidor.</item>
+    </plurals>
+    <string name="x39_chat_limpiando_video">Limpiando el vídeo…</string>
+    <string name="x39_chat_no_se_puede_enviar">No se puede enviar: %1$s</string>
+    <string name="x39_chat_enviando_limpio">Enviando sin datos de ubicación ni de cámara</string>
+    <string name="x39_chat_tamano_desconocido">tamaño desconocido</string>
+    <string name="x39_chat_vacio_sin_clave">Todavía no puedes escribir a %1$s: te falta su clave de cifrar. Usa «Cifrar» en su menú de contacto.</string>
+    <string name="x39_chat_vacio">Aquí no hay nada todavía. Lo que escribas va cerrado a la clave de %1$s.</string>
+    <string name="x39_chat_ver_foto">Ver la foto</string>
+    <plurals name="x39_chat_trozos">
+        <item quantity="one">%1$d/%2$d trozos</item>
+        <item quantity="many">%1$d/%2$d trozos</item>
+        <item quantity="other">%1$d/%2$d trozos</item>
+    </plurals>
+    <string name="x39_chat_reenviar">Reenviar</string>
+    <string name="x39_chat_no_reenviar">No se pudo reenviar: %1$s</string>
+    <string name="x39_chat_parar">"■  Parar"</string>
+    <string name="x39_chat_escuchar">"▶  Escuchar"</string>
+    <string name="x39_chat_no_abrir_grabacion">No se pudo abrir la grabación</string>
+    <string name="x39_chat_no_reproducir_sin_disco">Este Android no puede reproducirla sin dejarla en claro en disco</string>
+    <string name="x39_chat_no_reproducir">No se pudo reproducir</string>
+    <string name="x39_chat_estado_pendiente">⏳ pendiente · se enviará cuando esté en línea</string>
+    <string name="x39_chat_estado_enviado">✓ enviado · esperando a que su móvil lo confirme</string>
+    <string name="x39_chat_estado_entregado">✓✓ entregado</string>
+    <string name="x39_chat_estado_caducado">⚠ caducado, no se entregó</string>
+    <plurals name="x39_chat_caduca_dias">
+        <item quantity="one">caduca en %1$d días</item>
+        <item quantity="many">caduca en %1$d días</item>
+        <item quantity="other">caduca en %1$d días</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_horas">
+        <item quantity="one">caduca en %1$d horas</item>
+        <item quantity="many">caduca en %1$d horas</item>
+        <item quantity="other">caduca en %1$d horas</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_minutos">
+        <item quantity="one">caduca en %1$d minutos</item>
+        <item quantity="many">caduca en %1$d minutos</item>
+        <item quantity="other">caduca en %1$d minutos</item>
+    </plurals>
+    <string name="x39_chat_caduca_menos_minuto">caduca en menos de un minuto</string>
+    <string name="x39_chat_borrar_aparato">Borrar de este aparato</string>
+    <string name="x39_chat_copiado">Copiado</string>
+    <string name="x39_chat_aviso_borrado">El borrado automático se apoya en que la app del otro lo cumpla. Protege contra que el mensaje quede olvidado en un teléfono; no impide que alguien le haga una foto con otra cámara ni que use una versión modificada de la app.</string>
+    <string name="x39_chat_borrar_mensajes">Borrar los mensajes…</string>
+    <string name="x39_chat_borrado_texto">El contador arranca cuando la otra persona abre la conversación, no cuando envías. La opción viaja dentro del sobre cerrado: el servidor no la ve ni la puede cambiar.</string>
+
+    <!-- Adjuntos: motivos de fallo -->
+    <string name="x39_adj_video_no_limpio">No se ha podido limpiar el vídeo, no se envía (%1$s)</string>
+    <string name="x39_adj_no_leer">No se pudo leer el fichero</string>
+    <string name="x39_adj_pasa_25">el fichero pasa de 25 MB</string>
+    <string name="x39_adj_falta_clave">te falta su clave de cifrar</string>
+    <string name="x39_adj_ya_no_esta_movil">el fichero ya no está en este móvil</string>
+    <string name="x39_adj_ya_enviando">ya se está enviando</string>
+    <string name="x39_adj_ya_no_esta">el fichero ya no está</string>
+    <string name="x39_adj_galeria_permisos">este Android no permite guardar en la galería sin más permisos</string>
+    <string name="x39_adj_galeria_no_acepto">la galería no aceptó el fichero</string>
+    <string name="x39_adj_no_escribir">no se pudo escribir</string>
+    <string name="x39_video_sin_pista">no tiene pista de vídeo</string>
+    <string name="x39_video_sin_muestras">el vídeo no tiene muestras</string>
+    <string name="x39_video_pasa_25">limpio pasa de 25 MB</string>
+
+    <!-- En llamada -->
+    <string name="x39_llamada_sin_camara_voz">Sin permiso de cámara: la llamada sigue solo con voz</string>
+    <string name="x39_llamada_sin_micro">Sin permiso de micrófono</string>
+    <string name="x39_llamada_sin_micro_texto">x39 necesita el micrófono para hablar. Dáselo en los ajustes del móvil y vuelve a llamar.</string>
+    <string name="x39_llamada_faltan_datos">Faltan los datos de la llamada</string>
+    <string name="x39_llamada_no_conectar">No se pudo conectar la llamada</string>
+    <string name="x39_llamada_ha_colgado">%1$s ha colgado</string>
+    <string name="x39_llamada_sin_camara">Sin permiso de cámara. Dáselo en los ajustes del móvil.</string>
+    <string name="x39_llamada_silenciar_mic">Silenciar el micrófono</string>
+    <string name="x39_llamada_encender_mic">Encender el micrófono</string>
+    <string name="x39_llamada_apagar_camara">Apagar la cámara</string>
+    <string name="x39_llamada_encender_camara">Encender la cámara</string>
+    <string name="x39_llamada_pie_tunel">La ruta se protege con el x39tunel. El servidor reparte los paquetes pero no puede descifrarlos.</string>
+    <string name="x39_llamada_pie_sin_tunel">El servidor reparte los paquetes pero no puede descifrarlos. El x39tunel está apagado: el servidor ve tu IP y la hora.</string>
+    <string name="x39_llamada_comprueba_palabras">COMPRUEBA ESTAS 6 PALABRAS CON LA OTRA PERSONA</string>
+    <string name="x39_llamada_acordando">acordando la clave…</string>
+    <string name="x39_llamada_tu_camara_desc">Tu cámara. Tócala para cambiar de cámara; arrástrala a otra esquina.</string>
+    <string name="x39_llamada_altavoz_desc">Altavoz y salida de audio</string>
+
+    <!-- Llamada entrante -->
+    <string name="x39_entrante_video_de">Videollamada entrante de</string>
+    <string name="x39_entrante_de">Llamada entrante de</string>
+    <string name="x39_entrante_conectando_camara">Conectando con cámara…</string>
+
+    <!-- Visor de fotos -->
+    <string name="x39_visor_ya_no_esta">Esa foto ya no está</string>
+    <string name="x39_visor_mas_opciones">Más opciones</string>
+    <string name="x39_visor_guardar_galeria">Guardar en galería</string>
+    <string name="x39_visor_guardar_titulo">¿Guardar en la galería?</string>
+    <string name="x39_visor_guardar_texto">La copia va sin datos de ubicación ni de cámara.\n\nPero la galería se sincroniza con la nube en muchos móviles: a partir de ahí la foto deja de estar protegida por x39.</string>
+    <string name="x39_visor_no_guardar">No se pudo guardar: %1$s</string>
+    <string name="x39_visor_guardada">Guardada en la galería, carpeta x39</string>
+
+    <!-- Lector de QR -->
+    <string name="x39_escaner_apunta">Apunta al QR de identidad de la otra persona</string>
+
+    <!-- Servicio y notificaciones -->
+    <string name="x39_notif_mensaje_nuevo">Mensaje nuevo de %1$s</string>
+    <string name="x39_notif_en_linea">x39 · en línea</string>
+    <string name="x39_notif_reconectando">x39 · reconectando…</string>
+    <string name="x39_notif_linea_tunel">Línea abierta · x39tunel activo</string>
+    <string name="x39_notif_linea_abierta">La línea sigue abierta para recibir llamadas.</string>
+    <string name="x39_notif_en_llamada">En llamada</string>
+    <string name="x39_notif_videollamada_entrante">Videollamada entrante</string>
+    <string name="x39_notif_llamada_entrante">Llamada entrante</string>
+    <string name="x39_canal_linea">Línea abierta</string>
+    <string name="x39_canal_linea_desc">El aviso permanente de que x39 sigue en línea. Sin sonido.</string>
+    <string name="x39_canal_entrantes">Llamadas entrantes</string>
+    <string name="x39_canal_entrantes_desc">Llamadas y videollamadas que entran.</string>
+    <string name="x39_canal_mensajes">Mensajes</string>
+    <string name="x39_canal_mensajes_desc">Avisa de quién te escribe. El texto no se enseña en la pantalla de bloqueo.</string>
+
+    <!-- x39tunel: estado que se ve en Ajustes -->
+    <string name="x39_tunel_estado_apagado">apagado</string>
+    <string name="x39_tunel_estado_sin_permiso">falta el permiso de VPN</string>
+    <string name="x39_tunel_estado_alta">dando de alta el par en el servidor…</string>
+    <string name="x39_tunel_estado_psk">acordando la clave post-cuántica…</string>
+    <string name="x39_tunel_estado_levantando">levantando el túnel…</string>
+    <string name="x39_tunel_estado_protegido">ruta protegida · %1$s · clave PQ hasta %2$s</string>
+    <string name="x39_tunel_estado_protegido_sin_psk">ruta protegida · %1$s · SIN clave post-cuántica: este servidor no la reparte todavía</string>
+    <string name="x39_tunel_fallo_cayo">sin túnel: el túnel se cayó</string>
+    <string name="x39_tunel_fallo_alta">sin túnel: alta del par: %1$s</string>
+    <string name="x39_tunel_fallo_psk">sin túnel: clave del túnel: %1$s</string>
+    <string name="x39_tunel_fallo_sin_respuesta_alta">sin túnel: el servidor no contestó al alta del par (wg_alta)</string>
+    <string name="x39_tunel_fallo_sin_respuesta_psk">sin túnel: el servidor no contestó a la petición de clave (psk)</string>
+    <string name="x39_tunel_fallo_otro">sin túnel: %1$s</string>
+    <string name="x39_idioma">Idioma</string>
+    <string name="x39_idioma_sistema">Sistema</string>
+    <string name="x39_qr_propio">Ese QR es tu propia identidad. No se ha guardado nada.</string>
+    <string name="x39_identidad_propia">Esa identidad es la tuya. No se ha guardado nada.</string>
+    <string name="x39_qr_pantalla_completa">Ver el QR a pantalla completa</string>
+    <string name="x39_qr_por_partes">QR por partes (más fácil de leer)</string>
+    <string name="x39_qr_parte_de">Parte %1$d de %2$d · toca para cerrar</string>
+    <string name="x39_escaner_partes">Partes leídas: %1$d de %2$d. Sigue apuntando.</string>
+    <string name="x39_qr_mezcla_titulo">Escaneo detenido</string>
+    <string name="x39_qr_mezcla_texto">Se han leído QR de dos identidades distintas, o las partes no forman una identidad íntegra. Puede ser otra pantalla a la vista o alguien intentando colarte otra identidad. No se ha guardado nada. Vuelve a empezar con una sola pantalla delante.</string>
+    <string name="x39_contacto_guardado_sin_verificar">Contacto guardado como NO verificado. Comparad las huellas para verificarlo.</string>
+    <string name="x39_contacto_sin_verificar">⚠ SIN VERIFICAR</string>
+    <string name="x39_chat_aviso_sin_verificar">Todavía no has comprobado la huella de esta persona</string>
+    <string name="x39_chat_aviso_comparar">Comparar</string>
+    <string name="x39_huellas_no_coinciden">No coinciden</string>
+    <string name="x39_huellas_no_coinciden_titulo">Las huellas NO coinciden</string>
+    <string name="x39_huellas_no_coinciden_texto">Puede que hayas leído la identidad de otra persona o que alguien esté en medio intentando suplantar a %1$s. Por seguridad se borra este contacto. Vuelve a empezar, mejor en persona.</string>
+    <string name="x39_escaner_alejate">Aléjate un poco: a menos de %1$d cm esta cámara no enfoca.</string>
+    <string name="x39_escaner_mas_luz">Hace falta más luz: sube el brillo de la otra pantalla o busca más luz.</string>
+    <string name="x39_escaner_sin_camara">No se puede usar la cámara. Da el permiso en los ajustes del móvil y vuelve a intentarlo.</string>
+</resources>

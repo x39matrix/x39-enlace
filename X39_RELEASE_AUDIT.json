@@ -1,0 +1,82 @@
+{
+  "owner": "x39matrix",
+  "branch": "billetera-motor",
+  "stage": "signed-verified-published",
+  "application_id": "org.x39matrix.llamadas.escritorio",
+  "apk": {
+    "type": "SINGLE",
+    "filters": [],
+    "attributes": [],
+    "versionCode": 46,
+    "versionName": "1.0.8-x39",
+    "outputFile": "sample-app-escritorio-release-unsigned.apk"
+  },
+  "unsigned_sha256": "c5996baa18f3e0ebe507bcfb1af93061bc304cc041e175e453a851c718762a2a",
+  "native_wallet_sha256": "244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43",
+  "app_unit_tests": {
+    "tests": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wallet_sources": {
+    "commit": "51334e81a85df5c6b97904b9f3b5e5a4b4862bdc",
+    "modified": false,
+    "source_tree_sha256": "d0bd5ce4293c5d4c638285059cde4368880f6ab9c29d0ce6323d4765704a2e3d"
+  },
+  "chat_sources": {
+    "commit": "6a9ce600498f327280b943c8f2666c0de758bdca",
+    "modified": false,
+    "source_tree_sha256": "e82f807be77bb049299a81ac24a94b83c55cbce0d2304d8a70d785288918b794"
+  },
+  "checks": [
+    "native wallet rebuilt mainnet using locked toolchain",
+    "wallet library matches build-native.lock",
+    "unsigned APK zipalign -c -P 16 4",
+    "complete modules and native libraries present in APK",
+    "no GMS Firebase or known commercial telemetry package prefixes in DEX",
+    "release runtime dependency graph reviewed",
+    "git diff --check",
+    "bash -n firmar-y-empaquetar-x39.sh",
+    "71 wallet release unit tests passed",
+    "signing script end-to-end tested with an isolated temporary X39 test key; APK v1/v2/v3 verification, alignment, checksum and HTML hash passed; production keystore unused",
+    "existing production APK signatures v1/v2/v3 and supplied SHA-256 fingerprints verified without changing APK"
+  ],
+  "limits": [
+    "Sibling repositories x39-wallet (51334e81a85df5c6b97904b9f3b5e5a4b4862bdc) and x39-chat (6a9ce600498f327280b943c8f2666c0de758bdca) are pinned by commit and source tree fingerprint in this manifest",
+    "No physical device camera, tunnel interface capture or live payment end-to-end testing in JVM build environment",
+    "OpenTimestamps receipt SHA256SUMS.txt.ots contains pending calendar attestations awaiting Bitcoin block confirmation upgrade",
+    "GitHub Release and remote web publication remain separate from local repository verification"
+  ],
+  "wallet_unit_tests": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "signed_sha256": "9ba6f08afbc829e9730f909dd139e403edcd3d33ebd5e5c84f1560b2fc88bb78",
+  "signer_certificate_sha256": "8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe",
+  "signature_schemes_verified": [
+    "v1",
+    "v2",
+    "v3"
+  ],
+  "opentimestamps": {
+    "file": "SHA256SUMS.txt.ots",
+    "status": "pending_calendar_attestations",
+    "stamped_file_sha256": "19043c64cc9649c755b607fb914760a740b8bffcbd02079be6e28a73f0b81c20"
+  },
+  "web_publication": {
+    "url": "https://mining.x39matrix.org/app/index.html",
+    "frontend": "/opt/x39-mining/releases/0.2.5-local-reviewfix/runtime/frontend",
+    "backup": "/var/backups/x39-app-v1.0.7-20261107T045419Z",
+    "homepage_link_verified": true,
+    "public_files_match_local_manifest": true,
+    "public_http_checks": 9,
+    "branch": "billetera-motor",
+    "apk_recompiled_or_modified": false
+  },
+  "versionCode": 46,
+  "versionName": "1.0.8-x39",
+  "license": "Apache-2.0 OR MIT"
+}

@@ -1,0 +1,153 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+}
+
+
+android {
+    packagingOptions {
+        resources {
+            excludes += [
+                "META-INF/com/android/build/gradle/**",
+                "META-INF/version-control-info.textproto",
+                "DebugProbesKt.bin"
+            ]
+        }
+    }
+
+    // Chat común con x39 Evidencia (un solo módulo para las dos apps): ~/x39-chat
+    sourceSets {
+        main {
+            java.srcDirs += ['../../x39-chat/java']
+        }
+    }
+    namespace "io.livekit.android.sample"
+    compileSdkVersion androidSdk.compileVersion
+
+    defaultConfig {
+        // Identificador propio de x39 Llamadas. NO cambiar una vez publicado: Android lo trata
+        // como otra app y rompe las instalaciones. El namespace y el paquete Java se quedan por ahora.
+        applicationId "org.x39matrix.llamadas"
+        minSdkVersion androidSdk.minVersion
+        targetSdkVersion androidSdk.targetVersion
+        versionCode 46
+        versionName "1.0.8"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk { abiFilters 'arm64-v8a' }
+    }
+
+    flavorDimensions "edicion"
+    productFlavors {
+        general {
+            // Laboratorio CON billetera: nunca se publica. Paquete aparte para no pisar a la app publica.
+            // No lleva más direcciones ni puertos de red que el punto de acceso Electrum del nodo X-39.
+            dimension "edicion"
+            applicationIdSuffix ".lab"
+        }
+        comunicaciones {
+            // App publica X39 Comunicaciones, SIN billetera. applicationId por defecto: org.x39matrix.llamadas.
+            dimension "edicion"
+        }
+        escritorio {
+            // X39 completa pública: billetera mainnet, comunicaciones y telemetría de solo lectura.
+            // Conserva el ID .escritorio para mantener la identidad de instalaciones existentes.
+            dimension "edicion"
+            applicationIdSuffix ".escritorio"
+            versionNameSuffix "-x39"
+        }
+    }
+    sourceSets {
+        // Billetera: todo lo común a los dos sabores que la llevan vive en src/billetera.
+        general { java.srcDirs += 'src/billetera/java'; res.srcDirs += 'src/billetera/res' }
+        escritorio { java.srcDirs += 'src/billetera/java'; res.srcDirs += 'src/billetera/res' }
+    }
+
+    // Firma de publicación de X-39 (mismo almacén y alias que Evidencia). Nada secreto en este fichero:
+    // scripts/build_llamadas_release.sh pide la contraseña sin eco y la pasa solo al proceso de Gradle.
+    // Sin X39_KEYSTORE sale un APK release sin firmar.
+    signingConfigs {
+        release {
+            def almacen = System.getenv('X39_KEYSTORE')
+            if (almacen) {
+                storeFile file(almacen)
+                // keytool de JDK 17 crea PKCS12 aunque el fichero se llame .jks.
+                storeType 'pkcs12'
+                storePassword System.getenv('X39_STORE_PASS')
+                keyAlias System.getenv('X39_KEY_ALIAS') ?: 'x39'
+                keyPassword System.getenv('X39_KEY_PASS') ?: System.getenv('X39_STORE_PASS')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (System.getenv('X39_KEYSTORE')) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    // Sin el bloque de metadatos de dependencias que Google añade al APK (igual que Evidencia).
+    dependenciesInfo {
+        includeInApk false
+        includeInBundle false
+    }
+    compileOptions {
+        sourceCompatibility java_version
+        targetCompatibility java_version
+        // La biblioteca de WireGuard usa java.util.Optional y java.time: hace falta desugaring.
+        coreLibraryDesugaringEnabled true
+    }
+    kotlinOptions {
+        jvmTarget = java_version
+    }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    // x39tunel: WireGuard dentro de la app (misma biblioteca que la app oficial de WireGuard, Apache 2)
+    // 1.0.20211029: última compilada en Java 8 (las posteriores usan records y D8 no las convierte aquí)
+    implementation 'com.wireguard.android:tunnel:1.0.20211029'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+    // Lectura de códigos QR (identidad del otro) con la cámara: ZXing puro Java, Apache 2
+    implementation 'com.google.zxing:core:3.5.3'
+
+    // Sample-app-common contains the livekit-android-sdk dependency and others
+    // as well as classes common to both sample apps.
+    implementation project(":sample-app-common")
+    // Billetera: solo en las ediciones `general` (.lab) y `escritorio`. Coordenada del includeBuild ../x39-wallet/android.
+    generalImplementation 'x39.wallet:wallet'
+    escritorioImplementation 'x39.wallet:wallet'
+
+    // CameraX ya no se declara aquí: el lector de QR usa Camera2 (1.0.5). La cámara de la videollamada
+    // sigue usando CameraX a través de :livekit-android-camerax (vía sample-app-common).
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation libs.coroutines.lib
+    implementation libs.appcompat
+    implementation libs.androidx.core
+    implementation libs.androidx.activity.ktx
+    implementation libs.androidx.fragment.ktx
+    implementation libs.androidx.viewpager2
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.lifecycle.common.java8
+    implementation libs.groupie
+    implementation libs.groupie.viewbinding
+    testImplementation libs.junit
+    testImplementation "org.json:json:20240303"
+    androidTestImplementation libs.androidx.test.junit
+    androidTestImplementation libs.espresso
+}
+
+configurations.all {
+    exclude group: 'com.google.android.material', module: 'material'
+}

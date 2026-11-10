@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X39 Android · Evidencias, Bitcoin y comunicaciones privadas</title>
+<meta name="description" content="Los cuatro pilares de X39: evidencias con OpenTimestamps, Bitcoin bajo tu custodia, comunicaciones cifradas y telemetría soberana. APK firmado y hashes verificables.">
+<link rel="canonical" href="https://mining.x39matrix.org/app/index.html">
+<link rel="stylesheet" href="x39-app.css">
+</head>
+<body>
+<main class="x39-app" aria-labelledby="x39-app-title">
+<p><a href="/">← X39 Mining</a></p>
+<img class="x39-brand-icon" src="x39-icon.png" width="192" height="192" alt="Logo oficial X39 MATRIX">
+<h1 id="x39-app-title">X39 · Android</h1>
+<p>Tu evidencia. Tu dinero. Tus comunicaciones. Tu infraestructura.</p>
+<h2>Los cuatro pilares de X39</h2>
+<ol>
+<li><strong>Evidencias para reporteros y ciudadanos.</strong> Sellado criptográfico con OpenTimestamps (.ots): integridad verificable y prueba de existencia previa al confirmar el anclaje en Bitcoin. Conserva el original y su prueba. El flujo X39 Evidencia pertenece al ecosistema; esta entrega incluye el sello de las sumas del APK.</li>
+<li><strong>Bitcoin bajo tu custodia.</strong> Billetera nativa <strong>libx39wallet.so</strong> y Electrs propio: dinero sin depender de una cuenta bancaria, también cuando bloquean el acceso al banco.</li>
+<li><strong>Comunicaciones privadas cifradas.</strong> Mensajería, llamadas y túnel privado <strong>x39tunel / WireGuard</strong> sobre infraestructura X39.</li>
+<li><strong>Telemetría en tiempo real.</strong> Lectura del nodo Bitcoin Core mainnet y CKPool SOLO: <code>stratum+tcp://mining.x39matrix.org:3333</code> Reparto configurado: 99% minero / 1% operador; sin registro de cuenta.</li>
+</ol>
+<p>Sin Google Play Services, Firebase ni telemetría comercial de terceros. Bibliotecas libres autorizadas. Android arm64-v8a · versión 1.0.8-x39 (46).</p>
+<a class="x39-download" href="x39-app-latest.apk" download>Descargar APK firmado / Download signed APK</a>
+<h2>Verifica antes de instalar</h2>
+<p>SHA-256 del APK firmado:</p>
+<code id="x39-apk-sha256">9ba6f08afbc829e9730f909dd139e403edcd3d33ebd5e5c84f1560b2fc88bb78</code>
+<p>SHA-256 del certificado oficial del firmante X39:</p>
+<code id="x39-signer-sha256">8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe</code>
+<pre><code>sha256sum -c SHA256SUMS.txt
+apksigner verify --verbose --print-certs x39-app-latest.apk
+ots verify SHA256SUMS.txt.ots</code></pre>
+<p>Compara la huella del certificado por un canal independiente. Firmas v1/v2/v3 verificadas para esta entrega.</p>
+<p class="x39-note">El sello .ots corresponde a SHA256SUMS.txt. El comprobante recibido contiene atestaciones pendientes; actualízalo con <strong>ots upgrade SHA256SUMS.txt.ots</strong> y verifica después su anclaje. El sello prueba existencia temporal, no la veracidad del contenido.</p>
+<p><a href="SHA256SUMS.txt">Sumas SHA-256</a> · <a href="SHA256SUMS.txt.ots" download>Prueba OpenTimestamps (.ots)</a> · <a href="FIRMA_APK.txt">Firma y certificado</a> · <a href="index.html#x39-english">English</a></p>
+<section lang="en" aria-labelledby="x39-english">
+<h2 id="x39-english">The four X39 pillars</h2>
+<ol>
+<li><strong>Evidence for reporters and citizens:</strong> OpenTimestamps (.ots) tamper evidence and proof of prior existence once Bitcoin anchoring is confirmed. X39 Evidence is the ecosystem workflow; this package includes a timestamp of its APK checksums.</li>
+<li><strong>Self-custodied Bitcoin:</strong> native libx39wallet.so wallet and self-hosted Electrs, independent of access to banking.</li>
+<li><strong>Private encrypted communications:</strong> messaging, calls and the x39tunel / WireGuard private tunnel.</li>
+<li><strong>Live read-only telemetry:</strong> Bitcoin Core mainnet and CKPool SOLO at stratum+tcp://mining.x39matrix.org:3333.</li>
+</ol>
+<p>Check the signed APK SHA-256 and official signing certificate fingerprint above before installing. This OTS receipt currently contains pending calendar attestations; upgrade and verify it later to establish confirmed Bitcoin anchoring.</p>
+</section>
+</main>
+</body>
+</html>

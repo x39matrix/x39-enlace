@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_billetera_panel_pi5">Open Pi 5 dashboard (web)</string>
+    <string name="x39_billetera_panel_pi5_sin_navegador">No browser available to open the dashboard</string>
+</resources>

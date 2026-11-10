@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  x39 Llamadas: nada en claro. La señalización va por wss:// y WireGuard no pasa por aquí
+  (UDP propio). Este fichero sustituye al del ejemplo de LiveKit (sample-app-common), que
+  permitía tráfico en claro para todo y conservaba un example.com. El nodo Electrum de la
+  billetera tampoco pasa por aquí (lo abre el motor nativo, dentro del túnel o por TLS).
+
+  La edición completa `escritorio` permite HTTP únicamente al nodo privado por x39tunel.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

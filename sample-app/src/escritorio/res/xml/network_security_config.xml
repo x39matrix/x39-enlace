@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- X39 pública: HTTPS por defecto; HTTP privado solo dentro de x39tunel. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors><certificates src="system" /></trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.39.0.3</domain>
+    </domain-config>
+</network-security-config>

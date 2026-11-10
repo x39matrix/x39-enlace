@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_nav_billetera">钱包</string>
+    <string name="x39_billetera_titulo">Bitcoin 钱包</string>
+    <string name="x39_billetera_ruta">▲ 经由 París · 经由你的节点</string>
+    <string name="x39_billetera_recibir">收款</string>
+    <string name="x39_billetera_autocustodia">自托管：助记词只保存在你的设备上。每笔付款都由你自己确认。</string>
+    <string name="x39_ajustes_nodo_bitcoin">Bitcoin 节点</string>
+    <string name="x39_ajustes_nodo_bitcoin_sub">经隧道的 X-39 节点，或你自己的节点（供钱包使用）</string>
+    <string name="x39_billetera_abrir">打开钱包</string>
+    <string name="x39_billetera_android6">钱包需要 Android 6 或更高版本</string>
+    <string name="x39_seguridad_nodo_x39">节点：经隧道的 X-39</string>
+    <string name="x39_seguridad_nodo_propio">节点：你自己的（%1$s）</string>
+    <string name="x39_seguridad_nodo_ninguno">节点：未设置</string>
+    <string name="x39_seguridad_nodo_frase">你使用的 Electrum 服务器能看到你钱包的地址。用你自己的节点，别人都看不到。</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="x39_launcher_black">#000000</color>
+    <color name="x39_background">#090A0D</color>
+    <color name="x39_card">#12141A</color>
+    <color name="x39_red">#FF1E1E</color>
+    <color name="x39_gold">#F7931A</color>
+    <color name="colorPrimary">#090A0D</color>
+    <color name="colorPrimaryDark">#090A0D</color>
+    <color name="colorAccent">#FF1E1E</color>
+    <color name="no_video_participant">#D90429</color>
+    <color name="no_video_background">#090A0D</color>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="x39_nav_billetera">المحفظة</string>
+    <string name="x39_billetera_titulo">محفظة Bitcoin</string>
+    <string name="x39_billetera_ruta">▲ عبر París · عبر عقدتك</string>
+    <string name="x39_billetera_recibir">استلام</string>
+    <string name="x39_billetera_autocustodia">حفظ ذاتي: البذرة موجودة على جهازك فقط. أنت من يؤكد كل إرسال.</string>
+    <string name="x39_ajustes_nodo_bitcoin">عقدة Bitcoin</string>
+    <string name="x39_ajustes_nodo_bitcoin_sub">عقدة X-39 عبر النفق، أو عقدتك (للمحفظة)</string>
+    <string name="x39_billetera_abrir">فتح المحفظة</string>
+    <string name="x39_billetera_android6">تتطلب المحفظة أندرويد 6 أو أحدث</string>
+    <string name="x39_seguridad_nodo_x39">العقدة: X-39 عبر النفق</string>
+    <string name="x39_seguridad_nodo_propio">العقدة: عقدتك (%1$s)</string>
+    <string name="x39_seguridad_nodo_ninguno">العقدة: غير مُعدّة</string>
+    <string name="x39_seguridad_nodo_frase">خادم Electrum الذي تستخدمه يرى عناوين محفظتك. مع عقدتك الخاصة لا يراها أحد غيرك.</string>
+</resources>

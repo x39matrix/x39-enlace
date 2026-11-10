@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Aplicación -->
+    <string name="x39_app_nombre">x39</string>
+    <string name="x39_contacto_por_defecto">Contact</string>
+
+    <!-- Textos comunes -->
+    <string name="x39_guardar">Save</string>
+    <string name="x39_cancelar">Cancel</string>
+    <string name="x39_cerrar">Close</string>
+    <string name="x39_copiar">Copy</string>
+    <string name="x39_borrar">Delete</string>
+    <string name="x39_quitar">Remove</string>
+    <string name="x39_enviar">Send</string>
+    <string name="x39_entendido">Got it</string>
+    <string name="x39_ahora_no">Not now</string>
+    <string name="x39_volver">Back</string>
+    <string name="x39_llamar">Call</string>
+    <string name="x39_videollamada">Video call</string>
+    <string name="x39_colgar">Hang up</string>
+    <string name="x39_rechazar">Decline</string>
+    <string name="x39_contestar">Answer</string>
+    <string name="x39_conectando">Connecting…</string>
+    <string name="x39_llamada_finalizada">Call ended</string>
+    <string name="x39_contacto_verificado">✓ verified</string>
+    <string name="x39_contacto_pendiente">not verified yet</string>
+    <string name="x39_cifrada_e2e">End-to-end encrypted · X39-CALL-KEY</string>
+
+    <!-- Motivos de fallo que llegan del núcleo de llamadas -->
+    <string name="x39_fallo_no_en_agenda">that contact is not in your contacts</string>
+    <string name="x39_fallo_no_disponible">the contact is not available</string>
+    <string name="x39_fallo_error_servidor">server error</string>
+
+    <!-- Pantalla principal: barra de arriba y barra de abajo -->
+    <string name="x39_tunel_activo_desc">x39tunel on</string>
+    <string name="x39_candado_desc">What x39 encrypts</string>
+    <string name="x39_nav_contactos">Contacts</string>
+    <string name="x39_nav_mensajes">Messages</string>
+    <string name="x39_nav_ajustes">Settings</string>
+    <string name="x39_estado_en_linea">"●  Online"</string>
+    <string name="x39_estado_conectando">"○  Connecting…"</string>
+
+    <!-- Contactos -->
+    <string name="x39_contactos_titulo">YOUR CONTACTS</string>
+    <string name="x39_contactos_vacio">You have no contacts yet.\nShare your identity and add theirs.</string>
+    <string name="x39_contactos_mi_identidad">MY IDENTITY</string>
+    <string name="x39_contacto_huella">fingerprint</string>
+    <string name="x39_identidad_comparte">Share your fingerprint</string>
+    <string name="x39_identidad_escanea">Scan or paste to connect</string>
+    <string name="x39_sin_micro_camara">You cannot call without the microphone/camera</string>
+
+    <!-- Menú de un contacto -->
+    <string name="x39_menu_mensaje">Message</string>
+    <string name="x39_menu_cifrar">Encrypt</string>
+    <string name="x39_menu_compartir_identidad">Share identity</string>
+    <string name="x39_menu_borrar_contacto">Delete contact</string>
+    <string name="x39_borrar_contacto_titulo">Delete %1$s?</string>
+    <string name="x39_borrar_contacto_texto">It is removed from your contacts, only on this device. To call them again you will have to save their identity again.</string>
+    <string name="x39_contacto_borrado">Contact deleted</string>
+
+    <!-- Billetera -->
+
+    <!-- Pestaña Mensajes -->
+    <string name="x39_conversaciones_titulo">CONVERSATIONS</string>
+    <string name="x39_conversaciones_vacio_titulo">No conversations yet</string>
+    <string name="x39_conversaciones_vacio_texto">To start one: go to Contacts, tap the person and choose “Message”. If you do not have their encryption key yet, the menu offers “Encrypt” to get it.</string>
+    <string name="x39_conversaciones_ir_contactos">Go to Contacts</string>
+    <string name="x39_conversacion_ultimo_mio">You: %1$s</string>
+
+    <!-- Ajustes -->
+    <string name="x39_ajustes_identidad_red">IDENTITY AND NETWORK</string>
+    <string name="x39_ajustes_mi_identidad">My identity</string>
+    <string name="x39_ajustes_mi_identidad_sub">fingerprint · key</string>
+    <string name="x39_ajustes_tunel_sub_apagado">protect the route: WireGuard + post-quantum key</string>
+    <string name="x39_ajustes_enrutar_todo">Route all traffic</string>
+    <string name="x39_ajustes_enrutar_todo_si">the whole phone goes through the tunnel</string>
+    <string name="x39_ajustes_enrutar_todo_no">only the tunnel network and signaling</string>
+    <string name="x39_ajustes_importar_conf">Import .conf</string>
+    <string name="x39_ajustes_importar_conf_sub">reads a WireGuard file instead of typing keys</string>
+    <string name="x39_ajustes_clave_tunel">This phone\'s tunnel key</string>
+    <string name="x39_ajustes_clave_tunel_sub">the public one, to register it on the server</string>
+    <string name="x39_ajustes_servidor_senal">Signaling server</string>
+    <string name="x39_ajustes_servidor_llamadas">Call server</string>
+    <string name="x39_ajustes_recepcion">RECEIVING</string>
+    <string name="x39_ajustes_segundo_plano">Background receiving</string>
+    <string name="x39_ajustes_segundo_plano_ok">ready: calls arrive with the app closed</string>
+    <string name="x39_ajustes_segundo_plano_falta">permissions missing: it may not ring</string>
+    <string name="x39_ajustes_mensajes">MESSAGES</string>
+    <string name="x39_ajustes_borrado_defecto">Default deletion</string>
+    <string name="x39_ajustes_seguridad">SECURITY</string>
+    <string name="x39_ajustes_anticaptura">Screenshot blocking</string>
+    <string name="x39_ajustes_anticaptura_si">blocks screenshots and screen recording</string>
+    <string name="x39_ajustes_anticaptura_no">off: the screen can be captured</string>
+    <string name="x39_ajustes_anticaptura_encendido">Screenshot blocking on</string>
+    <string name="x39_ajustes_anticaptura_apagado">Screenshot blocking off</string>
+    <string name="x39_ajustes_acerca">About x39</string>
+    <string name="x39_ajustes_acerca_sub">version · signature · APK fingerprint</string>
+    <string name="x39_editor_senal_hint">wss:// of your signaling server</string>
+    <string name="x39_editor_pin_hint">certificate pin (optional)</string>
+    <string name="x39_editor_livekit_hint">wss:// of LiveKit</string>
+    <string name="x39_guardado_reinicia">Saved. Restart the app to reconnect.</string>
+    <string name="x39_clave_tunel_texto">"%1$s\n\nThis is the PUBLIC key. Give it to the server so it accepts this phone:\n\n  wg set wg0 peer %1$s allowed-ips 10.39.0.2/32\n\nThe private key never leaves here: it is sealed in the device\'s key store.\n\nIf you already have a .conf file that works, importing it is faster: x39 then uses that same key and the server already knows it."</string>
+    <string name="x39_clave_copiada">Key copied</string>
+    <string name="x39_conf_ilegible">Could not read that file</string>
+    <string name="x39_conf_no_vale">The .conf is not valid: %1$s</string>
+    <string name="x39_conf_sin_peer">the .conf has no peer</string>
+    <string name="x39_conf_sin_direccion">the .conf has no address</string>
+    <string name="x39_conf_sin_endpoint">the .conf has no endpoint</string>
+    <string name="x39_conf_importada">Configuration imported</string>
+    <string name="x39_sin_permiso_vpn">No VPN permission, no tunnel</string>
+
+    <!-- Borrado de mensajes (opciones y frases) -->
+    <string name="x39_borrado_opcion_min5">5 minutes after they are read</string>
+    <string name="x39_borrado_opcion_h24">24 hours after they are read</string>
+    <string name="x39_borrado_opcion_d7">7 days after they are read</string>
+    <string name="x39_borrado_opcion_siempre">Never (they are kept)</string>
+    <string name="x39_borrado_frase_min5">Deleted 5 minutes after it is read</string>
+    <string name="x39_borrado_frase_h24">Deleted 24 hours after it is read</string>
+    <string name="x39_borrado_frase_d7">Deleted 7 days after it is read</string>
+    <string name="x39_borrado_frase_siempre">Not deleted automatically</string>
+    <string name="x39_borrado_defecto_texto">Applies to new conversations; each one can be changed separately from its header. The countdown starts when the other person reads the message.\n\nAutomatic deletion relies on the other person\'s app honouring it. It protects against the message being forgotten on a phone; it does not stop someone from taking a photo of it with another camera or using a modified version of the app.</string>
+
+    <!-- Qué va cifrado (el candado) -->
+    <string name="x39_cifrado_titulo">What is encrypted</string>
+    <string name="x39_cifrado_ruta_tunel">· The route goes through the x39tunel (WireGuard): %1$s.</string>
+    <string name="x39_cifrado_ruta_directa">· The x39tunel is off: the route is direct and the server sees your IP.</string>
+    <string name="x39_cifrado_texto">"CALLS AND VIDEO CALLS\n· The two phones agree on the key between themselves, in a post-quantum way\n  (ML-KEM-1024), and every offer is signed (ML-DSA-87) so nobody can\n  get in the middle.\n· That key gives the 32 bytes that encrypt the audio and the video, and the\n  six words you check out loud.\n· The server relays the packets and cannot decrypt them: the key never\n  goes through it.\n\nYOUR IDENTITY\n· It is an ML-DSA-87 key. The secret part is created on this phone and stays\n  here, sealed by the Keystore. Your fingerprint is derived from it.\n\nMESSAGES AND FILES\n· Every message, voice note or file chunk is sealed with its own post-quantum\n  encapsulation (ML-KEM-1024) and signed (ML-DSA-87). Photos and videos are\n  stripped of metadata before sealing, and stored encrypted via the Keystore.\n\nTHE ROUTE\n%1$s\n\nWHAT ENCRYPTION DOES NOT HIDE\n· The server knows who talks to whom, at what time and for how long. That is\n  network metadata and no key hides it. The tunnel does not hide it\n  either: it only changes the path it takes."</string>
+    <string name="x39_ver_mi_identidad">View my identity</string>
+
+    <!-- Recepción en segundo plano -->
+    <string name="x39_fondo_intro">x39 does not use Google: the alert arrives through its own connection, kept open by a service. MIUI closes that connection unless you allow it. Go through these lines.</string>
+    <string name="x39_fondo_comprobable">WHAT THE APP CAN CHECK</string>
+    <string name="x39_fondo_avisos">x39 notifications</string>
+    <string name="x39_fondo_avisos_sub">without this you will not see the incoming call</string>
+    <string name="x39_fondo_bateria">Unrestricted battery</string>
+    <string name="x39_fondo_bateria_sub">if it is restricted, the system cuts the connection</string>
+    <string name="x39_fondo_pantalla_completa">Full-screen call</string>
+    <string name="x39_fondo_pantalla_completa_sub">without this the call comes in as a normal notification, not full screen</string>
+    <string name="x39_fondo_no_hace_falta">This Android version does not need to ask for it</string>
+    <string name="x39_fondo_alarma">Exact alarm</string>
+    <string name="x39_fondo_alarma_sub">the watchdog that checks the connection every 10 minutes</string>
+    <string name="x39_fondo_manual">WHAT YOU HAVE TO CHECK YOURSELF (MIUI DOES NOT LET THE APP READ IT)</string>
+    <string name="x39_fondo_autoinicio">Autostart on</string>
+    <string name="x39_fondo_autoinicio_sub">Security › Permissions › Autostart › x39. Without this it does not start when the phone is switched on.</string>
+    <string name="x39_fondo_recientes">Lock x39 in recent apps</string>
+    <string name="x39_fondo_recientes_sub">Open recent apps, swipe x39 down and tap the lock.</string>
+    <string name="x39_fondo_recientes_aviso">It is done on the recent apps screen, not in Settings</string>
+    <string name="x39_fondo_pie">Even with everything set, the server still sees who talks to whom, when and for how long: no encryption hides that. What it cannot see is what is said.</string>
+    <string name="x39_fondo_concedido">granted</string>
+    <string name="x39_fondo_sin_pantalla_ajustes">Your phone does not have that settings screen; look for it yourself</string>
+
+    <!-- Identidad: compartir y añadir -->
+    <string name="x39_identidad_qr_desc">QR code with your identity</string>
+    <string name="x39_identidad_qr_firma_desc">QR code of your signing key</string>
+    <string name="x39_identidad_qr_firma_pie">1 of 2 · TO CALL YOU\nThis is the one that adds you to their contacts.</string>
+    <string name="x39_identidad_qr_cifrar_desc">QR code of your encryption key</string>
+    <string name="x39_identidad_qr_cifrar_pie">2 of 2 · TO WRITE TO YOU\nThey scan this one from “Encrypt”, once they have saved you.</string>
+    <string name="x39_identidad_ver_otro">Show the other code</string>
+    <string name="x39_identidad_tu_foto">YOUR PHOTO</string>
+    <string name="x39_identidad_tu_huella">YOUR FINGERPRINT (YOUR NUMBER)</string>
+    <string name="x39_identidad_copiar">Copy my full identity</string>
+    <string name="x39_identidad_copiada">Identity copied (X39ID1)</string>
+    <string name="x39_identidad_escanear">Scan another person\'s QR</string>
+    <string name="x39_identidad_o_pega">OR PASTE THEIR IDENTITY</string>
+    <string name="x39_identidad_nombre_hint">Name</string>
+    <string name="x39_identidad_pega_hint">Paste the other person\'s identity here</string>
+    <string name="x39_guardar_contacto">Save contact</string>
+    <string name="x39_nombre_e_identidad">Both name and identity, please</string>
+    <string name="x39_contacto_guardado">Contact saved</string>
+    <string name="x39_identidad_no_valida">That identity is not valid</string>
+    <string name="x39_nombre_persona_hint">Person\'s name</string>
+    <string name="x39_identidad_leida">Identity scanned · fingerprint %1$s</string>
+    <string name="x39_ponle_nombre">Give it a name</string>
+    <string name="x39_qr_solo_cifrar">That QR is only an encryption key. Use “Encrypt” from the contact.</string>
+    <string name="x39_identidad_no_coincide">That identity is NOT %1$s\'s: the signing key does not match</string>
+    <string name="x39_no_es_identidad">That is not an x39 identity</string>
+
+    <!-- Cifrar con un contacto y comprobar huellas -->
+    <string name="x39_cifrar_titulo">Encrypt with %1$s</string>
+    <string name="x39_cifrar_texto">You have the signing key of %1$s: with it you can call them. To write to them you also need their encryption key.\n\nAsk them to show you their QR from “Share identity”, or to paste you their identity any way they like.</string>
+    <string name="x39_cifrar_escanear">Scan their QR</string>
+    <string name="x39_cifrar_hint">X39ID1:… or X39PK1:…</string>
+    <string name="x39_cifrar_guardar">Save their encryption key</string>
+    <string name="x39_cifrar_pega">Paste their identity</string>
+    <string name="x39_huellas_sin_clave">You do not have their encryption key yet</string>
+    <string name="x39_huellas_titulo">Check the fingerprints together</string>
+    <string name="x39_huellas_texto">Read them out loud, on the phone or in person. They must be the SAME on both devices. If they do not match, someone is in the middle: do not mark it.</string>
+    <string name="x39_huellas_la_tuya">YOURS</string>
+    <string name="x39_huellas_la_de">THEIRS: %1$s</string>
+    <string name="x39_huellas_coinciden">They match: mark as verified</string>
+    <string name="x39_huellas_verificado">%1$s is now verified</string>
+    <string name="x39_huellas_pie">You can already write to them even if you do not mark it: marking it only records that you have checked who you are talking to.</string>
+
+    <!-- Foto de perfil -->
+    <string name="x39_foto_tienes">You have a photo</string>
+    <string name="x39_foto_sin">No photo</string>
+    <plurals name="x39_foto_la_ven">
+        <item quantity="one">%1$d verified contact sees it</item>
+        <item quantity="other">%1$d verified contacts see it</item>
+    </plurals>
+    <string name="x39_foto_iniciales">Your initials are shown. Adding a photo is up to you.</string>
+    <string name="x39_foto_cambiar">Change the photo</string>
+    <string name="x39_foto_poner">Add a photo</string>
+    <string name="x39_foto_quitar">Remove the photo</string>
+    <string name="x39_foto_aviso">Your photo is sent encrypted only to your verified contacts. Once it is on their phone, you no longer control it.</string>
+    <string name="x39_foto_sin_datos">Location and camera data are removed before it is sent.</string>
+    <string name="x39_foto_no_usable">Could not use that image: %1$s</string>
+    <string name="x39_foto_guardada">Photo saved</string>
+    <string name="x39_foto_reparto_nadie">Location and camera data have been removed.\n\nIt cannot be sent to anyone yet: you have no verified contacts. It will be sent when you verify one.</string>
+    <plurals name="x39_foto_reparto">
+        <item quantity="one">Location and camera data have been removed.\n\nIt will be sent encrypted to your %1$d verified contact. Once it is on their phone, you no longer control it.</item>
+        <item quantity="other">Location and camera data have been removed.\n\nIt will be sent encrypted to your %1$d verified contacts. Once it is on their phone, you no longer control it.</item>
+    </plurals>
+    <plurals name="x39_foto_enviada">
+        <item quantity="one">Photo sent to %1$d contact</item>
+        <item quantity="other">Photo sent to %1$d contacts</item>
+    </plurals>
+    <string name="x39_quitar_foto_titulo">Remove your photo?</string>
+    <string name="x39_quitar_foto_texto">It is deleted from this phone and your verified contacts are told to delete their copy.\n\nWhether they really delete it depends on their app honouring it: if someone took a photo of it with another camera, that cannot be undone.</string>
+    <string name="x39_foto_quitada">Photo removed</string>
+    <string name="x39_fotos_no_leer">that image could not be read</string>
+    <string name="x39_fotos_grande">the image is too large</string>
+
+    <!-- Llamada saliente -->
+    <string name="x39_llamando_a">Calling</string>
+    <string name="x39_llamada_cifrada_e2e">End-to-end encrypted call</string>
+    <string name="x39_videollamada_cifrada_e2e">End-to-end encrypted video call</string>
+    <string name="x39_estableciendo_clave">Setting up post-quantum key…</string>
+
+    <!-- Acerca de x39 -->
+    <string name="x39_acerca_midiendo">Measuring the installed APK…</string>
+    <string name="x39_acerca_version">Version %1$s (code %2$d)\nPackage %3$s</string>
+    <string name="x39_acerca_certificado">Signing certificate (SHA-256)\n%1$s</string>
+    <string name="x39_acerca_apk">Installed APK (SHA-256, %1$d bytes)\n%2$s</string>
+    <string name="x39_acerca_motor">Engine: ML-DSA-87 · ML-KEM-1024 · X39-CALL-KEY-v1 · x39tunel v2 (WireGuard + post-quantum PSK)</string>
+    <string name="x39_acerca_error">Could not measure: %1$s</string>
+
+    <!-- Conversación (chat) -->
+    <string name="x39_chat_contacto_no_esta">That contact is no longer in your contacts</string>
+    <string name="x39_chat_llamar_a">Call %1$s</string>
+    <string name="x39_chat_estado_sin_clave">pending · no encryption key yet</string>
+    <string name="x39_chat_escribe">Write a message</string>
+    <string name="x39_chat_adjuntar">Attach</string>
+    <string name="x39_chat_grabar_nota">Record a voice note</string>
+    <string name="x39_chat_descartar_nota">Discard the voice note</string>
+    <string name="x39_chat_grabando">"●  Recording  %1$d:%2$02d"</string>
+    <string name="x39_chat_enviar_nota">Send the voice note</string>
+    <string name="x39_chat_no_puedes_titulo">You cannot write to them yet</string>
+    <string name="x39_chat_no_puedes_texto">For %1$s you only have the signing key, which lets you call them. To seal a message for them you also need their encryption key.\n\nUse “Encrypt” in their contact menu to get it.</string>
+    <string name="x39_chat_sin_micro">You cannot record a voice note without the microphone</string>
+    <string name="x39_chat_no_grabar">Could not start recording: %1$s</string>
+    <string name="x39_chat_error">error</string>
+    <string name="x39_chat_no_grabo">Nothing was recorded</string>
+    <string name="x39_chat_corta">Too short</string>
+    <string name="x39_chat_no_leer_grabacion">Could not read the recording</string>
+    <string name="x39_chat_no_enviar">Could not send: %1$s</string>
+    <string name="x39_chat_nota_descartada">Voice note discarded</string>
+    <string name="x39_chat_adj_foto">Photo</string>
+    <string name="x39_chat_adj_video">Video</string>
+    <string name="x39_chat_adj_documento">Document</string>
+    <string name="x39_chat_demasiado_grande">Too large</string>
+    <string name="x39_chat_demasiado_grande_texto">“%1$s” is %2$s and the limit is 25 MB.</string>
+    <string name="x39_chat_enviar_metadatos">Send location and camera data</string>
+    <string name="x39_chat_aviso_video">WARNING: removing the video data (location, date, phone) is still being verified. Until it is confirmed, assume the video may still carry it.</string>
+    <string name="x39_chat_limpio">Location and camera data have been removed.</string>
+    <string name="x39_chat_documento_metadatos">A document can carry its own metadata (author, program) that x39 does not touch.</string>
+    <plurals name="x39_chat_trafico">
+        <item quantity="one">%1$s · %2$d piece sealed separately.\nAbout %3$s will go through the server, and that traffic is paid by whoever pays for the server.</item>
+        <item quantity="other">%1$s · %2$d pieces sealed separately.\nAbout %3$s will go through the server, and that traffic is paid by whoever pays for the server.</item>
+    </plurals>
+    <string name="x39_chat_limpiando_video">Cleaning the video…</string>
+    <string name="x39_chat_no_se_puede_enviar">Cannot send: %1$s</string>
+    <string name="x39_chat_enviando_limpio">Sending without location or camera data</string>
+    <string name="x39_chat_tamano_desconocido">unknown size</string>
+    <string name="x39_chat_vacio_sin_clave">You cannot write to %1$s yet: you do not have their encryption key. Use “Encrypt” in their contact menu.</string>
+    <string name="x39_chat_vacio">Nothing here yet. What you write is sealed to the key of %1$s.</string>
+    <string name="x39_chat_ver_foto">View the photo</string>
+    <plurals name="x39_chat_trozos">
+        <item quantity="one">%1$d/%2$d piece</item>
+        <item quantity="other">%1$d/%2$d pieces</item>
+    </plurals>
+    <string name="x39_chat_reenviar">Resend</string>
+    <string name="x39_chat_no_reenviar">Could not resend: %1$s</string>
+    <string name="x39_chat_parar">"■  Stop"</string>
+    <string name="x39_chat_escuchar">"▶  Play"</string>
+    <string name="x39_chat_no_abrir_grabacion">Could not open the recording</string>
+    <string name="x39_chat_no_reproducir_sin_disco">This Android version cannot play it without leaving it unencrypted on disk</string>
+    <string name="x39_chat_no_reproducir">Could not play it</string>
+    <string name="x39_chat_estado_pendiente">⏳ pending · it will be sent when online</string>
+    <string name="x39_chat_estado_enviado">✓ sent · waiting for their phone to confirm</string>
+    <string name="x39_chat_estado_entregado">✓✓ delivered</string>
+    <string name="x39_chat_estado_caducado">⚠ expired, not delivered</string>
+    <plurals name="x39_chat_caduca_dias">
+        <item quantity="one">expires in %1$d day</item>
+        <item quantity="other">expires in %1$d days</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_horas">
+        <item quantity="one">expires in %1$d hour</item>
+        <item quantity="other">expires in %1$d hours</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_minutos">
+        <item quantity="one">expires in %1$d minute</item>
+        <item quantity="other">expires in %1$d minutes</item>
+    </plurals>
+    <string name="x39_chat_caduca_menos_minuto">expires in less than a minute</string>
+    <string name="x39_chat_borrar_aparato">Delete from this device</string>
+    <string name="x39_chat_copiado">Copied</string>
+    <string name="x39_chat_aviso_borrado">Automatic deletion relies on the other person\'s app honouring it. It protects against the message being forgotten on a phone; it does not stop someone from taking a photo of it with another camera or using a modified version of the app.</string>
+    <string name="x39_chat_borrar_mensajes">Delete the messages…</string>
+    <string name="x39_chat_borrado_texto">The countdown starts when the other person opens the conversation, not when you send. The setting travels inside the sealed envelope: the server cannot see it or change it.</string>
+
+    <!-- Adjuntos: motivos de fallo -->
+    <string name="x39_adj_video_no_limpio">The video could not be cleaned, so it is not sent (%1$s)</string>
+    <string name="x39_adj_no_leer">Could not read the file</string>
+    <string name="x39_adj_pasa_25">the file is over 25 MB</string>
+    <string name="x39_adj_falta_clave">you do not have their encryption key</string>
+    <string name="x39_adj_ya_no_esta_movil">the file is no longer on this phone</string>
+    <string name="x39_adj_ya_enviando">it is already being sent</string>
+    <string name="x39_adj_ya_no_esta">the file is no longer there</string>
+    <string name="x39_adj_galeria_permisos">this Android version does not allow saving to the gallery without more permissions</string>
+    <string name="x39_adj_galeria_no_acepto">the gallery did not accept the file</string>
+    <string name="x39_adj_no_escribir">could not write it</string>
+    <string name="x39_video_sin_pista">it has no video track</string>
+    <string name="x39_video_sin_muestras">the video has no samples</string>
+    <string name="x39_video_pasa_25">once cleaned it is over 25 MB</string>
+
+    <!-- En llamada -->
+    <string name="x39_llamada_sin_camara_voz">No camera permission: the call continues with voice only</string>
+    <string name="x39_llamada_sin_micro">No microphone permission</string>
+    <string name="x39_llamada_sin_micro_texto">x39 needs the microphone to talk. Allow it in the phone settings and call again.</string>
+    <string name="x39_llamada_faltan_datos">The call data is missing</string>
+    <string name="x39_llamada_no_conectar">Could not connect the call</string>
+    <string name="x39_llamada_ha_colgado">%1$s hung up</string>
+    <string name="x39_llamada_sin_camara">No camera permission. Allow it in the phone settings.</string>
+    <string name="x39_llamada_silenciar_mic">Mute the microphone</string>
+    <string name="x39_llamada_encender_mic">Turn on the microphone</string>
+    <string name="x39_llamada_apagar_camara">Turn off the camera</string>
+    <string name="x39_llamada_encender_camara">Turn on the camera</string>
+    <string name="x39_llamada_pie_tunel">The route is protected by the x39tunel. The server relays the packets but cannot decrypt them.</string>
+    <string name="x39_llamada_pie_sin_tunel">The server relays the packets but cannot decrypt them. The x39tunel is off: the server sees your IP and the time.</string>
+    <string name="x39_llamada_comprueba_palabras">CHECK THESE 6 WORDS WITH THE OTHER PERSON</string>
+    <string name="x39_llamada_acordando">agreeing on the key…</string>
+    <string name="x39_llamada_tu_camara_desc">Your camera. Tap it to switch camera; drag it to another corner.</string>
+    <string name="x39_llamada_altavoz_desc">Speaker and audio output</string>
+
+    <!-- Llamada entrante -->
+    <string name="x39_entrante_video_de">Incoming video call from</string>
+    <string name="x39_entrante_de">Incoming call from</string>
+    <string name="x39_entrante_conectando_camara">Connecting with camera…</string>
+
+    <!-- Visor de fotos -->
+    <string name="x39_visor_ya_no_esta">That photo is no longer here</string>
+    <string name="x39_visor_mas_opciones">More options</string>
+    <string name="x39_visor_guardar_galeria">Save to gallery</string>
+    <string name="x39_visor_guardar_titulo">Save to the gallery?</string>
+    <string name="x39_visor_guardar_texto">The copy has no location or camera data.\n\nBut on many phones the gallery syncs with the cloud: from then on the photo is no longer protected by x39.</string>
+    <string name="x39_visor_no_guardar">Could not save: %1$s</string>
+    <string name="x39_visor_guardada">Saved to the gallery, x39 folder</string>
+
+    <!-- Lector de QR -->
+    <string name="x39_escaner_apunta">Point at the other person\'s identity QR</string>
+
+    <!-- Servicio y notificaciones -->
+    <string name="x39_notif_mensaje_nuevo">New message from %1$s</string>
+    <string name="x39_notif_en_linea">x39 · online</string>
+    <string name="x39_notif_reconectando">x39 · reconnecting…</string>
+    <string name="x39_notif_linea_tunel">Line open · x39tunel on</string>
+    <string name="x39_notif_linea_abierta">The line stays open to receive calls.</string>
+    <string name="x39_notif_en_llamada">In a call</string>
+    <string name="x39_notif_videollamada_entrante">Incoming video call</string>
+    <string name="x39_notif_llamada_entrante">Incoming call</string>
+    <string name="x39_canal_linea">Open line</string>
+    <string name="x39_canal_linea_desc">The ongoing notice that x39 is still online. No sound.</string>
+    <string name="x39_canal_entrantes">Incoming calls</string>
+    <string name="x39_canal_entrantes_desc">Incoming calls and video calls.</string>
+    <string name="x39_canal_mensajes">Messages</string>
+    <string name="x39_canal_mensajes_desc">Tells you who is writing to you. The text is not shown on the lock screen.</string>
+
+    <!-- x39tunel: estado que se ve en Ajustes -->
+    <string name="x39_tunel_estado_apagado">off</string>
+    <string name="x39_tunel_estado_sin_permiso">VPN permission missing</string>
+    <string name="x39_tunel_estado_alta">registering the peer on the server…</string>
+    <string name="x39_tunel_estado_psk">agreeing on the post-quantum key…</string>
+    <string name="x39_tunel_estado_levantando">bringing the tunnel up…</string>
+    <string name="x39_tunel_estado_protegido">route protected · %1$s · PQ key until %2$s</string>
+    <string name="x39_tunel_estado_protegido_sin_psk">route protected · %1$s · NO post-quantum key: this server does not hand it out yet</string>
+    <string name="x39_tunel_fallo_cayo">no tunnel: the tunnel went down</string>
+    <string name="x39_tunel_fallo_alta">no tunnel: peer registration: %1$s</string>
+    <string name="x39_tunel_fallo_psk">no tunnel: tunnel key: %1$s</string>
+    <string name="x39_tunel_fallo_sin_respuesta_alta">no tunnel: the server did not answer the peer registration (wg_alta)</string>
+    <string name="x39_tunel_fallo_sin_respuesta_psk">no tunnel: the server did not answer the key request (psk)</string>
+    <string name="x39_tunel_fallo_otro">no tunnel: %1$s</string>
+    <string name="x39_idioma">Language</string>
+    <string name="x39_idioma_sistema">System</string>
+    <string name="x39_qr_propio">That QR is your own identity. Nothing was saved.</string>
+    <string name="x39_identidad_propia">That identity is your own. Nothing was saved.</string>
+    <string name="x39_qr_pantalla_completa">Show the QR full screen</string>
+    <string name="x39_qr_por_partes">QR in parts (easier to scan)</string>
+    <string name="x39_qr_parte_de">Part %1$d of %2$d · tap to close</string>
+    <string name="x39_escaner_partes">Parts read: %1$d of %2$d. Keep pointing.</string>
+    <string name="x39_qr_mezcla_titulo">Scan stopped</string>
+    <string name="x39_qr_mezcla_texto">QR codes from two different identities were read, or the parts do not form one complete identity. It may be another screen in view, or someone trying to slip you a different identity. Nothing was saved. Start again with only one screen in front of the camera.</string>
+    <string name="x39_contacto_guardado_sin_verificar">Contact saved as NOT verified. Compare fingerprints to verify it.</string>
+    <string name="x39_contacto_sin_verificar">⚠ NOT VERIFIED</string>
+    <string name="x39_chat_aviso_sin_verificar">You have not checked this person\'s fingerprint yet</string>
+    <string name="x39_chat_aviso_comparar">Compare</string>
+    <string name="x39_huellas_no_coinciden">They do not match</string>
+    <string name="x39_huellas_no_coinciden_titulo">The fingerprints do NOT match</string>
+    <string name="x39_huellas_no_coinciden_texto">You may have read someone else\'s identity, or someone may be in the middle trying to impersonate %1$s. For safety, this contact is deleted. Start again, in person if you can.</string>
+    <string name="x39_escaner_alejate">Move back a little: this camera cannot focus closer than %1$d cm.</string>
+    <string name="x39_escaner_mas_luz">More light needed: turn up the other screen\'s brightness or find more light.</string>
+    <string name="x39_escaner_sin_camara">The camera cannot be used. Grant the permission in the phone settings and try again.</string>
+</resources>

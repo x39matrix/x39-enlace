@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="zh">
+
+    <!-- 应用 -->
+    <string name="x39_app_nombre">x39</string>
+    <string name="x39_contacto_por_defecto">联系人</string>
+
+    <!-- 通用文字 -->
+    <string name="x39_guardar">保存</string>
+    <string name="x39_cancelar">取消</string>
+    <string name="x39_cerrar">关闭</string>
+    <string name="x39_copiar">复制</string>
+    <string name="x39_borrar">删除</string>
+    <string name="x39_quitar">移除</string>
+    <string name="x39_enviar">发送</string>
+    <string name="x39_entendido">知道了</string>
+    <string name="x39_ahora_no">以后再说</string>
+    <string name="x39_volver">返回</string>
+    <string name="x39_llamar">呼叫</string>
+    <string name="x39_videollamada">视频通话</string>
+    <string name="x39_colgar">挂断</string>
+    <string name="x39_rechazar">拒接</string>
+    <string name="x39_contestar">接听</string>
+    <string name="x39_conectando">正在连接…</string>
+    <string name="x39_llamada_finalizada">通话已结束</string>
+    <string name="x39_contacto_verificado">✓ 已验证</string>
+    <string name="x39_contacto_pendiente">待验证</string>
+    <string name="x39_cifrada_e2e">端到端加密 · X39-CALL-KEY</string>
+
+    <!-- 通话核心返回的失败原因 -->
+    <string name="x39_fallo_no_en_agenda">该联系人不在你的通讯录中</string>
+    <string name="x39_fallo_no_disponible">该联系人当前无法接通</string>
+    <string name="x39_fallo_error_servidor">服务器错误</string>
+
+    <!-- 主界面：顶栏和底栏 -->
+    <string name="x39_tunel_activo_desc">x39tunel 已开启</string>
+    <string name="x39_candado_desc">x39 中哪些内容是加密的</string>
+    <string name="x39_nav_contactos">联系人</string>
+    <string name="x39_nav_mensajes">消息</string>
+    <string name="x39_nav_ajustes">设置</string>
+    <string name="x39_estado_en_linea">"●  在线"</string>
+    <string name="x39_estado_conectando">"○  正在连接…"</string>
+
+    <!-- 联系人 -->
+    <string name="x39_contactos_titulo">你的联系人</string>
+    <string name="x39_contactos_vacio">你还没有联系人。\n分享你的身份，并添加对方的身份。</string>
+    <string name="x39_contactos_mi_identidad">我的身份</string>
+    <string name="x39_contacto_huella">指纹</string>
+    <string name="x39_identidad_comparte">分享你的指纹</string>
+    <string name="x39_identidad_escanea">扫描或粘贴以建立连接</string>
+    <string name="x39_sin_micro_camara">没有麦克风/摄像头权限，无法通话</string>
+
+    <!-- 联系人菜单 -->
+    <string name="x39_menu_mensaje">消息</string>
+    <string name="x39_menu_cifrar">加密</string>
+    <string name="x39_menu_compartir_identidad">分享身份</string>
+    <string name="x39_menu_borrar_contacto">删除联系人</string>
+    <string name="x39_borrar_contacto_titulo">删除 %1$s？</string>
+    <string name="x39_borrar_contacto_texto">只会从你的通讯录中移除，且仅限这台设备。以后要再给对方打电话，需要重新保存对方的身份。</string>
+    <string name="x39_contacto_borrado">联系人已删除</string>
+
+    <!-- 钱包 -->
+
+    <!-- 消息页 -->
+    <string name="x39_conversaciones_titulo">会话</string>
+    <string name="x39_conversaciones_vacio_titulo">还没有会话</string>
+    <string name="x39_conversaciones_vacio_texto">要开始会话：进入“联系人”，点按对方，选择“消息”。如果缺少对方的加密密钥，菜单里会提供“加密”来获取。</string>
+    <string name="x39_conversaciones_ir_contactos">前往联系人</string>
+    <string name="x39_conversacion_ultimo_mio">我：%1$s</string>
+
+    <!-- 设置 -->
+    <string name="x39_ajustes_identidad_red">身份与网络</string>
+    <string name="x39_ajustes_mi_identidad">我的身份</string>
+    <string name="x39_ajustes_mi_identidad_sub">指纹 · 密钥</string>
+    <string name="x39_ajustes_tunel_sub_apagado">保护传输路径：WireGuard + 后量子密钥</string>
+    <string name="x39_ajustes_enrutar_todo">全部流量走隧道</string>
+    <string name="x39_ajustes_enrutar_todo_si">整部手机的流量都经过隧道</string>
+    <string name="x39_ajustes_enrutar_todo_no">只有隧道内网和信令经过隧道</string>
+    <string name="x39_ajustes_importar_conf">导入 .conf</string>
+    <string name="x39_ajustes_importar_conf_sub">读取 WireGuard 配置文件，不用手动输入密钥</string>
+    <string name="x39_ajustes_clave_tunel">本机的隧道密钥</string>
+    <string name="x39_ajustes_clave_tunel_sub">公钥，用于在服务器上登记本机</string>
+    <string name="x39_ajustes_servidor_senal">信令服务器</string>
+    <string name="x39_ajustes_servidor_llamadas">通话服务器</string>
+    <string name="x39_ajustes_recepcion">接收</string>
+    <string name="x39_ajustes_segundo_plano">后台接收</string>
+    <string name="x39_ajustes_segundo_plano_ok">就绪：应用关闭时也能收到</string>
+    <string name="x39_ajustes_segundo_plano_falta">缺少权限：可能不会响铃</string>
+    <string name="x39_ajustes_mensajes">消息</string>
+    <string name="x39_ajustes_borrado_defecto">默认删除设置</string>
+    <string name="x39_ajustes_seguridad">安全</string>
+    <string name="x39_ajustes_anticaptura">防截屏</string>
+    <string name="x39_ajustes_anticaptura_si">阻止截屏和录屏</string>
+    <string name="x39_ajustes_anticaptura_no">已关闭：可以截屏</string>
+    <string name="x39_ajustes_anticaptura_encendido">防截屏已开启</string>
+    <string name="x39_ajustes_anticaptura_apagado">防截屏已关闭</string>
+    <string name="x39_ajustes_acerca">关于 x39</string>
+    <string name="x39_ajustes_acerca_sub">版本 · 签名 · APK 指纹</string>
+    <string name="x39_editor_senal_hint">你的信令服务器 wss:// 地址</string>
+    <string name="x39_editor_pin_hint">证书固定值（可选）</string>
+    <string name="x39_editor_livekit_hint">LiveKit 的 wss:// 地址</string>
+    <string name="x39_guardado_reinicia">已保存。重启应用以重新连接。</string>
+    <string name="x39_clave_tunel_texto">"%1$s\n\n这是公钥。把它交给服务器，让服务器接受这台手机：\n\n  wg set wg0 peer %1$s allowed-ips 10.39.0.2/32\n\n私钥不会离开这里：它封存在本设备的密钥库中。\n\n如果你已经有一个能用的 .conf 文件，直接导入更快：这样 x39 会使用同一把密钥，服务器也已经认识它。"</string>
+    <string name="x39_clave_copiada">密钥已复制</string>
+    <string name="x39_conf_ilegible">无法读取该文件</string>
+    <string name="x39_conf_no_vale">该 .conf 无效：%1$s</string>
+    <string name="x39_conf_sin_peer">该 .conf 中没有任何 peer</string>
+    <string name="x39_conf_sin_direccion">该 .conf 中没有地址</string>
+    <string name="x39_conf_sin_endpoint">该 .conf 中没有 endpoint</string>
+    <string name="x39_conf_importada">配置已导入</string>
+    <string name="x39_sin_permiso_vpn">没有 VPN 权限，就无法建立隧道</string>
+
+    <!-- 消息删除（选项和说明） -->
+    <string name="x39_borrado_opcion_min5">阅读后 5 分钟</string>
+    <string name="x39_borrado_opcion_h24">阅读后 24 小时</string>
+    <string name="x39_borrado_opcion_d7">阅读后 7 天</string>
+    <string name="x39_borrado_opcion_siempre">永久（不删除）</string>
+    <string name="x39_borrado_frase_min5">阅读后 5 分钟删除</string>
+    <string name="x39_borrado_frase_h24">阅读后 24 小时删除</string>
+    <string name="x39_borrado_frase_d7">阅读后 7 天删除</string>
+    <string name="x39_borrado_frase_siempre">不会自动删除</string>
+    <string name="x39_borrado_defecto_texto">适用于新会话；每个会话都可以在其顶部单独修改。计时从对方阅读消息时开始。\n\n自动删除依赖对方的应用遵守这一设置。它能防止消息被遗忘在某部手机里；但无法阻止有人用另一台相机拍下来，也无法阻止有人使用修改过的应用。</string>
+
+    <!-- 哪些内容是加密的（锁图标） -->
+    <string name="x39_cifrado_titulo">哪些内容是加密的</string>
+    <string name="x39_cifrado_ruta_tunel">· 传输路径经过 x39tunel（WireGuard）：%1$s。</string>
+    <string name="x39_cifrado_ruta_directa">· x39tunel 已关闭：路径是直连的，服务器能看到你的 IP。</string>
+    <string name="x39_cifrado_texto">"通话和视频通话\n· 两台手机之间以后量子方式协商密钥\n  （ML-KEM-1024），每个呼叫请求都带签名（ML-DSA-87），\n  防止有人插在中间。\n· 由这把密钥得出加密音频和视频的 32 字节，\n  以及你们要大声核对的六个词。\n· 服务器只转发数据包，无法解密：密钥在任何时候\n  都不经过服务器。\n\n你的身份\n· 这是一把 ML-DSA-87 密钥。私密部分在这台手机上生成并留在这里，\n  由 Keystore 封存。你的指纹由它派生。\n\n消息与文件\n· 每条消息、语音或文件分块都使用独立的后量子封装（ML-KEM-1024）\n  并附带签名（ML-DSA-87）。照片和视频在封装前会清除元数据，并在本地通过\n  Keystore 加密存储。\n\n传输路径\n%1$s\n\n加密遮不住的东西\n· 服务器知道谁在和谁通话、在什么时间、通话多久。这是\n  网络元数据，任何密钥都藏不住。隧道也藏不住：\n  它只改变数据经过的路径。"</string>
+    <string name="x39_ver_mi_identidad">查看我的身份</string>
+
+    <!-- 后台接收 -->
+    <string name="x39_fondo_intro">x39 不使用 Google：通知通过它自己的连接送达，这个连接由一个服务保持开启。如果你不授予权限，MIUI 会关闭这个连接。请逐项检查以下内容。</string>
+    <string name="x39_fondo_comprobable">应用可以检测的项目</string>
+    <string name="x39_fondo_avisos">x39 通知</string>
+    <string name="x39_fondo_avisos_sub">没有这项，你看不到来电</string>
+    <string name="x39_fondo_bateria">电池不受限制</string>
+    <string name="x39_fondo_bateria_sub">如果受到限制，系统会切断连接</string>
+    <string name="x39_fondo_pantalla_completa">全屏来电</string>
+    <string name="x39_fondo_pantalla_completa_sub">没有这项，来电只会显示为普通通知，而不是全屏</string>
+    <string name="x39_fondo_no_hace_falta">此 Android 版本无需申请</string>
+    <string name="x39_fondo_alarma">精确闹钟</string>
+    <string name="x39_fondo_alarma_sub">每 10 分钟检查一次连接的守护程序</string>
+    <string name="x39_fondo_manual">需要你自己检查的项目（MIUI 不允许读取）</string>
+    <string name="x39_fondo_autoinicio">已开启自启动</string>
+    <string name="x39_fondo_autoinicio_sub">安全 › 权限 › 自启动 › x39。没有这项，手机开机后 x39 不会启动。</string>
+    <string name="x39_fondo_recientes">在最近任务中锁定 x39</string>
+    <string name="x39_fondo_recientes_sub">打开最近任务，把 x39 向下滑，然后点按锁形图标。</string>
+    <string name="x39_fondo_recientes_aviso">这一步在最近任务界面操作，不在设置里</string>
+    <string name="x39_fondo_pie">即使全部设置好，服务器仍能看到谁在和谁通话、在什么时间、通话多久：任何加密都遮不住这些。它看不到的是说了什么。</string>
+    <string name="x39_fondo_concedido">已授予</string>
+    <string name="x39_fondo_sin_pantalla_ajustes">你的手机没有这个设置界面，请手动查找</string>
+
+    <!-- 身份：分享和添加 -->
+    <string name="x39_identidad_qr_desc">包含你身份的二维码</string>
+    <string name="x39_identidad_qr_firma_desc">你的签名密钥二维码</string>
+    <string name="x39_identidad_qr_firma_pie">第 1 个，共 2 个 · 用于给你打电话\n对方用这个把你加入通讯录。</string>
+    <string name="x39_identidad_qr_cifrar_desc">你的加密密钥二维码</string>
+    <string name="x39_identidad_qr_cifrar_pie">第 2 个，共 2 个 · 用于给你发消息\n对方保存你之后，在“加密”中扫描这个。</string>
+    <string name="x39_identidad_ver_otro">查看另一个二维码</string>
+    <string name="x39_identidad_tu_foto">你的头像</string>
+    <string name="x39_identidad_tu_huella">你的指纹（你的号码）</string>
+    <string name="x39_identidad_copiar">复制我的完整身份</string>
+    <string name="x39_identidad_copiada">身份已复制（X39ID1）</string>
+    <string name="x39_identidad_escanear">扫描对方的二维码</string>
+    <string name="x39_identidad_o_pega">或粘贴对方的身份</string>
+    <string name="x39_identidad_nombre_hint">名字</string>
+    <string name="x39_identidad_pega_hint">在这里粘贴对方的身份</string>
+    <string name="x39_guardar_contacto">保存联系人</string>
+    <string name="x39_nombre_e_identidad">名字和身份都要填写</string>
+    <string name="x39_contacto_guardado">联系人已保存</string>
+    <string name="x39_identidad_no_valida">该身份无效</string>
+    <string name="x39_nombre_persona_hint">对方的名字</string>
+    <string name="x39_identidad_leida">已读取身份 · 指纹 %1$s</string>
+    <string name="x39_ponle_nombre">给对方起个名字</string>
+    <string name="x39_qr_solo_cifrar">这个二维码只包含加密密钥。请在联系人菜单中使用“加密”。</string>
+    <string name="x39_identidad_no_coincide">该身份不是 %1$s 的：签名密钥不一致</string>
+    <string name="x39_no_es_identidad">这不是 x39 身份</string>
+
+    <!-- 与联系人加密并核对指纹 -->
+    <string name="x39_cifrar_titulo">与 %1$s 加密通信</string>
+    <string name="x39_cifrar_texto">你已有 %1$s 的签名密钥：可以给对方打电话。要给对方发消息，还需要对方的加密密钥。\n\n请对方在“分享身份”中向你出示二维码，或者用任何方便的方式把身份粘贴给你。</string>
+    <string name="x39_cifrar_escanear">扫描对方的二维码</string>
+    <string name="x39_cifrar_hint">X39ID1:… 或 X39PK1:…</string>
+    <string name="x39_cifrar_guardar">保存对方的加密密钥</string>
+    <string name="x39_cifrar_pega">粘贴对方的身份</string>
+    <string name="x39_huellas_sin_clave">你还没有对方的加密密钥</string>
+    <string name="x39_huellas_titulo">核对指纹</string>
+    <string name="x39_huellas_texto">通过电话或当面大声读出来。两台设备上显示的必须完全相同。如果不一致，说明有人插在中间：不要标记。</string>
+    <string name="x39_huellas_la_tuya">你的</string>
+    <string name="x39_huellas_la_de">%1$s 的</string>
+    <string name="x39_huellas_coinciden">一致：标记为已验证</string>
+    <string name="x39_huellas_verificado">%1$s 已验证</string>
+    <string name="x39_huellas_pie">即使不标记，你也可以给对方发消息：标记只是记录你已核实过对方是谁。</string>
+
+    <!-- 头像 -->
+    <string name="x39_foto_tienes">已设置头像</string>
+    <string name="x39_foto_sin">未设置头像</string>
+    <plurals name="x39_foto_la_ven">
+        <item quantity="other">%1$d 位已验证联系人可以看到</item>
+    </plurals>
+    <string name="x39_foto_iniciales">目前显示的是你的姓名缩写。是否设置头像由你决定。</string>
+    <string name="x39_foto_cambiar">更换头像</string>
+    <string name="x39_foto_poner">设置头像</string>
+    <string name="x39_foto_quitar">移除头像</string>
+    <string name="x39_foto_aviso">你的头像只会加密发送给已验证的联系人。一旦到了对方手机上，你就无法再控制它。</string>
+    <string name="x39_foto_sin_datos">发送前会去除位置和相机信息。</string>
+    <string name="x39_foto_no_usable">无法使用该图片：%1$s</string>
+    <string name="x39_foto_guardada">头像已保存</string>
+    <string name="x39_foto_reparto_nadie">位置和相机信息已去除。\n\n目前还不能发送给任何人：你没有已验证的联系人。验证某位联系人后就会发送。</string>
+    <plurals name="x39_foto_reparto">
+        <item quantity="other">位置和相机信息已去除。\n\n将加密发送给你的 %1$d 位已验证联系人。一旦到了对方手机上，你就无法再控制它。</item>
+    </plurals>
+    <plurals name="x39_foto_enviada">
+        <item quantity="other">头像已发送给 %1$d 位联系人</item>
+    </plurals>
+    <string name="x39_quitar_foto_titulo">移除你的头像？</string>
+    <string name="x39_quitar_foto_texto">头像会从这台手机上删除，并通知你的已验证联系人删除他们的副本。\n\n对方是否真的删除，取决于对方的应用是否遵守：如果有人用另一台相机拍了下来，就无法挽回了。</string>
+    <string name="x39_foto_quitada">头像已移除</string>
+    <string name="x39_fotos_no_leer">无法读取该图片</string>
+    <string name="x39_fotos_grande">图片太大</string>
+
+    <!-- 呼出通话 -->
+    <string name="x39_llamando_a">正在呼叫</string>
+    <string name="x39_llamada_cifrada_e2e">端到端加密通话</string>
+    <string name="x39_videollamada_cifrada_e2e">端到端加密视频通话</string>
+    <string name="x39_estableciendo_clave">正在建立后量子密钥…</string>
+
+    <!-- 关于 x39 -->
+    <string name="x39_acerca_midiendo">正在测量已安装的 APK…</string>
+    <string name="x39_acerca_version">版本 %1$s（版本号 %2$d）\n包名 %3$s</string>
+    <string name="x39_acerca_certificado">签名证书（SHA-256）\n%1$s</string>
+    <string name="x39_acerca_apk">已安装的 APK（SHA-256，%1$d 字节）\n%2$s</string>
+    <string name="x39_acerca_motor">引擎：ML-DSA-87 · ML-KEM-1024 · X39-CALL-KEY-v1 · x39tunel v2（WireGuard + 后量子 PSK）</string>
+    <string name="x39_acerca_error">无法测量：%1$s</string>
+
+    <!-- 会话（聊天） -->
+    <string name="x39_chat_contacto_no_esta">该联系人已不在你的通讯录中</string>
+    <string name="x39_chat_llamar_a">呼叫 %1$s</string>
+    <string name="x39_chat_estado_sin_clave">待处理 · 没有对方的加密密钥</string>
+    <string name="x39_chat_escribe">输入消息</string>
+    <string name="x39_chat_adjuntar">附件</string>
+    <string name="x39_chat_grabar_nota">录制语音消息</string>
+    <string name="x39_chat_descartar_nota">放弃语音消息</string>
+    <string name="x39_chat_grabando">"●  正在录音  %1$d:%2$02d"</string>
+    <string name="x39_chat_enviar_nota">发送语音消息</string>
+    <string name="x39_chat_no_puedes_titulo">你还不能给对方发消息</string>
+    <string name="x39_chat_no_puedes_texto">你只有 %1$s 的签名密钥，只能用来给对方打电话。要加密封装一条消息，还需要对方的加密密钥。\n\n在对方的联系人菜单中使用“加密”来获取。</string>
+    <string name="x39_chat_sin_micro">没有麦克风权限，无法录制语音消息</string>
+    <string name="x39_chat_no_grabar">无法开始录音：%1$s</string>
+    <string name="x39_chat_error">错误</string>
+    <string name="x39_chat_no_grabo">什么也没录到</string>
+    <string name="x39_chat_corta">太短了</string>
+    <string name="x39_chat_no_leer_grabacion">无法读取录音</string>
+    <string name="x39_chat_no_enviar">无法发送：%1$s</string>
+    <string name="x39_chat_nota_descartada">语音消息已放弃</string>
+    <string name="x39_chat_adj_foto">照片</string>
+    <string name="x39_chat_adj_video">视频</string>
+    <string name="x39_chat_adj_documento">文档</string>
+    <string name="x39_chat_demasiado_grande">文件太大</string>
+    <string name="x39_chat_demasiado_grande_texto">“%1$s”大小为 %2$s，上限是 25 MB。</string>
+    <string name="x39_chat_enviar_metadatos">发送位置和相机信息</string>
+    <string name="x39_chat_aviso_video">注意：清除视频信息（位置、日期、手机型号）的功能仍在验证中。在确认之前，请假定视频可能仍带有这些信息。</string>
+    <string name="x39_chat_limpio">位置和相机信息已去除。</string>
+    <string name="x39_chat_documento_metadatos">文档可能带有自身的元数据（作者、所用软件），x39 不会处理这些。</string>
+    <plurals name="x39_chat_trafico">
+        <item quantity="other">%1$s · 分成 %2$d 块，每块单独加密封装。\n大约 %3$s 会经过服务器，这部分流量由服务器的付费方承担。</item>
+    </plurals>
+    <string name="x39_chat_limpiando_video">正在清理视频…</string>
+    <string name="x39_chat_no_se_puede_enviar">无法发送：%1$s</string>
+    <string name="x39_chat_enviando_limpio">正在发送，不含位置和相机信息</string>
+    <string name="x39_chat_tamano_desconocido">大小未知</string>
+    <string name="x39_chat_vacio_sin_clave">你还不能给 %1$s 发消息：缺少对方的加密密钥。请在对方的联系人菜单中使用“加密”。</string>
+    <string name="x39_chat_vacio">这里还什么都没有。你写的内容会用 %1$s 的密钥加密。</string>
+    <string name="x39_chat_ver_foto">查看照片</string>
+    <plurals name="x39_chat_trozos">
+        <item quantity="other">%1$d/%2$d 块</item>
+    </plurals>
+    <string name="x39_chat_reenviar">重新发送</string>
+    <string name="x39_chat_no_reenviar">无法重新发送：%1$s</string>
+    <string name="x39_chat_parar">"■  停止"</string>
+    <string name="x39_chat_escuchar">"▶  播放"</string>
+    <string name="x39_chat_no_abrir_grabacion">无法打开录音</string>
+    <string name="x39_chat_no_reproducir_sin_disco">此 Android 版本无法在不把录音以明文写入存储的情况下播放</string>
+    <string name="x39_chat_no_reproducir">无法播放</string>
+    <string name="x39_chat_estado_pendiente">⏳ 待发送 · 上线后发送</string>
+    <string name="x39_chat_estado_enviado">✓ 已发送 · 等待对方手机确认</string>
+    <string name="x39_chat_estado_entregado">✓✓ 已送达</string>
+    <string name="x39_chat_estado_caducado">⚠ 已过期，未送达</string>
+    <plurals name="x39_chat_caduca_dias">
+        <item quantity="other">%1$d 天后过期</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_horas">
+        <item quantity="other">%1$d 小时后过期</item>
+    </plurals>
+    <plurals name="x39_chat_caduca_minutos">
+        <item quantity="other">%1$d 分钟后过期</item>
+    </plurals>
+    <string name="x39_chat_caduca_menos_minuto">不到一分钟后过期</string>
+    <string name="x39_chat_borrar_aparato">从这台设备上删除</string>
+    <string name="x39_chat_copiado">已复制</string>
+    <string name="x39_chat_aviso_borrado">自动删除依赖对方的应用遵守这一设置。它能防止消息被遗忘在某部手机里；但无法阻止有人用另一台相机拍下来，也无法阻止有人使用修改过的应用。</string>
+    <string name="x39_chat_borrar_mensajes">删除消息…</string>
+    <string name="x39_chat_borrado_texto">计时从对方打开会话时开始，而不是从你发送时开始。这个选项封装在加密消息内部传送：服务器看不到，也无法修改。</string>
+
+    <!-- 附件：失败原因 -->
+    <string name="x39_adj_video_no_limpio">无法清理视频，不予发送（%1$s）</string>
+    <string name="x39_adj_no_leer">无法读取该文件</string>
+    <string name="x39_adj_pasa_25">文件超过 25 MB</string>
+    <string name="x39_adj_falta_clave">缺少对方的加密密钥</string>
+    <string name="x39_adj_ya_no_esta_movil">该文件已不在这台手机上</string>
+    <string name="x39_adj_ya_enviando">正在发送中</string>
+    <string name="x39_adj_ya_no_esta">该文件已不存在</string>
+    <string name="x39_adj_galeria_permisos">此 Android 版本需要更多权限才能保存到相册</string>
+    <string name="x39_adj_galeria_no_acepto">相册未接受该文件</string>
+    <string name="x39_adj_no_escribir">无法写入</string>
+    <string name="x39_video_sin_pista">没有视频轨道</string>
+    <string name="x39_video_sin_muestras">视频中没有采样数据</string>
+    <string name="x39_video_pasa_25">清理后超过 25 MB</string>
+
+    <!-- 通话中 -->
+    <string name="x39_llamada_sin_camara_voz">没有摄像头权限：通话将只保留语音</string>
+    <string name="x39_llamada_sin_micro">没有麦克风权限</string>
+    <string name="x39_llamada_sin_micro_texto">x39 需要麦克风才能通话。请在手机设置中授予权限，然后重新呼叫。</string>
+    <string name="x39_llamada_faltan_datos">缺少通话数据</string>
+    <string name="x39_llamada_no_conectar">无法接通通话</string>
+    <string name="x39_llamada_ha_colgado">%1$s 已挂断</string>
+    <string name="x39_llamada_sin_camara">没有摄像头权限。请在手机设置中授予。</string>
+    <string name="x39_llamada_silenciar_mic">关闭麦克风</string>
+    <string name="x39_llamada_encender_mic">打开麦克风</string>
+    <string name="x39_llamada_apagar_camara">关闭摄像头</string>
+    <string name="x39_llamada_encender_camara">打开摄像头</string>
+    <string name="x39_llamada_pie_tunel">传输路径由 x39tunel 保护。服务器转发数据包，但无法解密。</string>
+    <string name="x39_llamada_pie_sin_tunel">服务器转发数据包，但无法解密。x39tunel 已关闭：服务器能看到你的 IP 和时间。</string>
+    <string name="x39_llamada_comprueba_palabras">请和对方核对这 6 个词</string>
+    <string name="x39_llamada_acordando">正在协商密钥…</string>
+    <string name="x39_llamada_tu_camara_desc">你的摄像头画面。点按可切换摄像头；拖动可移到其他角落。</string>
+    <string name="x39_llamada_altavoz_desc">扬声器和音频输出</string>
+
+    <!-- 来电 -->
+    <string name="x39_entrante_video_de">视频来电：</string>
+    <string name="x39_entrante_de">来电：</string>
+    <string name="x39_entrante_conectando_camara">正在连接摄像头…</string>
+
+    <!-- 照片查看器 -->
+    <string name="x39_visor_ya_no_esta">该照片已不存在</string>
+    <string name="x39_visor_mas_opciones">更多选项</string>
+    <string name="x39_visor_guardar_galeria">保存到相册</string>
+    <string name="x39_visor_guardar_titulo">保存到相册？</string>
+    <string name="x39_visor_guardar_texto">副本不含位置和相机信息。\n\n但很多手机的相册会同步到云端：从那以后，这张照片就不再受 x39 保护。</string>
+    <string name="x39_visor_no_guardar">无法保存：%1$s</string>
+    <string name="x39_visor_guardada">已保存到相册的 x39 文件夹</string>
+
+    <!-- 二维码扫描 -->
+    <string name="x39_escaner_apunta">对准对方的身份二维码</string>
+
+    <!-- 服务和通知 -->
+    <string name="x39_notif_mensaje_nuevo">来自 %1$s 的新消息</string>
+    <string name="x39_notif_en_linea">x39 · 在线</string>
+    <string name="x39_notif_reconectando">x39 · 正在重新连接…</string>
+    <string name="x39_notif_linea_tunel">线路已开启 · x39tunel 已开启</string>
+    <string name="x39_notif_linea_abierta">线路保持开启，以便接听来电。</string>
+    <string name="x39_notif_en_llamada">通话中</string>
+    <string name="x39_notif_videollamada_entrante">视频来电</string>
+    <string name="x39_notif_llamada_entrante">来电</string>
+    <string name="x39_canal_linea">线路开启</string>
+    <string name="x39_canal_linea_desc">表示 x39 仍在线的常驻通知。无声音。</string>
+    <string name="x39_canal_entrantes">来电</string>
+    <string name="x39_canal_entrantes_desc">呼入的通话和视频通话。</string>
+    <string name="x39_canal_mensajes">消息</string>
+    <string name="x39_canal_mensajes_desc">提示谁给你发了消息。锁屏上不显示消息内容。</string>
+
+    <!-- x39tunel：设置中显示的状态 -->
+    <string name="x39_tunel_estado_apagado">已关闭</string>
+    <string name="x39_tunel_estado_sin_permiso">缺少 VPN 权限</string>
+    <string name="x39_tunel_estado_alta">正在服务器上登记对端…</string>
+    <string name="x39_tunel_estado_psk">正在协商后量子密钥…</string>
+    <string name="x39_tunel_estado_levantando">正在建立隧道…</string>
+    <string name="x39_tunel_estado_protegido">路径已受保护 · %1$s · PQ 密钥有效至 %2$s</string>
+    <string name="x39_tunel_estado_protegido_sin_psk">路径已受保护 · %1$s · 没有后量子密钥：该服务器暂不分发</string>
+    <string name="x39_tunel_fallo_cayo">无隧道：隧道已断开</string>
+    <string name="x39_tunel_fallo_alta">无隧道：登记对端：%1$s</string>
+    <string name="x39_tunel_fallo_psk">无隧道：隧道密钥：%1$s</string>
+    <string name="x39_tunel_fallo_sin_respuesta_alta">无隧道：服务器未响应对端登记请求（wg_alta）</string>
+    <string name="x39_tunel_fallo_sin_respuesta_psk">无隧道：服务器未响应密钥请求（psk）</string>
+    <string name="x39_tunel_fallo_otro">无隧道：%1$s</string>
+    <string name="x39_idioma">语言</string>
+    <string name="x39_idioma_sistema">跟随系统</string>
+    <string name="x39_qr_propio">这个二维码是你自己的身份。未保存任何内容。</string>
+    <string name="x39_identidad_propia">这是你自己的身份。未保存任何内容。</string>
+    <string name="x39_qr_pantalla_completa">全屏显示二维码</string>
+    <string name="x39_qr_por_partes">分段二维码（更容易扫描）</string>
+    <string name="x39_qr_parte_de">第 %1$d 段，共 %2$d 段 · 点按关闭</string>
+    <string name="x39_escaner_partes">已读取 %1$d / %2$d 段。请继续对准。</string>
+    <string name="x39_qr_mezcla_titulo">扫描已停止</string>
+    <string name="x39_qr_mezcla_texto">读取到了两个不同身份的二维码，或者这些分段无法组成一个完整的身份。可能是镜头前有另一块屏幕，也可能是有人想让你添加另一个身份。未保存任何内容。请在镜头前只放一块屏幕，重新开始。</string>
+    <string name="x39_contacto_guardado_sin_verificar">联系人已保存为未验证。请核对指纹以完成验证。</string>
+    <string name="x39_contacto_sin_verificar">⚠ 未验证</string>
+    <string name="x39_chat_aviso_sin_verificar">你还没有核对此人的指纹</string>
+    <string name="x39_chat_aviso_comparar">核对</string>
+    <string name="x39_huellas_no_coinciden">不一致</string>
+    <string name="x39_huellas_no_coinciden_titulo">指纹不一致</string>
+    <string name="x39_huellas_no_coinciden_texto">你可能读取了其他人的身份，也可能有人在中间试图冒充 %1$s。为安全起见，此联系人将被删除。请重新开始，最好当面进行。</string>
+    <string name="x39_escaner_alejate">请稍微拿远一点：这个摄像头在 %1$d 厘米以内无法对焦。</string>
+    <string name="x39_escaner_mas_luz">光线不足：请调高另一块屏幕的亮度，或换到更亮的地方。</string>
+    <string name="x39_escaner_sin_camara">无法使用摄像头。请在手机设置中授予权限，然后重试。</string>
+</resources>
