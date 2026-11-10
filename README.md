@@ -1,92 +1,149 @@
-# X39 · Android / Android app
+# X39 Enlace · app Android de x39
 
 > Construido sobre el [client-sdk-android de LiveKit](https://github.com/livekit/client-sdk-android) (Apache-2.0, commit 923ce1d0 del 16/09/2026). Los cambios al SDK se limitan a `RTCEngine.kt` y `SignalClient.kt`: sin servidores STUN por defecto; si el servidor propio no envía servidores ICE, no hay llamada. El README original del SDK está en `README.livekit.md`; su licencia y avisos, en `LICENSE` y `NOTICE`.
 
-## Entrega firmada / Signed release
+Llamadas, vídeo y mensajes cifrados, un túnel WireGuard propio y una billetera Bitcoin de autocustodia, en una sola app Android y sobre infraestructura propia: sin Google Play Services, sin Firebase, sin SDK de rastreo. Es la app hermana de [X39 Evidencia](https://github.com/x39matrix/x39-android) y lleva dentro el motor de billetera [x39-wallet](https://github.com/x39matrix/x39-wallet). Está pensada para quien necesita hablar y recibir bitcoin sin depender de un intermediario; no promete anonimato en la red ni es un producto auditado (véase «Límites»).
 
-- **APK SHA-256:** `79799e3f2cb0fba71a320028da29ddc2862d0969270cc5f3eea26be64adbf85f`
-- **Certificado del firmante / Signing certificate SHA-256:** `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`
-- **APK:** `x39-app-latest.apk`, versión 1.0.7-x39 (44), firmado y verificado con esquemas v1/v2/v3.
-- **OpenTimestamps:** `SHA256SUMS.txt.ots` sella `SHA256SUMS.txt`, que contiene el hash del APK. El comprobante recibido contiene atestaciones pendientes de calendarios; requiere actualización y verificación posterior para acreditar el anclaje confirmado en Bitcoin. El APK firmado se conserva byte a byte.
+En la tienda aparece todavía como «x39 Comunicaciones» y «x39»; el nombre X39 Enlace llegará con la próxima versión.
 
-### Los cuatro pilares de X39
+## Ediciones publicadas
 
-1. **Evidencias para reporteros y ciudadanos:** sellado criptográfico con OpenTimestamps (`.ots`) para detectar cambios y acreditar la existencia previa de un archivo al confirmar su anclaje. Conserva el original y la prueba. Este pilar pertenece al flujo X39 Evidencia del ecosistema; en esta distribución se aporta el sello de las sumas del APK. El sello no impide modificar un archivo ni prueba que su contenido sea verdadero.
-2. **Dinero bajo tu custodia:** billetera Bitcoin nativa `libx39wallet.so` y Electrs propio, para disponer de bitcoin sin depender de una cuenta bancaria, también cuando el banco bloquea su acceso. Las claves permanecen bajo custodia local.
-3. **Comunicaciones privadas cifradas:** mensajería y llamadas cifradas con infraestructura X39 y túnel privado `x39tunel` / WireGuard.
-4. **Infraestructura verificable en directo:** telemetría de solo lectura del nodo Bitcoin Core mainnet y de CKPool SOLO, exclusivamente `stratum+tcp://mining.x39matrix.org:3333`; reparto configurado 99% minero / 1% operador, sin registro.
+Las dos se distribuyen desde el repositorio F-Droid propio `https://mining.x39matrix.org/app/fdroid/repo` (huella del índice y del certificado de firma, SHA-256: `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`, CN=x39matrix).
 
-### The four X39 pillars
+| Paquete | Nombre en tienda | Versión | Qué incluye | SHA-256 del APK |
+|---|---|---|---|---|
+| `org.x39matrix.llamadas` | x39 Comunicaciones | 1.0.8 (46) | llamadas, vídeo y mensajes cifrados, túnel, billetera; sin módulos de minería | `34f382f7a5b0d0645281502afd6e9c30af74cf72e84943bb409bc74369ba6225` |
+| `org.x39matrix.llamadas.escritorio` | x39 | 1.0.8-x39 (45) | lo anterior más telemetría de solo lectura del nodo Bitcoin y del pool propios | `02927c51c88a7a94fdd19338459fa916c3f4dd6a01139788a5ced080da8b1b26` |
 
-1. **Evidence for reporters and citizens:** OpenTimestamps (`.ots`) seals provide tamper evidence and proof of prior existence once Bitcoin anchoring is confirmed. Keep the original file and proof. X39 Evidence is the ecosystem's evidence workflow; this distribution includes the APK checksum timestamp. A timestamp does not establish the truth of the content.
-2. **Self-custodied money:** native Bitcoin wallet `libx39wallet.so` with self-hosted Electrs, independent of a bank account, including when access to banking is blocked.
-3. **Private encrypted communications:** encrypted messaging and calls over X39 infrastructure, with the private `x39tunel` / WireGuard tunnel.
-4. **Live infrastructure telemetry:** read-only Bitcoin Core mainnet and CKPool SOLO statistics; the sole mining endpoint is `stratum+tcp://mining.x39matrix.org:3333`.
+Pruebas de existencia de cada APK, todas verificadas contra nuestro propio nodo Bitcoin Core:
 
-Signed APK SHA-256 and official certificate fingerprint are listed above. Signatures v1/v2/v3 have been verified. The OTS receipt currently contains pending calendar attestations; confirmed Bitcoin anchoring needs later upgrading and verification.
+- 46: OpenTimestamps, primer bloque 975174 (09/11/2026), `.ots` junto al APK en el repositorio F-Droid. Sello de tiempo cualificado (RFC 3161, ANF AC Qualified TSA, servicio cualificado conforme al Reglamento eIDAS de la UE) emitido el 10/11/2026, serie `0xC04082135132D07DCC478923CCBEC7`.
+- 45: OpenTimestamps por dos vías: el hash figura en [`SHA256SUMS.txt`](https://mining.x39matrix.org/app/SHA256SUMS.txt) sellado el 07/11/2026 (primer bloque 974899) y prueba directa del APK sellada el 09/11/2026 (bloque 975211). Sello cualificado emitido el 10/11/2026, serie `0xC04082135132D07DCC478923CCBEC3`.
+- Los `.tsr`, la cadena de certificados y el acta de cada sello cualificado están en `https://mining.x39matrix.org/app/fdroid/sellos/`.
+- Biblioteca nativa de la billetera en el APK 46 (`libx39wallet.so`, SHA-256): `244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43`.
 
-## Español
-
-X39 integra comunicaciones cifradas, billetera Bitcoin nativa y telemetría del nodo y del pool propio. La edición completa pública se construye con el flavor `escritorio`; mantiene el identificador `org.x39matrix.llamadas.escritorio`, distinto del de Comunicaciones. Versión 1.0.7-x39 (44), ABI arm64-v8a. No reemplaza una instalación con otro identificador o una firma diferente.
-
-**Soberanía:** sin Google Play Services (GMS), Firebase ni telemetría comercial externa. Utiliza bibliotecas libres de terceros: LiveKit/WebRTC, AndroidX, Kotlin, OkHttp, WireGuard, ZXing, Protobuf, JNA y dependencias del motor Rust. Los repositorios Maven de Google y el Android SDK son herramientas de compilación; no equivalen a incorporar GMS. Las métricas técnicas de llamadas, cuando las habilita LiveKit, pertenecen a la sesión con el servidor configurado; no constituyen una prueba de ausencia de tráfico mediante análisis dinámico.
-
-- **Billetera:** `../x39-wallet/android` es un build compuesto local. `libx39wallet.so` y los bindings Kotlin se generan desde Rust con UniFFI. La compilación de esta entrega habilita `mainnet` tanto en Rust como en Android; consulta el Electrs propio configurado en `NodoX39` o por el usuario. Custodia local de claves: no se incluyen semillas ni claves privadas en el APK o en Git.
-- **Comunicaciones:** llamadas con LiveKit/WebRTC y E2EE; mensajería del módulo local `../x39-chat`. La infraestructura de señalización y transporte la configura X39. El código y las licencias originales de LiveKit permanecen en este árbol; documentación upstream en `README.livekit.md`.
-- **x39tunel:** WireGuard integrado. HTTPS por defecto; la excepción HTTP privada de la edición completa queda limitada a la dirección interna del nodo dentro del túnel, sin la IP LAN del banco de pruebas.
-- **Telemetría:** `TelemetriaPi5.kt` realiza peticiones GET a `https://mining.x39matrix.org/api/public/stats` y consultas individuales, con opción de API privada de lectura por túnel. El panel de telemetría no firma transacciones ni administra Bitcoin Core/CKPool. La billetera tiene sus propias funciones de firma, separadas de la telemetría.
-- **Minería:** Bitcoin Core mainnet + CKPool SOLO, exclusivamente `stratum+tcp://mining.x39matrix.org:3333`; reparto configurado 99% al minero y 1% de fee al operador, sin registro de cuenta. La dirección Bitcoin identifica al minero. No es una promesa de encontrar bloques ni de ingresos.
-
-La consulta pública de esta preparación informó `chain: main`, nodo online y Stratum :3333 verificado. También devolvió `synced: null` y `counterSemantics: unverified_raw_counters`: no demuestra validación completa del nodo ni unidades de shares. El panel muestra los datos recibidos y su antigüedad; no inventa sincronización, cabeceras, estado de Electrs ni porcentaje de aceptación cuando la API no los informa. Los importes de recompensa potencial no son saldo recibido.
-
-### Compilar y firmar
-
-Requiere los árboles locales hermanos `x39-wallet` y `x39-chat`, Android SDK/JDK configurados, NDK 30.0.16248370 y herramientas Rust fijadas por `x39-wallet/android/build-native.sh`.
+## Verificar antes de instalar
 
 ```bash
-cd /home/x39matrix/x39-wallet
-source /home/x39matrix/Android/env.sh
-export ANDROID_NDK_HOME=/home/x39matrix/Android/sdk/ndk/30.0.16248370
-X39_MAINNET=1 ./android/build-native.sh --actualizar
-cd /home/x39matrix/client-sdk-android
-X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease :sample-app:testEscritorioReleaseUnitTest
+sha256sum org.x39matrix.llamadas_46.apk                 # debe coincidir con la tabla
+apksigner verify --print-certs org.x39matrix.llamadas_46.apk   # CN=x39matrix, SHA-256 8d46f850…
+ots verify org.x39matrix.llamadas_46.apk.ots            # con un nodo Bitcoin propio, sin terceros
+openssl ts -verify -data org.x39matrix.llamadas_46.apk -in org.x39matrix.llamadas_46.apk.tsr \
+  -CAfile anf_root.pem -untrusted org.x39matrix.llamadas_46.apk.cadena.pem
 ```
 
-Para futuras compilaciones, el artefacto previo a la firma es: `dist_web/x39-app-release-unsigned.apk`, alineado y todavía no instalable. `SHA256SUMS-UNSIGNED.txt` verifica solo ese artefacto. No publiques este archivo como APK de producción. Ejecuta desde una terminal:
+Una huella correcta prueba que el fichero es el publicado; la firma, que lo firmó la clave de x39; los sellos, que existía en esa fecha. Ninguna de las tres prueba que el software sea seguro: eso solo lo da una auditoría independiente, que todavía no se ha hecho.
+
+## Qué hay en este repositorio
+
+| Carpeta | Contenido |
+|---|---|
+| `sample-app/` | la app de x39 (sabores `general` y `escritorio`): llamadas, mensajes, túnel, billetera, telemetría |
+| `sample-app-common/` | código común heredado del ejemplo de LiveKit, adaptado |
+| `livekit-android-sdk/`, `livekit-android-camerax/`, … | el SDK de LiveKit con los dos cambios descritos arriba |
+| `protocol/` | el protocolo de LiveKit, como submódulo fijado a `v1.50.4` |
+| `dist_web/` | la página de descarga pública y las plantillas de publicación |
+| `firmar-y-empaquetar-x39.sh` | firma, verificación y empaquetado de una entrega (la contraseña se pide sin eco y no se guarda) |
+| `docs/`, `RELEASE_NOTES.md`, `X39_RELEASE_AUDIT.json` | notas de versión y auditoría de entrega |
+
+## Compilar
+
+Requisitos: JDK 17, Android SDK y NDK `30.0.16248370`, Rust con los objetivos Android, y el repositorio hermano `x39-wallet` clonado al lado de este.
 
 ```bash
-cd /home/x39matrix/client-sdk-android
-./firmar-y-empaquetar-x39.sh
+git clone --recurse-submodules https://github.com/x39matrix/x39-enlace.git
+git clone https://github.com/x39matrix/x39-wallet.git
+cd x39-wallet && X39_MAINNET=1 ./android/build-native.sh --actualizar && cd ..
+cd x39-enlace
+X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleGeneralRelease     # edición 46
+X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease  # edición 45
 ```
 
-El script pide la contraseña sin eco, utiliza `/home/x39matrix/x39-release.jks` (alias `x39`), firma, verifica firma y alineación, genera `dist_web/x39-app-latest.apk`, `FIRMA_APK.txt` y el `SHA256SUMS.txt` definitivo, e inserta el hash firmado en `download-x39-app.html`. Intenta sellar las sumas con OpenTimestamps si está instalado. No modifica Git ni sube archivos. Requiere Bash, Python 3, `sha256sum`, `timeout` y Android Build Tools 35.0.0; se puede indicar otra ruta mediante `X39_BUILD_TOOLS`. La contraseña no se guarda; se pasa solo al proceso de firma mediante una variable de entorno temporal.
+La mensajería usa el módulo `x39-chat`, que todavía no está publicado; hasta que lo esté, la compilación completa requiere ese árbol al lado de este. Es el siguiente repositorio en salir. La firma de las entregas la hace el mantenedor con su propio almacén; los APK sin firmar no se publican.
 
-### Verificar antes de instalar
+## Límites
 
-1. Descarga `x39-app-latest.apk`, `SHA256SUMS.txt` y `FIRMA_APK.txt` del canal oficial.
-2. En la misma carpeta ejecuta `sha256sum -c SHA256SUMS.txt`; exige `OK`.
-3. Ejecuta `apksigner verify --verbose --print-certs x39-app-latest.apk`. Compara la huella SHA-256 del certificado con una copia oficial obtenida por un canal independiente; una firma válida por sí sola no autentica a X39.
-4. Si hay `SHA256SUMS.txt.ots`, ejecuta `ots verify SHA256SUMS.txt.ots`. Un sello pendiente requiere `ots upgrade SHA256SUMS.txt.ots` y confirmación posterior; el sello prueba existencia temporal, no autoría.
-5. Solo entonces instala el APK. Nunca introduzcas semillas o contraseñas en el panel web.
+- El módulo de comunicaciones no ha pasado una auditoría externa. El acuerdo de clave ML-KEM-1024 autenticado con ML-DSA-87 y el cifrado AES-256-GCM son propiedades de la implementación pendientes de comprobación independiente.
+- El servidor de señalización propio ve direcciones IP, horas y qué dos claves públicas se conectan; nunca el contenido. Esta app no es una herramienta de anonimato en la red.
+- La compilación reproducible byte a byte por terceros está en curso; hoy se publican las huellas de cada entrega y de la biblioteca nativa.
+- La billetera es de autocustodia: las claves no salen del dispositivo y nadie puede recuperarlas por el usuario.
 
-### Web y Git
+## Licencia
 
-Después de firmar, el fragmento HTML oscuro usa únicamente recursos locales y permite descargar el APK firmado con su hash visible. Integra el fragmento en el frontend y sirve el contenido público de `dist_web/` bajo `/app/`. La ruta SSH del VPS debe verificarse antes de subirlo. La entrega firmada se publica bajo `/app/index.html`, enlazada desde la portada. La publicación web sirve exclusivamente los archivos públicos firmados; el APK sin firmar permanece local. GitHub Release es un canal separado.
+Apache-2.0, la misma del SDK de LiveKit sobre el que se construye; véanse `LICENSE` y `NOTICE`. Las partes de x39 son © X39matrix. Contacto: security@x39matrix.org.
 
-El upstream `origin` de LiveKit se conserva sin push. Se prepara commit/tag local con identidad `x39matrix <x39matrix@outlook.es>`. El repositorio X39 de destino aún debe elegirse. Los APK, firmas y sumas finales son artefactos locales ignorados por Git; el script, la plantilla y la documentación sí se versionan. El stash QR se conserva como respaldo: zoom 2×, enfoque central/táctil y diagnóstico de debug ya estaban en Camera2; se conserva la pausa de 1,2 s por QR sin reintroducir CameraX.
+---
 
-## English
+# X39 Enlace · x39 Android app
 
-X39 combines encrypted communications, a native Bitcoin wallet and read-only node/pool telemetry. Public complete flavor: `escritorio`; application ID `org.x39matrix.llamadas.escritorio`; version 1.0.7-x39 (44), arm64-v8a.
+> Built on LiveKit's [client-sdk-android](https://github.com/livekit/client-sdk-android) (Apache-2.0, commit 923ce1d0 of 2026-09-16). Changes to the SDK are limited to `RTCEngine.kt` and `SignalClient.kt`: no default STUN servers; if our own server sends no ICE servers, the call does not happen. The SDK's original README is `README.livekit.md`; its license and notices are in `LICENSE` and `NOTICE`.
 
-**No Google Play Services, Firebase or third-party commercial telemetry.** Open-source libraries are used, including LiveKit/WebRTC, AndroidX, Kotlin, OkHttp, WireGuard, ZXing, Protobuf and JNA. Build repositories and SDK tooling are distinct from bundled proprietary Google services. LiveKit session metrics, if enabled, go to the configured session server; static auditing does not replace runtime network analysis.
+Encrypted calls, video and messaging, a private WireGuard tunnel and a non-custodial Bitcoin wallet in one Android app on self-hosted infrastructure: no Google Play Services, no Firebase, no tracking SDKs. It is the sister app of [X39 Evidencia](https://github.com/x39matrix/x39-android) and embeds the [x39-wallet](https://github.com/x39matrix/x39-wallet) engine. It is meant for people who need to talk and receive bitcoin without an intermediary; it does not promise network anonymity and it has not been audited (see "Limits").
 
-The native `libx39wallet.so` wallet uses the sibling `x39-wallet` project, UniFFI and the configured self-hosted Electrs. Mainnet must be enabled in both the Rust library and Android. Encrypted communications also use sibling `x39-chat`. WireGuard provides the private x39tunel; HTTPS is the default, with a private HTTP exception only for the VPN node `10.39.0.3`.
+In the store it still appears as "x39 Comunicaciones" and "x39"; the name X39 Enlace arrives with the next version.
 
-`TelemetriaPi5.kt` reads the public HTTPS stats API and optional private read-only API using GET. Mining endpoint: **stratum+tcp://mining.x39matrix.org:3333**, Bitcoin Core mainnet and CKPool SOLO, configured 99% miner reward / 1% operator fee, no account registration. The Bitcoin address identifies the miner. Rewards remain probabilistic. Public API data currently does not establish full node synchronization or counter units; missing information remains explicitly unknown in the UI.
+## Published editions
 
-Build using the commands above. For future builds, the pre-signing APK is unsigned and zipaligned: `dist_web/x39-app-release-unsigned.apk`. Run `./firmar-y-empaquetar-x39.sh` in an interactive terminal: it securely prompts for the existing release keystore password, signs and verifies `dist_web/x39-app-latest.apk`, writes the final `SHA256SUMS.txt`, updates the HTML hash and attempts an OpenTimestamps proof. No password is stored, and no upload or Git mutation is performed by the script.
+Both are distributed from our own F-Droid repository `https://mining.x39matrix.org/app/fdroid/repo` (index and signing-certificate fingerprint, SHA-256: `8d46f850509ebfd4778156195c14bb69719dd09f799a4fb661b940e7e2b22fbe`, CN=x39matrix).
 
-Before installing, run `sha256sum -c SHA256SUMS.txt` and `apksigner verify --verbose --print-certs x39-app-latest.apk`. Compare the certificate SHA-256 fingerprint through an independent trusted channel. If present, verify the OTS proof with `ots verify SHA256SUMS.txt.ots`; pending proofs need later upgrading/confirmation. Hashes establish file integrity, signatures identify a signing key, and timestamps establish prior existence.
+| Package | Store name | Version | Contents | APK SHA-256 |
+|---|---|---|---|---|
+| `org.x39matrix.llamadas` | x39 Comunicaciones | 1.0.8 (46) | encrypted calls, video and messaging, tunnel, wallet; no mining modules | `34f382f7a5b0d0645281502afd6e9c30af74cf72e84943bb409bc74369ba6225` |
+| `org.x39matrix.llamadas.escritorio` | x39 | 1.0.8-x39 (45) | the above plus read-only telemetry of our own Bitcoin node and pool | `02927c51c88a7a94fdd19338459fa916c3f4dd6a01139788a5ced080da8b1b26` |
 
-Only deploy the package after signing. The dark download HTML has no remote scripts, fonts or trackers. The signed web download is served under `/app/index.html`, linked from the mining homepage. GitHub Release publication is separate. Keep upstream licensing and attribution intact.
+Proofs of existence for each APK, all verified against our own Bitcoin Core node:
+
+- 46: OpenTimestamps, first block 975174 (2026-11-09), `.ots` next to the APK in the F-Droid repository. Qualified time stamp (RFC 3161, ANF AC Qualified TSA, qualified service under the EU eIDAS Regulation) issued 2026-11-10, serial `0xC04082135132D07DCC478923CCBEC7`.
+- 45: OpenTimestamps in two ways: the hash is listed in [`SHA256SUMS.txt`](https://mining.x39matrix.org/app/SHA256SUMS.txt) stamped 2026-11-07 (first block 974899), and a direct proof of the APK stamped 2026-11-09 (block 975211). Qualified time stamp issued 2026-11-10, serial `0xC04082135132D07DCC478923CCBEC3`.
+- The `.tsr` files, certificate chains and records of the qualified stamps are at `https://mining.x39matrix.org/app/fdroid/sellos/`.
+- Native wallet library in APK 46 (`libx39wallet.so`, SHA-256): `244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43`.
+
+## Verify before installing
+
+```bash
+sha256sum org.x39matrix.llamadas_46.apk                 # must match the table
+apksigner verify --print-certs org.x39matrix.llamadas_46.apk   # CN=x39matrix, SHA-256 8d46f850…
+ots verify org.x39matrix.llamadas_46.apk.ots            # against your own Bitcoin node, no third parties
+openssl ts -verify -data org.x39matrix.llamadas_46.apk -in org.x39matrix.llamadas_46.apk.tsr \
+  -CAfile anf_root.pem -untrusted org.x39matrix.llamadas_46.apk.cadena.pem
+```
+
+A matching hash proves the file is the published one; the signature, that x39's key signed it; the stamps, that it existed on that date. None of the three proves the software is secure: only an independent audit does, and it has not happened yet.
+
+## What is in this repository
+
+| Folder | Contents |
+|---|---|
+| `sample-app/` | the x39 app (`general` and `escritorio` flavors): calls, messaging, tunnel, wallet, telemetry |
+| `sample-app-common/` | shared code inherited from the LiveKit sample, adapted |
+| `livekit-android-sdk/`, `livekit-android-camerax/`, … | LiveKit's SDK with the two changes described above |
+| `protocol/` | LiveKit's protocol, as a submodule pinned to `v1.50.4` |
+| `dist_web/` | the public download page and publishing templates |
+| `firmar-y-empaquetar-x39.sh` | signing, verification and packaging of a release (the password is read without echo and never stored) |
+| `docs/`, `RELEASE_NOTES.md`, `X39_RELEASE_AUDIT.json` | release notes and release audit |
+
+## Build
+
+Requirements: JDK 17, Android SDK and NDK `30.0.16248370`, Rust with the Android targets, and the sibling repository `x39-wallet` cloned next to this one.
+
+```bash
+git clone --recurse-submodules https://github.com/x39matrix/x39-enlace.git
+git clone https://github.com/x39matrix/x39-wallet.git
+cd x39-wallet && X39_MAINNET=1 ./android/build-native.sh --actualizar && cd ..
+cd x39-enlace
+X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleGeneralRelease     # edition 46
+X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease  # edition 45
+```
+
+Messaging uses the `x39-chat` module, which is not published yet; until it is, a complete build requires that tree next to this one. It is the next repository to be released. Releases are signed by the maintainer with his own keystore; unsigned APKs are never published.
+
+## Limits
+
+- The communications module has not undergone an external audit. The ML-KEM-1024 key agreement authenticated with ML-DSA-87 and the AES-256-GCM encryption are properties of the implementation pending independent verification.
+- Our own signalling server sees IP addresses, times and which two public keys connect; never the content. This app is not a network anonymity tool.
+- Byte-for-byte reproducible builds by third parties are in progress; today we publish the hashes of each release and of the native library.
+- The wallet is non-custodial: keys never leave the device and nobody can recover them on the user's behalf.
+
+## License
+
+Apache-2.0, the same as the LiveKit SDK it is built on; see `LICENSE` and `NOTICE`. The x39 parts are © X39matrix. Contact: security@x39matrix.org.
