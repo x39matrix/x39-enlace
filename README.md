@@ -21,6 +21,7 @@ Pruebas de existencia de cada APK, todas verificadas contra nuestro propio nodo 
 - 45: OpenTimestamps por dos vías: el hash figura en [`SHA256SUMS.txt`](https://fdroid.x39matrix.org/app/SHA256SUMS.txt) sellado el 07/11/2026 (primer bloque 974899) y prueba directa del APK sellada el 09/11/2026 (bloque 975211). Sello cualificado emitido el 10/11/2026, serie `0xC04082135132D07DCC478923CCBEC3`.
 - Los `.tsr`, la cadena de certificados y el acta de cada sello cualificado están en `https://fdroid.x39matrix.org/app/fdroid/sellos/`.
 - Biblioteca nativa de la billetera en el APK 46 (`libx39wallet.so`, SHA-256): `244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43`.
+- Procedencia del APK 46: sabor `general` (`assembleGeneralRelease`), compilado desde el commit `fdb8ccef` del repositorio de desarrollo (no público) más dos cambios que entonces estaban sin registrar: `sample-app/build.gradle` (sin el sufijo `.lab`) y `sample-app/src/general/java/io/livekit/android/sample/ExtraEscritorio.kt` (sin el panel del pool). Este repositorio los recoge desde el commit «Sabor general: paquete org.x39matrix.llamadas y sin panel del pool»; los commits anteriores no corresponden al APK 46 en esos dos ficheros.
 
 ## Verificar antes de instalar
 
@@ -38,7 +39,7 @@ Una huella correcta prueba que el fichero es el publicado; la firma, que lo firm
 
 | Carpeta | Contenido |
 |---|---|
-| `sample-app/` | la app de x39 (sabores `general` y `escritorio`): llamadas, mensajes, túnel, billetera, telemetría |
+| `sample-app/` | la app de x39. El sabor `general` es la publicada como «x39 Comunicaciones» (`org.x39matrix.llamadas`): llamadas, mensajes, túnel y billetera, sin panel del pool. El sabor `escritorio` es la publicada como «x39» y añade la telemetría |
 | `sample-app-common/` | código común heredado del ejemplo de LiveKit, adaptado |
 | `livekit-android-sdk/`, `livekit-android-camerax/`, … | el SDK de LiveKit con los dos cambios descritos arriba |
 | `protocol/` | el protocolo de LiveKit, como submódulo fijado a `v1.50.4` |
@@ -114,7 +115,7 @@ A matching hash proves the file is the published one; the signature, that x39's 
 
 | Folder | Contents |
 |---|---|
-| `sample-app/` | the x39 app (`general` and `escritorio` flavors): calls, messaging, tunnel, wallet, telemetry |
+| `sample-app/` | the x39 app. The `general` flavor is the one published as "x39 Comunicaciones" (`org.x39matrix.llamadas`): calls, messaging, tunnel and wallet, no pool panel. The `escritorio` flavor is the one published as "x39" and adds telemetry |
 | `sample-app-common/` | shared code inherited from the LiveKit sample, adapted |
 | `livekit-android-sdk/`, `livekit-android-camerax/`, … | LiveKit's SDK with the two changes described above |
 | `protocol/` | LiveKit's protocol, as a submodule pinned to `v1.50.4` |
