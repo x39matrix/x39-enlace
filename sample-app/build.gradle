@@ -40,13 +40,13 @@ android {
     flavorDimensions "edicion"
     productFlavors {
         general {
-            // Laboratorio CON billetera: nunca se publica. Paquete aparte para no pisar a la app publica.
+            // Edición publicada como «x39 Comunicaciones»: con billetera y sin panel del pool.
             // No lleva más direcciones ni puertos de red que el punto de acceso Electrum del nodo X-39.
             dimension "edicion"
             // applicationId org.x39matrix.llamadas (enlazado con Evidencia 0.3.6)
         }
         comunicaciones {
-            // App publica X39 Comunicaciones, SIN billetera. applicationId por defecto: org.x39matrix.llamadas.
+            // Sin billetera. No está publicada. Comparte applicationId (org.x39matrix.llamadas) con general.
             dimension "edicion"
         }
         escritorio {
