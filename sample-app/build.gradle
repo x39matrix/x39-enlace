@@ -43,7 +43,7 @@ android {
             // Laboratorio CON billetera: nunca se publica. Paquete aparte para no pisar a la app publica.
             // No lleva más direcciones ni puertos de red que el punto de acceso Electrum del nodo X-39.
             dimension "edicion"
-            applicationIdSuffix ".lab"
+            // applicationId org.x39matrix.llamadas (enlazado con Evidencia 0.3.6)
         }
         comunicaciones {
             // App publica X39 Comunicaciones, SIN billetera. applicationId por defecto: org.x39matrix.llamadas.
