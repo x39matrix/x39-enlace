@@ -49,7 +49,7 @@ Una huella correcta prueba que el fichero es el publicado; la firma, que lo firm
 
 ## Compilar
 
-Requisitos: JDK 17, Android SDK y NDK `30.0.16248370`, Rust con los objetivos Android, y el repositorio hermano `x39-wallet` clonado al lado de este.
+Requisitos: JDK 17, Android SDK y NDK `30.0.16248370`, Rust con los objetivos Android, y el repositorio hermano `x39-wallet` clonado al lado de este. Mientras `x39-chat` no esté publicado, hace falta también ese árbol al lado (`../x39-chat`).
 
 ```bash
 git clone --recurse-submodules https://github.com/x39matrix/x39-enlace.git
@@ -57,8 +57,10 @@ git clone https://github.com/x39matrix/x39-wallet.git
 cd x39-wallet && X39_MAINNET=1 ./android/build-native.sh --actualizar && cd ..
 cd x39-enlace
 X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleGeneralRelease     # edición 46
-X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease  # edición 45
+X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease  # sabor escritorio; hoy saldría con el código de versión 46, no 45
 ```
+
+La edición 45 publicada se compiló desde un commit anterior del repositorio de desarrollo (no público), cuando el código de versión era 45; con el `sample-app/build.gradle` de hoy (`versionCode 46`, sin valor propio para el sabor `escritorio`), ese sabor saldría como 1.0.8-x39 (46).
 
 La mensajería usa el módulo `x39-chat`, que todavía no está publicado; hasta que lo esté, la compilación completa requiere ese árbol al lado de este. Es el siguiente repositorio en salir. La firma de las entregas la hace el mantenedor con su propio almacén; los APK sin firmar no se publican.
 
@@ -126,7 +128,7 @@ A matching hash proves the file is the published one; the signature, that x39's 
 
 ## Build
 
-Requirements: JDK 17, Android SDK and NDK `30.0.16248370`, Rust with the Android targets, and the sibling repository `x39-wallet` cloned next to this one.
+Requirements: JDK 17, Android SDK and NDK `30.0.16248370`, Rust with the Android targets, and the sibling repository `x39-wallet` cloned next to this one. While `x39-chat` is not published, that tree is also needed next to this one (`../x39-chat`).
 
 ```bash
 git clone --recurse-submodules https://github.com/x39matrix/x39-enlace.git
@@ -134,8 +136,10 @@ git clone https://github.com/x39matrix/x39-wallet.git
 cd x39-wallet && X39_MAINNET=1 ./android/build-native.sh --actualizar && cd ..
 cd x39-enlace
 X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleGeneralRelease     # edition 46
-X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease  # edition 45
+X39_MAINNET=1 ./gradlew --no-daemon -Px39.mainnet=true :sample-app:assembleEscritorioRelease  # escritorio flavor; today it would get version code 46, not 45
 ```
+
+The published edition 45 was built from an earlier commit of the development repository (not public), when the version code was 45; with today's `sample-app/build.gradle` (`versionCode 46`, with no value of its own for the `escritorio` flavor), that flavor would come out as 1.0.8-x39 (46).
 
 Messaging uses the `x39-chat` module, which is not published yet; until it is, a complete build requires that tree next to this one. It is the next repository to be released. Releases are signed by the maintainer with his own keystore; unsigned APKs are never published.
 
