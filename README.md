@@ -98,6 +98,7 @@ Proofs of existence for each APK, all verified against our own Bitcoin Core node
 - 45: OpenTimestamps in two ways: the hash is listed in [`SHA256SUMS.txt`](https://fdroid.x39matrix.org/app/SHA256SUMS.txt) stamped 2026-11-07 (first block 974899), and a direct proof of the APK stamped 2026-11-09 (block 975211). Qualified time stamp issued 2026-11-10, serial `0xC04082135132D07DCC478923CCBEC3`.
 - The `.tsr` files, certificate chains and records of the qualified stamps are at `https://fdroid.x39matrix.org/app/fdroid/sellos/`.
 - Native wallet library in APK 46 (`libx39wallet.so`, SHA-256): `244eaa581adbaa822f724c44f5922c627fb96a1488ceca4eaf4580f26bff5a43`.
+- Provenance of APK 46: `general` flavor (`assembleGeneralRelease`), built from commit `fdb8ccef` of the development repository (not public) plus two changes that were not yet committed at the time: `sample-app/build.gradle` (without the `.lab` suffix) and `sample-app/src/general/java/io/livekit/android/sample/ExtraEscritorio.kt` (without the pool panel). This repository includes them from the commit "Sabor general: paquete org.x39matrix.llamadas y sin panel del pool" onward; earlier commits do not match APK 46 in those two files.
 
 ## Verify before installing
 
